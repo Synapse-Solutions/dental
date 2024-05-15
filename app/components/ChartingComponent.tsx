@@ -22,7 +22,6 @@ import ProbingChart from "../sharedcomponents/ProbingChart";
 import TeethLostChart from "../sharedcomponents/TeethLostChart";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import MyStatefulEditor from "../sharedcomponents/RichTextEditor";
 
 const array = [
   {
@@ -698,9 +697,6 @@ export default function ChartingComponent() {
                 Click on the root or the top of the tooth to add irregularities.
               </p>
             </div>
-          </div>
-          <div className="my-10">
-            <MyStatefulEditor onChange={handleEditorChange} />
           </div>
         </div>
 
