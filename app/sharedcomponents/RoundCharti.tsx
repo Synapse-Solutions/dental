@@ -1,50 +1,59 @@
-"use client";
-import React, { useEffect } from "react";
-import ApexCharts from "apexcharts";
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
 const RoundCharti = () => {
-  const options = {
-    chart: {
-      height: 150,
-      type: "radialBar",
-    },
-    series: [70],
-    labels: ["Progress"],
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          margin: 15,
-          size: "70%",
-        },
+  const progress = 75; // Example progress value
+  const chartRef = useRef(null);
+  let chartInstance = useRef<any>(null);
 
-        dataLabels: {
-          name: {
-            show: false,
-            color: "#888",
-            fontSize: "13px",
-          },
-          value: {
-            color: "#111",
-            fontSize: "15px",
-            show: true,
-          },
-        },
-      },
-    },
-  };
   useEffect(() => {
-    const chart = new ApexCharts(
-      document.querySelector("#chart_round_i"),
-      options
-    );
-    chart.render();
+    if (chartRef.current) {
+      const ctx: any = (chartRef.current as HTMLCanvasElement).getContext("2d");
 
-    // Clean up on component unmount
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+
+      chartInstance.current = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Progress", "Remaining"],
+          datasets: [
+            {
+              label: "Progress",
+              data: [progress, 100 - progress],
+              backgroundColor: [
+                "rgba(54, 162, 235, 0.8)",
+                "rgba(201, 203, 207, 0.8)",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          cutout: "90%", // Adjust this value to control the thickness of the progress circle
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          elements: {
+            arc: {
+              borderWidth: 0,
+            },
+          },
+        },
+      });
+    }
+
     return () => {
-      chart.destroy();
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
     };
-  }, []); // Empty dependency array to run effect only once
-  return <div id="chart_round_i" className=""></div>;
+  }, [progress]);
+
+  return <canvas ref={chartRef} />;
 };
 
 export default RoundCharti;

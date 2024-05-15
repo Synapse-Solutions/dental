@@ -747,14 +747,18 @@ export default function ChartingComponent() {
               </div>
               <div className="h-[1px] w-full bg-[#c4c4c4]" />
 
-              <div className=" flex w-full mt-4">
-                <div className="flex items-center w-1/2 flex-col">
+              <div className=" flex w-full my-4">
+                <div className="flex items-center w-1/2 flex-col gap-2">
                   <p>Plaque</p>
-                  <RoundChart />
+                  <div className="w-[70%]">
+                    <RoundChart />
+                  </div>
                 </div>
-                <div className="flex items-center w-1/2 flex-col">
+                <div className="flex items-center w-1/2 flex-col gap-2">
                   <p>Bleeding</p>
-                  <RoundCharti />
+                  <div className="w-[70%]">
+                    <RoundCharti />
+                  </div>
                 </div>
               </div>
               <div className="h-[1px] w-full bg-[#c4c4c4]" />

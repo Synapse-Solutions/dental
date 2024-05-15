@@ -1,47 +1,65 @@
-// RadarChart.js
-"use client";
-import React, { useEffect } from "react";
-import ApexCharts from "apexcharts";
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
 const RadarChart = () => {
+  const chartRef = useRef(null);
+  let chartInstance = useRef<any>(null);
+  const data = {
+    labels: ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5"],
+    datasets: [
+      {
+        data: [80, 60, 70, 85, 75], // Example data values
+      },
+    ],
+  };
+
   useEffect(() => {
-    const options = {
-      series: [
-        {
-          name: "Series 1",
-          data: [80, 50, 30, 40, 100, 20],
-        },
-      ],
-      chart: {
-        height: 250,
+    if (chartRef.current) {
+      const ctx: any = (chartRef.current as HTMLCanvasElement).getContext("2d");
+
+      if (chartInstance.current) {
+        // If a chart instance already exists, destroy it before rendering a new one
+        chartInstance.current.destroy();
+      }
+
+      // Create a new chart instance
+      chartInstance.current = new Chart(ctx, {
         type: "radar",
-      },
+        data: {
+          labels: data.labels,
+          datasets: [
+            {
+              label: "Dataset 1",
+              data: data.datasets[0].data,
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderColor: "rgba(255, 99, 132, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            r: {
+              angleLines: {
+                display: true,
+              },
+              suggestedMin: 0,
+              suggestedMax: 100,
+            },
+          },
+        },
+      });
+    }
 
-      yaxis: {
-        stepSize: 20,
-      },
-      xaxis: {
-        categories: [
-          "Bleeding",
-          "Smoking environment",
-          "Systemic genetic disorders",
-          "Age-related bone loss",
-          "Loss of teeth",
-          "probing depth >= 5 mm",
-        ],
-      },
-    };
-
-    const chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-
-    // Clean up on component unmount
+    // Clean up function to destroy the chart instance when component unmounts
     return () => {
-      chart.destroy();
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
     };
-  }, []); // Empty dependency array to run effect only once
+  }, [data]);
 
-  return <div id="chart">{/* Chart will be rendered inside this div */}</div>;
+  return <canvas ref={chartRef} />;
 };
 
 export default RadarChart;
