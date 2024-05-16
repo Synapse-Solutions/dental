@@ -11,17 +11,11 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import Image from "next/image";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
-import InfoIcon from "@mui/icons-material/Info";
-import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
-import RadarChart from "../sharedcomponents/RadarChart";
-import RoundChart from "../sharedcomponents/RoundChart";
-import RoundCharti from "../sharedcomponents/RoundCharti";
-import LineChart from "../sharedcomponents/LineChart";
-import ProbingChart from "../sharedcomponents/ProbingChart";
-import TeethLostChart from "../sharedcomponents/TeethLostChart";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import RightSideCharting from "../sharedcomponents/RightSideCharting";
+import { upperToothArray } from "@/app/imagesarrays/UpperToothArray";
+import FurcationInput from "../sharedcomponents/chartingcomponents/FurcationInput";
+import PocketDepthInput from "../sharedcomponents/chartingcomponents/PocketDepthInput";
+import RecessionInput from "../sharedcomponents/chartingcomponents/RecessionInput";
 
 const array = [
   {
@@ -90,15 +84,6 @@ const array = [
   },
 ];
 export default function ChartingComponent() {
-  const [leftSideActiveTab, setLeftSideActiveTab] = useState(1);
-  const [selectedSmoking, setSelectedSmoking] = useState<any>(2);
-  const [generaticDisorders, setGeneraticDisorders] = useState(false);
-  const [editorContent, setEditorContent] = useState("");
-
-  const handleEditorChange = (content: any) => {
-    setEditorContent(content);
-  };
-
   return (
     <div className="px-[10%] text-black">
       <div className="flex justify-between items-center bg-white w-full rounded-md mt-10 px-10 py-5">
@@ -137,12 +122,8 @@ export default function ChartingComponent() {
               </div>
             </div>
             <div className="w-full p-5">
-              <div className="flex justify-between w-full gap-3 mt-5 text-[14px]">
-                <button
-                  style={{
-                    flex: 1,
-                  }}
-                ></button>
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
+                <button className="w-[80px]"></button>
                 {array.map((item, index) => (
                   <button
                     style={{
@@ -163,14 +144,8 @@ export default function ChartingComponent() {
                   </button>
                 ))}
               </div>
-              <div className="flex justify-between w-full gap-3 mt-5 text-[14px]overflow-hidden">
-                <p
-                  style={{
-                    flex: 1,
-                  }}
-                >
-                  Mobility
-                </p>
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
+                <p className="w-[80px]">Mobility</p>
                 {array.map((item, index) => (
                   <input
                     key={index}
@@ -183,14 +158,8 @@ export default function ChartingComponent() {
                   />
                 ))}
               </div>
-              <div className="flex justify-between w-full gap-3 mt-5 text-[14px]overflow-hidden">
-                <p
-                  style={{
-                    flex: 1,
-                  }}
-                >
-                  Implant
-                </p>
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
+                <p className="w-[80px]">Implant</p>
                 {array.map((item, index) => (
                   <div
                     key={index}
@@ -199,15 +168,53 @@ export default function ChartingComponent() {
                       flex: 1,
                     }}
                   >
-                    {item.isSelected ? (
-                      <CheckBoxOutlinedIcon fontSize="small" />
-                    ) : (
-                      <CheckBoxOutlineBlankOutlinedIcon fontSize="small" />
-                    )}
+                    <input type="checkbox" />
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]overflow-hidden">
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
+                <p className="w-[80px]">Furcation</p>
+                {array.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-center"
+                    style={{
+                      flex: 1,
+                    }}
+                  >
+                    <FurcationInput />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
+                <p className="w-[80px]">Pocket Depth</p>
+                {array.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-center"
+                    style={{
+                      flex: 1,
+                    }}
+                  >
+                    <PocketDepthInput />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
+                <p className="w-[80px]">Recession</p>
+                {array.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-center"
+                    style={{
+                      flex: 1,
+                    }}
+                  >
+                    <RecessionInput />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
                 <div
                   style={{
                     flex: 1,
@@ -215,7 +222,7 @@ export default function ChartingComponent() {
                 ></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[70px] z-0"></div>
                 <div className="absolute top-[70px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                {array.map((item, index) => (
+                {upperToothArray.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center h-[100px] z-10"
@@ -224,7 +231,7 @@ export default function ChartingComponent() {
                     }}
                   >
                     <Image
-                      src={"/img/tabla5/periodontograma-dientes-abajo-46.png"}
+                      src={item.image}
                       width={200}
                       height={200}
                       className="h-full w-auto object-contain"
@@ -701,174 +708,7 @@ export default function ChartingComponent() {
         </div>
 
         {/* ***************************Right Side********************* */}
-        <div className="bg-white text-[12px] rounded-md overflow-y-scroll overflow-x-hidden h-[calc(90vh)]">
-          <div className="bg-[#f6f6f6] flex">
-            <div
-              onClick={() => setLeftSideActiveTab(1)}
-              className="flex gap-1 p-5 bg-white items-center"
-            >
-              <EqualizerIcon />
-              <p>Statistic</p>
-            </div>
-            <div
-              onClick={() => setLeftSideActiveTab(2)}
-              className="flex gap-1 p-5 items-center"
-            >
-              <InfoIcon />
-              <p>Medical</p>
-            </div>
-            <div
-              onClick={() => setLeftSideActiveTab(0)}
-              className="flex gap-1 p-5 items-center"
-            >
-              <ArrowCircleRightOutlinedIcon />
-            </div>
-          </div>
-          {leftSideActiveTab === 1 && (
-            <div className="w-full">
-              <div>
-                <RadarChart />
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-              <div className="p-3">
-                <p className="text-[13px]">Periodontal risk assessment</p>
-                <div className="w-full flex items-center justify-between">
-                  <p>Area of hexagon with risk</p>
-                  <p>23.38</p>
-                </div>
-                <div className="w-full flex items-center justify-between">
-                  <p>Periodontal risk</p>
-                  <p>Medium risk</p>
-                </div>
-                <div className="w-full flex items-center justify-between">
-                  <p>Advised intervals for reassessment</p>
-                  <p>6 months</p>
-                </div>
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-
-              <div className=" flex w-full my-4">
-                <div className="flex items-center w-1/2 flex-col gap-2">
-                  <p>Plaque</p>
-                  <div className="w-[70%]">
-                    <RoundChart />
-                  </div>
-                </div>
-                <div className="flex items-center w-1/2 flex-col gap-2">
-                  <p>Bleeding</p>
-                  <div className="w-[70%]">
-                    <RoundCharti />
-                  </div>
-                </div>
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-              <div className="mt-4 p-3">
-                <p>Development of Bleeding and Plaque</p>
-                <LineChart />
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-              <div className="mt-4 p-3">
-                <p>Average Probing depth</p>
-                <ProbingChart />
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-              <div className="mt-4 p-3">
-                <p>Average LOA</p>
-                <ProbingChart />
-              </div>
-              <div className="h-[1px] w-full bg-[#c4c4c4]" />
-              <div className="mt-4 p-3">
-                <p>Teeth Lost </p>
-                <TeethLostChart />
-              </div>
-            </div>
-          )}
-          {leftSideActiveTab === 2 && (
-            <div className="text-[12px] w-full p-3">
-              <p className="text-[14px]">Smoking</p>
-              <div className="mt-3 flex flex-col gap-3">
-                <div
-                  onClick={() => setSelectedSmoking(1)}
-                  className="flex items-center gap-2"
-                >
-                  {selectedSmoking === 1 ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>Non-smoker or former smoker (Stop for 5 years or more)</p>
-                </div>
-                <div
-                  onClick={() => setSelectedSmoking(2)}
-                  className="flex items-center gap-2"
-                >
-                  {selectedSmoking === 2 ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>Less than 10 cigarettes a day</p>
-                </div>
-                <div
-                  onClick={() => setSelectedSmoking(3)}
-                  className="flex items-center gap-2"
-                >
-                  {selectedSmoking === 3 ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>Between 10 and 20 cigarettes a day</p>
-                </div>
-                <div
-                  onClick={() => setSelectedSmoking(4)}
-                  className="flex items-center gap-2"
-                >
-                  {selectedSmoking === 4 ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>More than 20 cigarettes a day</p>
-                </div>
-              </div>
-              <p className="text-[14px] mt-5">Systemic or genetic disorders</p>
-              <div className="mt-3 flex flex-col gap-3">
-                <div
-                  onClick={() => setGeneraticDisorders(true)}
-                  className="flex items-center gap-2"
-                >
-                  {generaticDisorders ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>Yes</p>
-                </div>
-                <div
-                  onClick={() => setGeneraticDisorders(false)}
-                  className="flex items-center gap-2"
-                >
-                  {!generaticDisorders ? (
-                    <RadioButtonCheckedIcon fontSize="small" />
-                  ) : (
-                    <RadioButtonUncheckedIcon fontSize="small" />
-                  )}
-                  <p>No</p>
-                </div>
-              </div>
-              <p className="text-[14px] mt-5">Alveolar bone loss</p>
-              <div className="bg-[#f6f6f6] rounded flex justify-between w-[90%] px-3 py-2 mt-3">
-                <input
-                  type="text"
-                  placeholder="0"
-                  className="bg-transparent outline-none w-[90%]"
-                />
-                <p>%</p>
-              </div>
-            </div>
-          )}
-        </div>
+        <RightSideCharting />
       </div>
     </div>
   );
