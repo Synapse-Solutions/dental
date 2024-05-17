@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FurcationInput = () => {
+const P_FurcationInput = () => {
   const [clickCount, setClickCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
@@ -37,9 +37,9 @@ const FurcationInput = () => {
       onClick={handleButtonClick}
       value={inputValue}
       readOnly
-      className="w-[30px] bg-gray-400 rounded-lg text-center"
+      className="w-[20px] bg-gray-400 rounded-lg text-center"
     />
   );
 };
 
-export default FurcationInput;
+export default P_FurcationInput;
