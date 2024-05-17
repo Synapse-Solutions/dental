@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 
-const P_FurcationInput = () => {
+interface Props {
+  value: string;
+  P_furcationData: any;
+  setP_FurcationData: any;
+  index: number;
+  first: boolean;
+}
+const P_FurcationInput = (props: Props) => {
   const [clickCount, setClickCount] = useState(0);
-  const [inputValue, setInputValue] = useState("");
 
   const handleButtonClick = () => {
     if (clickCount === 3) {
-      // Reset the click count and input value on the 4th click
       setClickCount(0);
-      setInputValue("");
+      props.setP_FurcationData((prev: any) => {
+        const newFurcationData = [...prev];
+        newFurcationData[props.index].value = "";
+        return newFurcationData;
+      });
     } else {
       // Increment the click count
       setClickCount(clickCount + 1);
@@ -16,16 +25,40 @@ const P_FurcationInput = () => {
       // Set input value based on the click count
       switch (clickCount) {
         case 0:
-          setInputValue("I");
+          props.setP_FurcationData((prev: any) => {
+            const newFurcationData = [...prev];
+            newFurcationData[props.index][
+              props.first ? "value_one" : "value_two"
+            ] = "I";
+            return newFurcationData;
+          });
           break;
         case 1:
-          setInputValue("II");
+          props.setP_FurcationData((prev: any) => {
+            const newFurcationData = [...prev];
+            newFurcationData[props.index][
+              props.first ? "value_one" : "value_two"
+            ] = "II";
+            return newFurcationData;
+          });
           break;
         case 2:
-          setInputValue("III");
+          props.setP_FurcationData((prev: any) => {
+            const newFurcationData = [...prev];
+            newFurcationData[props.index][
+              props.first ? "value_one" : "value_two"
+            ] = "III";
+            return newFurcationData;
+          });
           break;
         default:
-          setInputValue("");
+          props.setP_FurcationData((prev: any) => {
+            const newFurcationData = [...prev];
+            newFurcationData[props.index][
+              props.first ? "value_one" : "value_two"
+            ] = "";
+            return newFurcationData;
+          });
           break;
       }
     }
@@ -35,9 +68,9 @@ const P_FurcationInput = () => {
     <input
       type="text"
       onClick={handleButtonClick}
-      value={inputValue}
+      value={props.value}
       readOnly
-      className="w-[20px] bg-gray-400 rounded-lg text-center"
+      className="w-[30px] bg-gray-400 rounded-lg text-center"
     />
   );
 };

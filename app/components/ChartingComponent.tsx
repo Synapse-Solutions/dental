@@ -1,13 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
-import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import Image from "next/image";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -34,6 +31,9 @@ import P_PlaqueInput from "../sharedcomponents/chartingcomponents/Palatino/P_Pla
 import HeaderComponent from "../sharedcomponents/HeaderComponent";
 import { ImplantArray } from "@/app/jsonarrays/ImplantArray";
 import { FurcationArray } from "@/app/jsonarrays/FurcationArray";
+import { BleedingArray } from "@/app/jsonarrays/BleedingArray";
+import { PlaqueArray } from "@/app/jsonarrays/PlaqueArray";
+import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
 
 const array = [
   {
@@ -107,6 +107,9 @@ export default function ChartingComponent() {
   const [occTeeths, setOccTeeths] = useState(occImagesArray);
   const [implantData, setImplantData] = useState(ImplantArray);
   const [furcationData, setFurcationData] = useState(FurcationArray);
+  const [P_furcationData, setP_FurcationData] = useState(P_FurcationArray);
+  const [bleedingData, setBleedingData] = useState(BleedingArray);
+  const [plaqueData, setPlaqueData] = useState(PlaqueArray);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -140,11 +143,11 @@ export default function ChartingComponent() {
     setLowerTeeths(updatedLowerTeethArray);
   };
   return (
-    <div className="px-[10%] text-black">
+    <div className="px-[1%] text-black">
       <HeaderComponent />
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
-        <div className="w-[80%]">
+        <div className="w-[85%]">
           <div className="w-full bg-white rounded-md py-3">
             <div className="w-full flex justify-between items-center p-5">
               <input type="date" />
@@ -268,31 +271,39 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Bleeding</p>
-                {array.map((item, index) => (
+                {bleedingData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
-                    style={{
-                      flex: 1,
-                    }}
+                    style={{ flex: 1 }}
                   >
-                    <BleedingInput />
+                    <BleedingInput
+                      value={item.value}
+                      bleedingData={bleedingData}
+                      setBleedingData={setBleedingData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
+              {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Plaque</p>
-                {array.map((item, index) => (
+                {plaqueData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
-                    style={{
-                      flex: 1,
-                    }}
+                    style={{ flex: 1 }}
                   >
-                    <PlaqueInput />
+                    <PlaqueInput
+                      value={item.value}
+                      plaqueData={plaqueData}
+                      setPlaqueData={setPlaqueData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
@@ -304,7 +315,13 @@ export default function ChartingComponent() {
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center h-[150px] z-10 "
+                    className={`flex justify-center h-[150px] z-10 ${
+                      bleedingData[index]?.value.some(
+                        (item) => item === "red" || item === "#dbc027"
+                      )
+                        ? `bg-[#ffc1c1]`
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <div className="relative ">
@@ -328,7 +345,13 @@ export default function ChartingComponent() {
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center h-[50px] z-10 "
+                    className={`flex justify-center h-[50px] z-10 ${
+                      bleedingData[index]?.value.some(
+                        (item) => item === "red" || item === "#dbc027"
+                      )
+                        ? `bg-[#ffc1c1]`
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -346,38 +369,52 @@ export default function ChartingComponent() {
               {/* LOWERTEETH ************ */}
               <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
                 <div style={{ flex: 1 }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[70px] z-0"></div>
-                <div className="absolute top-[70px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
+                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center h-[150px] z-10"
+                    className="flex justify-center h-[150px] w-[80px] z-10 relative"
                     style={{
                       flex: 1,
                     }}
                   >
                     <Image
                       src={item.image}
-                      width={200}
-                      height={200}
+                      width={300}
+                      height={300}
                       className="h-full w-auto object-contain"
                       alt={"tachados"}
                     />
+                    <div className="absolute top-[50px] left-[20%] flex gap-2">
+                      <p>{P_furcationData[index]?.value_one}</p>
+                      <p>{P_furcationData[index]?.value_two}</p>
+                    </div>
                   </div>
                 ))}
               </div>
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Furcation</p>
-                {array.map((item, index) => (
+                {P_furcationData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center gap-1"
-                    style={{
-                      flex: 1,
-                    }}
+                    style={{ flex: 1 }}
                   >
-                    <P_FurcationInput />
-                    <P_FurcationInput />
+                    <P_FurcationInput
+                      value={item.value_one}
+                      P_furcationData={P_furcationData}
+                      first={true}
+                      setP_FurcationData={setP_FurcationData}
+                      index={index}
+                    />
+                    <P_FurcationInput
+                      value={item.value_two}
+                      P_furcationData={P_furcationData}
+                      first={false}
+                      setP_FurcationData={setP_FurcationData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
@@ -472,7 +509,7 @@ export default function ChartingComponent() {
         </div>
 
         {/* ***************************Right Side********************* */}
-        <RightSideCharting />
+        {/* <RightSideCharting /> */}
       </div>
     </div>
   );
