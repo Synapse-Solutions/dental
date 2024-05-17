@@ -34,6 +34,9 @@ import { FurcationArray } from "@/app/jsonarrays/FurcationArray";
 import { BleedingArray } from "@/app/jsonarrays/BleedingArray";
 import { PlaqueArray } from "@/app/jsonarrays/PlaqueArray";
 import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
+import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
+import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
+import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
 
 const array = [
   {
@@ -110,6 +113,9 @@ export default function ChartingComponent() {
   const [P_furcationData, setP_FurcationData] = useState(P_FurcationArray);
   const [bleedingData, setBleedingData] = useState(BleedingArray);
   const [plaqueData, setPlaqueData] = useState(PlaqueArray);
+  const [P_BleedingData, setP_BleedingData] = useState(P_BleedingArray);
+  const [P_PlaqueData, setP_PlaqueData] = useState(P_PlaqueArray);
+  const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -243,17 +249,21 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Pocket Depth</p>
-                {array.map((item, index) => (
+                {pocketDepthData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center "
-                    style={{
-                      flex: 1,
-                    }}
+                    style={{ flex: 1 }}
                   >
-                    <PocketDepthInput />
+                    <PocketDepthInput
+                      value={item.value}
+                      pocketDepthData={pocketDepthData}
+                      setPocketDepthData={setPocketDepthData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
@@ -307,11 +317,23 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* ********
+                 teeths portion #######################
+                     *********  */}
               {/* UPPERTEEETH ************ */}
               <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
                 <div style={{ flex: 1 }}></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                  {pocketDepthData.map((item, index) => (
+                    <div
+                      key={index}
+                      style={{ flex: 1, marginBottom: `${item.value[0]}px` }}
+                      className="h-1 bg-blue-500 w-[30px] z-20"
+                    ></div>
+                  ))}
+                </div>
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
@@ -374,10 +396,14 @@ export default function ChartingComponent() {
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center h-[150px] w-[80px] z-10 relative"
-                    style={{
-                      flex: 1,
-                    }}
+                    className={`flex justify-center h-[150px] w-[80px] z-10 relative ${
+                      P_BleedingData[index]?.value.some(
+                        (item) => item === "red" || item === "#dbc027"
+                      )
+                        ? `bg-[#ffc1c1]`
+                        : ""
+                    }`}
+                    style={{ flex: 1 }}
                   >
                     <Image
                       src={item.image}
@@ -393,6 +419,8 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+
+              {/* ######################## PALATINO  */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Furcation</p>
                 {P_furcationData.map((item, index) => (
@@ -418,6 +446,7 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Pocket Depth</p>
                 {array.map((item, index) => (
@@ -432,6 +461,7 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Recession</p>
                 {array.map((item, index) => (
@@ -446,23 +476,28 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Bleeding</p>
-                {array.map((item, index) => (
+                {P_BleedingData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
-                    style={{
-                      flex: 1,
-                    }}
+                    style={{ flex: 1 }}
                   >
-                    <P_BleedingInput />
+                    <P_BleedingInput
+                      value={item.value}
+                      bleedingData={P_BleedingData}
+                      setBleedingData={setP_BleedingData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
+              {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Plaque</p>
-                {array.map((item, index) => (
+                {P_PlaqueData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
@@ -470,7 +505,12 @@ export default function ChartingComponent() {
                       flex: 1,
                     }}
                   >
-                    <P_PlaqueInput />
+                    <P_PlaqueInput
+                      value={item.value}
+                      plaqueData={P_PlaqueData}
+                      setPlaqueData={setP_PlaqueData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>

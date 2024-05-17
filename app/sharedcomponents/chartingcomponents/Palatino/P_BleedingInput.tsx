@@ -1,35 +1,43 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import RoomIcon from "@mui/icons-material/Room";
 
-const P_BleedingInput = () => {
-  // State to manage input values for each tooth (teeth 1-3)
-  const [toothDepths, setToothDepths] = useState<any>({
-    1: "",
-    2: "",
-    3: "",
-  });
-
-  const handleInputChange = (toothNumber: number, value: any) => {
-    // const sanitizedValue = Math.min(Number(value), 19);
-    //value should be in between -15 and 15
-    const sanitizedValue = Math.min(Math.max(Number(value), -15), 15);
-
-    setToothDepths((prevDepths: any) => ({
-      ...prevDepths,
-      [toothNumber]: sanitizedValue.toString(),
-    }));
+interface Props {
+  value: any;
+  bleedingData: any;
+  setBleedingData: any;
+  index: number;
+}
+const P_BleedingInput = (props: Props) => {
+  const handleChange = (item: string, _index: number) => {
+    if (item === "grey") {
+      props.setBleedingData((prev: any) => {
+        const newBleedingData = [...prev];
+        newBleedingData[props.index].value[_index] = "red";
+        return newBleedingData;
+      });
+    } else if (item === "#dbc027") {
+      props.setBleedingData((prev: any) => {
+        const newBleedingData = [...prev];
+        newBleedingData[props.index].value[_index] = "grey";
+        return newBleedingData;
+      });
+    } else if (item === "red") {
+      props.setBleedingData((prev: any) => {
+        const newBleedingData = [...prev];
+        newBleedingData[props.index].value[_index] = "#dbc027";
+        return newBleedingData;
+      });
+    }
   };
-
   return (
-    <div className="flex items-center">
-      {[1, 2, 3].map((toothNumber, index) => (
-        <Image
-          key={index}
-          onClick={() => handleInputChange(toothNumber, 1)}
-          src={"/blood-drop.png"}
-          width={17}
-          height={17}
-          alt="bolld"
+    <div className="flex items-center justify-center">
+      {props.value.map((item: string, _index: number) => (
+        <RoomIcon
+          key={_index}
+          onClick={() => handleChange(item, _index)}
+          fontSize="small"
+          className={`rotate-180 w-[18px] text-[${item}]`}
         />
       ))}
     </div>
