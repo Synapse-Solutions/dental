@@ -37,6 +37,8 @@ import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
 import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
 import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
 import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
+import LineChart from "../sharedcomponents/LineChart";
+import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
 
 const array = [
   {
@@ -116,6 +118,8 @@ export default function ChartingComponent() {
   const [P_BleedingData, setP_BleedingData] = useState(P_BleedingArray);
   const [P_PlaqueData, setP_PlaqueData] = useState(P_PlaqueArray);
   const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
+  const [selectedTooth, setSelectedTooth] = useState<any>(null);
+  const [selectedUpperTooth, setSelectedUpperTooth] = useState(false);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -147,6 +151,24 @@ export default function ChartingComponent() {
       ? lowerTeethArray1[index].image
       : lowerTeethArray[index].image;
     setLowerTeeths(updatedLowerTeethArray);
+  };
+
+  // **** HANDLE CHANGE CAVITY **** ############################
+  const handleChangeCavity = (value: number, index: number) => {
+    setSelectedTooth(null);
+    if (value === 1) {
+      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
+      updatedOccTeethArray[index].image = "/occImages/row_4/2.png";
+      setOccTeeths(updatedOccTeethArray);
+    } else if (value === 2) {
+      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
+      updatedOccTeethArray[index].image = "/occImages/row_6/2.png";
+      setOccTeeths(updatedOccTeethArray);
+    } else if (value === 3) {
+      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
+      updatedOccTeethArray[index].image = "/occImages/row_7/2.png";
+      setOccTeeths(updatedOccTeethArray);
+    }
   };
   return (
     <div className="px-[1%] text-black">
@@ -326,18 +348,19 @@ export default function ChartingComponent() {
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                 <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
-                  {pocketDepthData.map((item, index) => (
+                  {/* {pocketDepthData.map((item, index) => (
                     <div
                       key={index}
                       style={{ flex: 1, marginBottom: `${item.value[0]}px` }}
                       className="h-1 bg-blue-500 w-[30px] z-20"
                     ></div>
-                  ))}
+                  ))} */}
+                  <CharLine pocketDepthData={pocketDepthData} />
                 </div>
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[150px] z-10 ${
+                    className={`flex justify-center h-[150px] z-10 relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -362,12 +385,12 @@ export default function ChartingComponent() {
                 ))}
               </div>
               {/* OCC ************ */}
-              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]overflow-hidde bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1]">
+              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]overflow-hidde bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] z-30">
                 <div style={{ flex: 1 }}></div>
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[50px] z-10 ${
+                    className={`flex justify-center h-[50px] z-10 relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -382,42 +405,96 @@ export default function ChartingComponent() {
                       src={item.image}
                       width={200}
                       height={200}
-                      className="h-full w-auto object-contain"
+                      onClick={() => setSelectedTooth(index)}
+                      className="h-full w-auto object-contain cursor-pointer"
                       alt={"tachados"}
                     />
+                    {selectedTooth === index && (
+                      <div className="bg-white shadow-md absolute top-[30px] right-full w-[400px] text-[13px] p-3 ">
+                        <div
+                          onClick={() => handleChangeCavity(1, index)}
+                          className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
+                        >
+                          <Image
+                            src={"/occImages/row_4/1.png"}
+                            width={50}
+                            height={50}
+                            className="h-[30px] w-auto object-contain "
+                            alt={"tachados"}
+                          />
+                          <p>Ceramic/ Combined metal and ceramic prosthesis</p>
+                        </div>
+                        <div
+                          onClick={() => handleChangeCavity(2, index)}
+                          className="flex mt-2 border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
+                        >
+                          <Image
+                            src={"/occImages/row_6/1.png"}
+                            width={50}
+                            height={50}
+                            className="h-[30px] w-auto object-contain "
+                            alt={"tachados"}
+                          />
+                          <p>Metal prosthesis</p>
+                        </div>
+                        <div
+                          onClick={() => handleChangeCavity(3, index)}
+                          className="flex border-b border-gray-400 pb-1 mt-2 items-center gap-2 cursor-pointer"
+                        >
+                          <Image
+                            src={"/occImages/row_7/1.png"}
+                            width={50}
+                            height={50}
+                            className="h-[30px] w-auto object-contain "
+                            alt={"tachados"}
+                          />
+                          <p>Faulty prosthesis</p>
+                        </div>
+                        <div
+                          onClick={() => setSelectedTooth(null)}
+                          className="border border-[#46befc] hover:bg-[#46befc] rounded-md mt-2 flex justify-center py-2 cursor-pointer"
+                        >
+                          Cancel
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
               {/* LOWERTEETH ************ */}
-              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
-                <div style={{ flex: 1 }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                {lowerTeeths.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`flex justify-center h-[150px] w-[80px] z-10 relative ${
-                      P_BleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
-                        ? `bg-[#ffc1c1]`
-                        : ""
-                    }`}
-                    style={{ flex: 1 }}
-                  >
-                    <Image
-                      src={item.image}
-                      width={300}
-                      height={300}
-                      className="h-full w-auto object-contain"
-                      alt={"tachados"}
-                    />
-                    <div className="absolute top-[50px] left-[20%] flex gap-2">
-                      <p>{P_furcationData[index]?.value_one}</p>
-                      <p>{P_furcationData[index]?.value_two}</p>
+              <div className=" mt-5 text-[14px]  z-0">
+                <div
+                  className="flex justify-between relative w-full gap-3 overflow-hidden"
+                  style={{ flex: 1 }}
+                >
+                  <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
+                  <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                  {lowerTeeths.map((item, index) => (
+                    <div
+                      key={index}
+                      className={`flex justify-center h-[150px] w-[80px] z-10 relative ${
+                        P_BleedingData[index]?.value.some(
+                          (item) => item === "red" || item === "#dbc027"
+                        )
+                          ? `bg-[#ffc1c1]`
+                          : ""
+                      }`}
+                      style={{ flex: 1 }}
+                    >
+                      <Image
+                        src={item.image}
+                        width={300}
+                        height={300}
+                        className="h-full w-auto object-contain"
+                        alt={"tachados"}
+                      />
+                      <div className="absolute top-[50px] left-[20%] flex gap-2">
+                        <p>{P_furcationData[index]?.value_one}</p>
+                        <p>{P_furcationData[index]?.value_two}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               {/* ######################## PALATINO  */}
