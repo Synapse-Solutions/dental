@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 
-const RecessionInput = () => {
-  // State to manage input values for each tooth (teeth 1-3)
-  const [toothDepths, setToothDepths] = useState<any>({
-    1: "",
-    2: "",
-    3: "",
-  });
+interface Props {
+  value: any;
+  recessionData: any;
+  setRecessionData: any;
+  index: number;
+}
+const RecessionInput = (props: Props) => {
+  const handleInputChange = (value: any, index: number) => {
+    const sanitizedValue = Math.min(Math.max(parseInt(value, 10), -15), 15);
+    console.log("🚀 ~ handleInputChange ~ sanitizedValue:", sanitizedValue);
 
-  const handleInputChange = (toothNumber: number, value: any) => {
-    // const sanitizedValue = Math.min(Number(value), 19);
-    //value should be in between -15 and 15
-    const sanitizedValue = Math.min(Math.max(Number(value), -15), 15);
-
-    setToothDepths((prevDepths: any) => ({
-      ...prevDepths,
-      [toothNumber]: sanitizedValue.toString(),
-    }));
+    props.setRecessionData((prevState: any) => {
+      const newState = [...prevState];
+      newState[props.index].value[index] = sanitizedValue;
+      return newState;
+    });
   };
 
   return (
     <div className="flex items-center">
-      {[1, 2, 3].map((toothNumber) => (
+      {props.value.map((_item: string, index: number) => (
         <input
-          key={toothNumber}
+          key={index}
           type="number"
-          value={toothDepths[toothNumber]}
+          value={_item}
           max={19}
-          onChange={(e) => handleInputChange(toothNumber, e.target.value)}
+          onChange={(e) => handleInputChange(e.target.value, index)}
           className="w-[17px] bg-gray-400 rounded text-center mr-[1px]"
         />
       ))}

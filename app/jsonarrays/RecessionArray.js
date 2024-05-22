@@ -1,4 +1,4 @@
-export const PocketDepthArray = [
+export const RecessionArray = [
   {
     value: ["0", "0", "0"],
   },

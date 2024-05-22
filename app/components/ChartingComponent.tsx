@@ -37,8 +37,10 @@ import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
 import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
 import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
 import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
+import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
 import LineChart from "../sharedcomponents/LineChart";
 import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
+import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue";
 
 const array = [
   {
@@ -118,6 +120,7 @@ export default function ChartingComponent() {
   const [P_BleedingData, setP_BleedingData] = useState(P_BleedingArray);
   const [P_PlaqueData, setP_PlaqueData] = useState(P_PlaqueArray);
   const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
+  const [recessionData, setRecessionData] = useState(RecessionArray);
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
   const [selectedUpperTooth, setSelectedUpperTooth] = useState(false);
 
@@ -170,6 +173,41 @@ export default function ChartingComponent() {
       setOccTeeths(updatedOccTeethArray);
     }
   };
+
+  const [clicks, setClicks] = useState<any>([]);
+  const regions = [
+    { x: 10, y: 42, width: 20, height: 20 }, // Region 1
+    { x: 30, y: 42, width: 20, height: 20 }, // Region 2
+    { x: 20, y: 42, width: 20, height: 20 }, // Region 3
+    { x: 12, y: 95, width: 20, height: 20 }, // Region 4
+    { x: 33, y: 95, width: 20, height: 20 }, // Region 4
+    { x: 25, y: 87, width: 20, height: 20 }, // Region 4
+  ];
+  const handleClick = (event: any, index: number) => {
+    // Get the bounding rectangle of the image
+    const rect = event.target.getBoundingClientRect();
+
+    // Calculate the coordinates relative to the image
+    const x = event.clientX - rect.left;
+    console.log("🚀 ~ handleClick ~ x:", x);
+    const y = event.clientY - rect.top;
+    console.log("🚀 ~ handleClick ~ y:", y);
+
+    // Check if click is within any defined region
+    const isWithinRegion = regions.some(
+      (region) =>
+        x >= region.x &&
+        x <= region.x + region.width &&
+        y >= region.y &&
+        y <= region.y + region.height
+    );
+
+    setClicks((prevClicks: { x: number; y: number; index: number }[]) => [
+      ...prevClicks,
+      { x, y, index },
+    ]);
+  };
+
   return (
     <div className="px-[1%] text-black">
       <HeaderComponent />
@@ -289,9 +327,10 @@ export default function ChartingComponent() {
                   </div>
                 ))}
               </div>
+              {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Recession</p>
-                {array.map((item, index) => (
+                {recessionData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
@@ -299,7 +338,12 @@ export default function ChartingComponent() {
                       flex: 1,
                     }}
                   >
-                    <RecessionInput />
+                    <RecessionInput
+                      value={item.value}
+                      recessionData={recessionData}
+                      setRecessionData={setRecessionData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
@@ -344,23 +388,19 @@ export default function ChartingComponent() {
                      *********  */}
               {/* UPPERTEEETH ************ */}
               <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
-                <div style={{ flex: 1 }}></div>
+                <div style={{ width: "100px" }}></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                 <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
-                  {/* {pocketDepthData.map((item, index) => (
-                    <div
-                      key={index}
-                      style={{ flex: 1, marginBottom: `${item.value[0]}px` }}
-                      className="h-1 bg-blue-500 w-[30px] z-20"
-                    ></div>
-                  ))} */}
                   <CharLine pocketDepthData={pocketDepthData} />
+                </div>
+                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                  <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[150px] z-10 relative ${
+                    className={`flex justify-center h-[150px] z-[999] relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -373,13 +413,73 @@ export default function ChartingComponent() {
                       <Image
                         src={item.image}
                         width={200}
+                        onClick={(event) => handleClick(event, index)}
                         height={200}
-                        className="h-full w-full object-contain"
+                        className="h-full w-full object-cover z-20 bg-yellow-300 cursor-pointer"
                         alt={"tachados"}
                       />
                       <div className="absolute top-[60px] left-[40%]">
                         {furcationData[index]?.value}
                       </div>
+
+                      {/* if at top someone clicked draw yelow point  */}
+                      {clicks.some(
+                        (click: any) =>
+                          click.index === index && click.y < 60 && click.x < 30
+                      ) && (
+                        <div
+                          style={{
+                            top: `30px`,
+                            left: `15px`,
+                            position: "absolute",
+                            width: "10px",
+                            height: "10px",
+                            backgroundColor: "green",
+                            borderRadius: "50%",
+                            transform: "translate(-50%, -50%)",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
+                      {clicks.some(
+                        (click: any) =>
+                          click.index === index &&
+                          click.y < 60 &&
+                          click.x > 30 &&
+                          click.x < 45
+                      ) && (
+                        <div
+                          style={{
+                            top: `30px`,
+                            left: `30px`,
+                            position: "absolute",
+                            width: "10px",
+                            height: "10px",
+                            backgroundColor: "green",
+                            borderRadius: "50%",
+                            transform: "translate(-50%, -50%)",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
+                      {clicks.some(
+                        (click: any) =>
+                          click.index === index && click.y < 60 && click.x > 45
+                      ) && (
+                        <div
+                          style={{
+                            top: `30px`,
+                            left: `45px`,
+                            position: "absolute",
+                            width: "10px",
+                            height: "10px",
+                            backgroundColor: "green",
+                            borderRadius: "50%",
+                            transform: "translate(-50%, -50%)",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
                     </div>
                   </div>
                 ))}
@@ -463,10 +563,8 @@ export default function ChartingComponent() {
               </div>
               {/* LOWERTEETH ************ */}
               <div className=" mt-5 text-[14px]  z-0">
-                <div
-                  className="flex justify-between relative w-full gap-3 overflow-hidden"
-                  style={{ flex: 1 }}
-                >
+                <div className="flex justify-between relative w-full gap-3 overflow-hidden">
+                  <div style={{ flex: 1 }}></div>
                   <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                   <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                   {lowerTeeths.map((item, index) => (

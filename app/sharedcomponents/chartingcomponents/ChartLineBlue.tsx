@@ -2,20 +2,20 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 interface Props {
-  pocketDepthData: any;
+  recessionData: any;
 }
 
-const CharLine = (props: Props) => {
+const ChartLineBlue = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<any>(null);
 
   const data = {
-    labels: props.pocketDepthData.flatMap((item: any) => item.value),
+    labels: props.recessionData.flatMap((item: any) => item.value),
     datasets: [
       {
         label: "Dataset 1",
-        data: props.pocketDepthData.flatMap((item: any) => item.value),
-        borderColor: "rgba(255, 99, 132, 1)",
+        data: props.recessionData.flatMap((item: any) => item.value),
+        borderColor: "green",
         borderWidth: 2,
         pointRadius: 0, // Hide points
       },
@@ -102,7 +102,7 @@ const CharLine = (props: Props) => {
         width: "95%",
         height: "400px",
         marginLeft: "100px",
-        zIndex: 888,
+        zIndex: 30,
       }}
     >
       <canvas
@@ -117,4 +117,4 @@ const CharLine = (props: Props) => {
   );
 };
 
-export default CharLine;
+export default ChartLineBlue;
