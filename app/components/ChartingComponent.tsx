@@ -8,10 +8,11 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Image from "next/image";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import RightSideCharting from "../sharedcomponents/RightSideCharting";
 import {
   upperTeethArray,
   upperTeethArray2,
+  upperTeethArray3,
+  upperTeethArray4,
 } from "@/app/imagesarrays/upperTeethArray";
 import {
   lowerTeethArray,
@@ -38,9 +39,9 @@ import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
 import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
 import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
 import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
-import LineChart from "../sharedcomponents/LineChart";
 import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
 import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue";
+import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
 
 const array = [
   {
@@ -122,7 +123,7 @@ export default function ChartingComponent() {
   const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
   const [recessionData, setRecessionData] = useState(RecessionArray);
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
-  const [selectedUpperTooth, setSelectedUpperTooth] = useState(false);
+  const [clicks, setClicks] = useState<any>([]);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -174,38 +175,56 @@ export default function ChartingComponent() {
     }
   };
 
-  const [clicks, setClicks] = useState<any>([]);
-  const regions = [
-    { x: 10, y: 42, width: 20, height: 20 }, // Region 1
-    { x: 30, y: 42, width: 20, height: 20 }, // Region 2
-    { x: 20, y: 42, width: 20, height: 20 }, // Region 3
-    { x: 12, y: 95, width: 20, height: 20 }, // Region 4
-    { x: 33, y: 95, width: 20, height: 20 }, // Region 4
-    { x: 25, y: 87, width: 20, height: 20 }, // Region 4
-  ];
+  // ****** HANDLE CLICK ON UPPER TEETHS ********
   const handleClick = (event: any, index: number) => {
-    // Get the bounding rectangle of the image
     const rect = event.target.getBoundingClientRect();
-
-    // Calculate the coordinates relative to the image
     const x = event.clientX - rect.left;
-    console.log("🚀 ~ handleClick ~ x:", x);
     const y = event.clientY - rect.top;
-    console.log("🚀 ~ handleClick ~ y:", y);
-
-    // Check if click is within any defined region
-    const isWithinRegion = regions.some(
-      (region) =>
-        x >= region.x &&
-        x <= region.x + region.width &&
-        y >= region.y &&
-        y <= region.y + region.height
-    );
+    console.log("🚀 ~ handleClick ~ y:", { y, x });
+    if (y > 50 && y < 85 && x > 18 && x < 30) {
+      updateImages(index);
+    }
 
     setClicks((prevClicks: { x: number; y: number; index: number }[]) => [
       ...prevClicks,
       { x, y, index },
     ]);
+  };
+
+  // ****** UPDATE IMAGES in lower and upper teeth  ********
+  const updateImages = (index: number) => {
+    const updatedupperTeethArray = JSON.parse(JSON.stringify(upperTeeths));
+    const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
+
+    // **** CHECK IF IMAGE IS ROW 1 ****
+    if (updatedupperTeethArray[index].image.includes("/upperTeeth/1st_row/")) {
+      updatedupperTeethArray[index].image = upperTeethArray3[index].image;
+      setUpperTeeths(updatedupperTeethArray);
+      updatedLowerTeethArray[index].image = updatedLowerTeethArray[
+        index
+      ].image.replace("row_1", "row_3");
+      setLowerTeeths(updatedLowerTeethArray);
+    }
+    // **** CHECK IF IMAGE IS ROW 3 ****
+    else if (
+      updatedupperTeethArray[index].image.includes("/upperTeeth/3rd_row/")
+    ) {
+      updatedupperTeethArray[index].image = upperTeethArray4[index].image;
+      setUpperTeeths(updatedupperTeethArray);
+      updatedLowerTeethArray[index].image = updatedLowerTeethArray[
+        index
+      ].image.replace("row_3", "row_4");
+      setLowerTeeths(updatedLowerTeethArray);
+    } else if (
+      updatedupperTeethArray[index].image.includes("/upperTeeth/4th_row/")
+    ) {
+      updatedupperTeethArray[index].image = upperTeethArray[index].image;
+      setUpperTeeths(updatedupperTeethArray);
+      updatedLowerTeethArray[index].image = updatedLowerTeethArray[
+        index
+      ].image.replace("row_4", "row_1");
+      setLowerTeeths(updatedLowerTeethArray);
+    }
   };
 
   return (
@@ -423,70 +442,19 @@ export default function ChartingComponent() {
                       </div>
 
                       {/* if at top someone clicked draw yelow point  */}
-                      {clicks.some(
-                        (click: any) =>
-                          click.index === index && click.y < 60 && click.x < 30
-                      ) && (
-                        <div
-                          style={{
-                            top: `30px`,
-                            left: `15px`,
-                            position: "absolute",
-                            width: "10px",
-                            height: "10px",
-                            backgroundColor: "green",
-                            borderRadius: "50%",
-                            transform: "translate(-50%, -50%)",
-                            pointerEvents: "none",
-                          }}
-                        />
-                      )}
-                      {clicks.some(
-                        (click: any) =>
-                          click.index === index &&
-                          click.y < 60 &&
-                          click.x > 30 &&
-                          click.x < 45
-                      ) && (
-                        <div
-                          style={{
-                            top: `30px`,
-                            left: `30px`,
-                            position: "absolute",
-                            width: "10px",
-                            height: "10px",
-                            backgroundColor: "green",
-                            borderRadius: "50%",
-                            transform: "translate(-50%, -50%)",
-                            pointerEvents: "none",
-                          }}
-                        />
-                      )}
-                      {clicks.some(
-                        (click: any) =>
-                          click.index === index && click.y < 60 && click.x > 45
-                      ) && (
-                        <div
-                          style={{
-                            top: `30px`,
-                            left: `45px`,
-                            position: "absolute",
-                            width: "10px",
-                            height: "10px",
-                            backgroundColor: "green",
-                            borderRadius: "50%",
-                            transform: "translate(-50%, -50%)",
-                            pointerEvents: "none",
-                          }}
-                        />
-                      )}
+                      <DotsupperTeeth
+                        top="30px"
+                        left="15px"
+                        clicks={clicks}
+                        index={index}
+                      />
                     </div>
                   </div>
                 ))}
               </div>
               {/* OCC ************ */}
               <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]overflow-hidde bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] z-30">
-                <div style={{ flex: 1 }}></div>
+                <div style={{ width: "100px" }}></div>
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
@@ -564,7 +532,7 @@ export default function ChartingComponent() {
               {/* LOWERTEETH ************ */}
               <div className=" mt-5 text-[14px]  z-0">
                 <div className="flex justify-between relative w-full gap-3 overflow-hidden">
-                  <div style={{ flex: 1 }}></div>
+                  <div style={{ width: "100px" }}></div>
                   <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                   <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                   {lowerTeeths.map((item, index) => (
@@ -583,7 +551,7 @@ export default function ChartingComponent() {
                         src={item.image}
                         width={300}
                         height={300}
-                        className="h-full w-auto object-contain"
+                        className="h-full w-auto object-cover"
                         alt={"tachados"}
                       />
                       <div className="absolute top-[50px] left-[20%] flex gap-2">
