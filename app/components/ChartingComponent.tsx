@@ -42,6 +42,8 @@ import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
 import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
 import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue";
 import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
+import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
+import CavityModa from "../sharedcomponents/CavityModa";
 
 const array = [
   {
@@ -124,6 +126,9 @@ export default function ChartingComponent() {
   const [recessionData, setRecessionData] = useState(RecessionArray);
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
   const [clicks, setClicks] = useState<any>([]);
+  const [cavityModal, setCavityModal] = useState<any>(null);
+  const [positionsofSelecteTeeth, setPositionsofSelecteTeeth] =
+    useState<any>(null);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -181,8 +186,136 @@ export default function ChartingComponent() {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     console.log("🚀 ~ handleClick ~ y:", { y, x });
+    // if y is less than 35 and the dot is already clcked then remove all dots less than 35
+    if (
+      y < 10 &&
+      clicks.some((item: any) => item.y < 10) &&
+      clicks.some((item: any) => item.index === index)
+    ) {
+      console.log("🚀 ~ handleClick ~ y:", y);
+      setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+        const updatedClicks = [...prevClicks];
+        const updatedClicksFiltered = updatedClicks.filter(
+          (item) => !(item.y < 10 && item.index === index)
+        );
+        return updatedClicksFiltered;
+      });
+      return;
+    }
+    // for first item of the array
+    if (
+      y > 20 &&
+      y < 35 &&
+      index === 0 &&
+      clicks.some((item: any) => item.y < 35)
+    ) {
+      console.log("index::", index);
+      setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+        const updatedClicks = [...prevClicks];
+        const updatedClicksFiltered = updatedClicks.filter(
+          (item) => !(item.y < 35 && item.index === index)
+        );
+        return updatedClicksFiltered;
+      });
+      return;
+    }
+    // for second item of the array
+    if (index === 1 && y < 30 && clicks.some((item: any) => item.y < 30)) {
+      if (x < 20 && clicks.some((item: any) => item.x < 20)) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x < 20 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x < 35 &&
+        x > 20 &&
+        clicks.some((item: any) => item.x < 35 && item.x > 20)
+      ) {
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          console.log("second");
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) =>
+              !(
+                item.y < 30 &&
+                item.x < 35 &&
+                item.x > 20 &&
+                item.index === index
+              )
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (x > 35 && clicks.some((item: any) => item.x > 35)) {
+        console.log("third");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x > 38 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+    }
+    // for third item of the array
+    console.log("🚀 ~ cicks index ~ y:", clicks[index]);
+    if (index === 2 && y < 30 && clicks.some((item: any) => item.y < 30)) {
+      if (x < 20 && clicks.some((item: any) => item.x < 20)) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x < 20 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+      // else if (
+      //   x < 35 &&
+      //   x > 20 &&
+      //   clicks.some((item: any) => item.x < 35 && item.x > 20)
+      // ) {
+      //   setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+      //     console.log("second");
+      //     const updatedClicks = [...prevClicks];
+      //     const updatedClicksFiltered = updatedClicks.filter(
+      //       (item) =>
+      //         !(
+      //           item.y < 30 &&
+      //           item.x < 35 &&
+      //           item.x > 20 &&
+      //           item.index === index
+      //         )
+      //     );
+      //     return updatedClicksFiltered;
+      //   });
+      //   return;
+      // } else if (x > 35 && clicks.some((item: any) => item.x > 35)) {
+      //   console.log("third");
+      //   setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+      //     const updatedClicks = [...prevClicks];
+      //     const updatedClicksFiltered = updatedClicks.filter(
+      //       (item) => !(item.y < 30 && item.x > 38 && item.index === index)
+      //     );
+      //     return updatedClicksFiltered;
+      //   });
+      //   return;
+      // }
+    }
+    console.log("🚀 ~ else ~ y:", y);
     if (y > 50 && y < 85 && x > 18 && x < 30) {
       updateImages(index);
+      setPositionsofSelecteTeeth({ x, y, index });
+    }
+    if (y > 85) {
+      setCavityModal(index);
     }
 
     setClicks((prevClicks: { x: number; y: number; index: number }[]) => [
@@ -226,7 +359,13 @@ export default function ChartingComponent() {
       setLowerTeeths(updatedLowerTeethArray);
     }
   };
-
+  const handleCavity = (value: number, index: number) => {
+    setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+      const updatedClicks = [...prevClicks];
+      updatedClicks.splice(index, 1);
+      return updatedClicks;
+    });
+  };
   return (
     <div className="px-[1%] text-black">
       <HeaderComponent />
@@ -406,7 +545,7 @@ export default function ChartingComponent() {
                  teeths portion #######################
                      *********  */}
               {/* UPPERTEEETH ************ */}
-              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px] overflow-hidden">
+              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]">
                 <div style={{ width: "100px" }}></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
@@ -419,7 +558,7 @@ export default function ChartingComponent() {
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[150px] z-[999] relative ${
+                    className={`flex justify-center h-[150px]  relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -432,9 +571,8 @@ export default function ChartingComponent() {
                       <Image
                         src={item.image}
                         width={200}
-                        onClick={(event) => handleClick(event, index)}
                         height={200}
-                        className="h-full w-full object-cover z-20 bg-yellow-300 cursor-pointer"
+                        className="h-full w-full object-contain z-20 cursor-pointer bg-yellow-200"
                         alt={"tachados"}
                       />
                       <div className="absolute top-[60px] left-[40%]">
@@ -442,13 +580,21 @@ export default function ChartingComponent() {
                       </div>
 
                       {/* if at top someone clicked draw yelow point  */}
-                      <DotsupperTeeth
-                        top="30px"
-                        left="15px"
-                        clicks={clicks}
-                        index={index}
-                      />
+                      <DotsupperTeeth clicks={clicks} index={index} />
                     </div>
+                    <div
+                      onClick={(event) => handleClick(event, index)}
+                      className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 cursor-pointer"
+                    ></div>
+                    {cavityModal === index && (
+                      <>
+                        <CavityModa
+                          handleChangeCavity={handleCavity}
+                          index={index}
+                          setSelectedTooth={setCavityModal}
+                        />
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -477,8 +623,10 @@ export default function ChartingComponent() {
                       className="h-full w-auto object-contain cursor-pointer"
                       alt={"tachados"}
                     />
+                    {/* if at top someone clicked draw yelow point  */}
+                    <DotsMiddleTeeth clicks={clicks} index={index} />
                     {selectedTooth === index && (
-                      <div className="bg-white shadow-md absolute top-[30px] right-full w-[400px] text-[13px] p-3 ">
+                      <div className="bg-white shadow-md absolute top-full right-[-170px] w-[400px] text-[13px] p-3 ">
                         <div
                           onClick={() => handleChangeCavity(1, index)}
                           className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
@@ -551,13 +699,16 @@ export default function ChartingComponent() {
                         src={item.image}
                         width={300}
                         height={300}
-                        className="h-full w-auto object-cover"
+                        className="h-full w-auto object-contain"
                         alt={"tachados"}
                       />
                       <div className="absolute top-[50px] left-[20%] flex gap-2">
                         <p>{P_furcationData[index]?.value_one}</p>
                         <p>{P_furcationData[index]?.value_two}</p>
                       </div>
+
+                      {/* if at top someone clicked draw yelow point  */}
+                      <DotsupperTeeth clicks={clicks} index={index} />
                     </div>
                   ))}
                 </div>
