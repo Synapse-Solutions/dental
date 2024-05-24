@@ -12,25 +12,25 @@ export default function DotsupperTeeth(props: Props) {
           {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 35 && click.x < 30
-          ) && <GloblalDiv top="27px" left="25px" />}
+              click.index === props.index && click.y < 25 && click.x < 38
+          ) && <GloblalDiv top="15px" left="32px" />}
 
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
-          {props.clicks.some(
-            (click: any) =>
               click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.y > 90 &&
+              click.x > 30 &&
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x < 26
-          ) && <GloblalDiv top="110px" left="15px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
       {props.index === 1 && (
@@ -38,32 +38,36 @@ export default function DotsupperTeeth(props: Props) {
           {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x < 20
-          ) && <GloblalDiv top="25px" left="18px" />}
+              click.index === props.index && click.y < 20 && click.x < 25
+          ) && <GloblalDiv top="12px" left="20px" />}
           {props.clicks.some(
             (click: any) =>
               click.index === props.index &&
-              click.y < 30 &&
-              click.x > 24 &&
-              click.x < 35
-          ) && <GloblalDiv top="23px" left="30px" />}
+              click.y < 20 &&
+              click.x > 26 &&
+              click.x < 40
+          ) && <GloblalDiv top="12px" left="38px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x > 35
-          ) && <GloblalDiv top="25px" left="43px" />}
+              click.index === props.index && click.y < 20 && click.x > 40
+          ) && <GloblalDiv top="12px" left="55px" />}
 
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y > 90 &&
+              click.x > 30 &&
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
       {props.index === 2 && (
@@ -71,35 +75,35 @@ export default function DotsupperTeeth(props: Props) {
           {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x < 20
-          ) && <GloblalDiv top="30px" left="18px" />}
+              click.index === props.index && click.y < 30 && click.x < 25
+          ) && <GloblalDiv top="18px" left="22px" />}
           {props.clicks.some(
             (click: any) =>
               click.index === props.index &&
               click.y < 30 &&
-              click.x > 24 &&
-              click.x < 35
-          ) && <GloblalDiv top="30px" left="30px" />}
+              click.x > 28 &&
+              click.x < 40
+          ) && <GloblalDiv top="18px" left="38px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x > 35
-          ) && <GloblalDiv top="30px" left="43px" />}
+              click.index === props.index && click.y < 30 && click.x > 40
+          ) && <GloblalDiv top="18px" left="52px" />}
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
-          {props.clicks.some(
-            (click: any) =>
               click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.y > 90 &&
+              click.x > 30 &&
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x < 26
-          ) && <GloblalDiv top="110px" left="15px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
       {props.index === 3 && (
@@ -116,15 +120,20 @@ export default function DotsupperTeeth(props: Props) {
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y < 100 &&
+              click.x < 35 &&
+              click.x > 28
+          ) && <GloblalDiv top="102px" left="25px" />}
+
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 106 && click.x < 20
+          ) && <GloblalDiv top="126px" left="8px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 106 && click.x > 48
+          ) && <GloblalDiv top="126px" left="37px" />}
         </div>
       )}
       {props.index === 4 && (
@@ -140,15 +149,20 @@ export default function DotsupperTeeth(props: Props) {
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y < 100 &&
+              click.x < 35 &&
+              click.x > 28
+          ) && <GloblalDiv top="102px" left="25px" />}
+
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 106 && click.x < 20
+          ) && <GloblalDiv top="126px" left="8px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 106 && click.x > 48
+          ) && <GloblalDiv top="126px" left="37px" />}
         </div>
       )}
       {props.index === 5 && (
@@ -282,17 +296,29 @@ export default function DotsupperTeeth(props: Props) {
               click.x > 25
           ) && <GloblalDiv top="6px" left="25px" />}
 
-          {props.clicks.some(
-            (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+          {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
               click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.y < 100 &&
+              click.x < 35 &&
+              click.x > 28
+          ) && <GloblalDiv top="102px" left="22px" />}
+
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index &&
+              click.y < 115 &&
+              click.y > 110 &&
+              click.x < 20
+          ) && <GloblalDiv top="113px" left="8px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index &&
+              click.y < 115 &&
+              click.y > 110 &&
+              click.x > 25
+          ) && <GloblalDiv top="113px" left="37px" />}
         </div>
       )}
       {props.index === 11 && (
@@ -308,15 +334,20 @@ export default function DotsupperTeeth(props: Props) {
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y < 100 &&
+              click.x < 35 &&
+              click.x > 28
+          ) && <GloblalDiv top="102px" left="25px" />}
+
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 106 && click.x < 20
+          ) && <GloblalDiv top="126px" left="8px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 106 && click.x > 48
+          ) && <GloblalDiv top="126px" left="37px" />}
         </div>
       )}
       {props.index === 12 && (
@@ -333,49 +364,56 @@ export default function DotsupperTeeth(props: Props) {
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y < 100 &&
+              click.x < 35 &&
+              click.x > 28
+          ) && <GloblalDiv top="102px" left="25px" />}
+
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 106 && click.x < 20
+          ) && <GloblalDiv top="126px" left="8px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 106 && click.x > 48
+          ) && <GloblalDiv top="126px" left="37px" />}
         </div>
       )}
       {props.index === 13 && (
         <div>
+          {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 60 && click.x < 30
-          ) && <GloblalDiv top="30px" left="15px" />}
+              click.index === props.index && click.y < 30 && click.x < 25
+          ) && <GloblalDiv top="18px" left="22px" />}
           {props.clicks.some(
             (click: any) =>
               click.index === props.index &&
-              click.y < 60 &&
+              click.y < 30 &&
+              click.x > 28 &&
+              click.x < 40
+          ) && <GloblalDiv top="18px" left="38px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y < 30 && click.x > 40
+          ) && <GloblalDiv top="18px" left="52px" />}
+          {/* lower dots */}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index &&
+              click.y > 90 &&
               click.x > 30 &&
-              click.x < 45
-          ) && <GloblalDiv top="30px" left="30px" />}
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 60 && click.x > 45
-          ) && <GloblalDiv top="30px" left="45px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
-          {props.clicks.some(
-            (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
-          {props.clicks.some(
-            (click: any) =>
-              click.index === props.index && click.y > 106 && click.x < 26
-          ) && <GloblalDiv top="110px" left="15px" />}
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
       {props.index === 14 && (
@@ -383,32 +421,36 @@ export default function DotsupperTeeth(props: Props) {
           {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x < 20
-          ) && <GloblalDiv top="25px" left="18px" />}
+              click.index === props.index && click.y < 20 && click.x < 25
+          ) && <GloblalDiv top="12px" left="20px" />}
           {props.clicks.some(
             (click: any) =>
               click.index === props.index &&
-              click.y < 30 &&
-              click.x > 24 &&
-              click.x < 35
-          ) && <GloblalDiv top="23px" left="30px" />}
+              click.y < 20 &&
+              click.x > 26 &&
+              click.x < 40
+          ) && <GloblalDiv top="12px" left="38px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 30 && click.x > 35
-          ) && <GloblalDiv top="25px" left="43px" />}
+              click.index === props.index && click.y < 20 && click.x > 40
+          ) && <GloblalDiv top="12px" left="55px" />}
 
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
+              click.index === props.index &&
+              click.y > 90 &&
+              click.x > 30 &&
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
 
@@ -417,25 +459,25 @@ export default function DotsupperTeeth(props: Props) {
           {/* upper dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y < 60 && click.x < 30
-          ) && <GloblalDiv top="27px" left="25px" />}
+              click.index === props.index && click.y < 25 && click.x < 38
+          ) && <GloblalDiv top="15px" left="32px" />}
 
           {/* lower dots */}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x > 37
-          ) && <GloblalDiv top="110px" left="45px" />}
-          {props.clicks.some(
-            (click: any) =>
               click.index === props.index &&
-              click.y > 106 &&
-              click.x > 26 &&
-              click.x < 37
-          ) && <GloblalDiv top="110px" left="30px" />}
+              click.y > 90 &&
+              click.x > 30 &&
+              click.x < 40
+          ) && <GloblalDiv top="100px" left="35px" />}
           {props.clicks.some(
             (click: any) =>
-              click.index === props.index && click.y > 106 && click.x < 26
-          ) && <GloblalDiv top="110px" left="15px" />}
+              click.index === props.index && click.y > 112 && click.x < 15
+          ) && <GloblalDiv top="120px" left="15px" />}
+          {props.clicks.some(
+            (click: any) =>
+              click.index === props.index && click.y > 112 && click.x > 50
+          ) && <GloblalDiv top="120px" left="53px" />}
         </div>
       )}
     </div>
