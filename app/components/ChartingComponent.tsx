@@ -187,6 +187,7 @@ export default function ChartingComponent() {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     console.log("🚀 ~ handleClick ~ y:", { y, x });
+
     // if y is less than 35 and the dot is already clcked then remove all dots less than 35
     if (
       y < 10 &&
@@ -445,13 +446,15 @@ export default function ChartingComponent() {
       });
       return;
     }
-    console.log("🚀 ~ else ~ y:", y);
-    if (y > 50 && y < 85 && x > 18 && x < 30) {
+
+    if (y > 50 && y < 85 && x > 25 && x < 40) {
       updateImages(index);
-      setPositionsofSelecteTeeth({ x, y, index });
     }
     if (y > 85) {
-      setCavityModal(index);
+      // setCavityModal({ x, y, index });
+      console.log("🚀 ~ handleClick ~ cavityModal", cavityModal);
+      handleCavitySelection({ x, y, index });
+      return;
     }
 
     setClicks((prevClicks: { x: number; y: number; index: number }[]) => [
@@ -496,21 +499,87 @@ export default function ChartingComponent() {
     }
   };
   const handleCavity = (value: number, index: number) => {
-    setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
-      const updatedClicks = [...prevClicks];
-      updatedClicks.splice(index, 1);
-      return updatedClicks;
-    });
+    console.log("🚀 ~ handleCavity ~ value:", value);
+    let isCavityExist = clicks.some(
+      (item: any) => item.index === index && item.x === cavityModal.x
+    );
+    if (value === 1) {
+      if (isCavityExist) {
+        setClicks(
+          (
+            prevClicks: { x: number; y: number; index: number; color: string }[]
+          ) => {
+            const updatedClicks = [...prevClicks];
+            updatedClicks.map((item) => {
+              if (item.index === index && item.x === cavityModal.x) {
+                item.color = "black";
+              }
+            });
+            return updatedClicks;
+          }
+        );
+      }
+      setClicks(
+        (
+          prevClicks: { x: number; y: number; index: number; color: string }[]
+        ) => {
+          const updatedClicks = [...prevClicks];
+          updatedClicks.push({
+            x: cavityModal.x,
+            y: cavityModal.y,
+            index: cavityModal.index,
+            color: "black",
+          });
+          return updatedClicks;
+        }
+      );
+    }
+    if (value === 2) {
+      setClicks(
+        (
+          prevClicks: { x: number; y: number; index: number; color: string }[]
+        ) => {
+          const updatedClicks = [...prevClicks];
+          updatedClicks.push({
+            x: cavityModal.x,
+            y: cavityModal.y,
+            index: cavityModal.index,
+            color: "gray",
+          });
+          return updatedClicks;
+        }
+      );
+    }
+    setCavityModal(null);
+    // setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+    //   const updatedClicks = [...prevClicks];
+    //   updatedClicks.splice(index, 1);
+    //   return updatedClicks;
+    // });
   };
 
   const handleHover = (event: any, index: number) => {
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    if (y > 50 && y < 85 && x > 18 && x < 30) {
+    if (y > 25 && y < 85 && x > 18 && x < 30) {
       setIsCursorpointer(true);
     } else {
       setIsCursorpointer(true);
+    }
+  };
+
+  const handleCavitySelection = (position: any) => {
+    if (
+      position.index === 0 &&
+      position.y > 90 &&
+      position.x > 30 &&
+      position.x < 40
+    ) {
+      setCavityModal(position);
+    }
+    if (position.index === 0 && position.y > 112 && position.x < 15) {
+      setCavityModal(position);
     }
   };
   return (
@@ -692,7 +761,12 @@ export default function ChartingComponent() {
                  teeths portion #######################
                      *********  */}
               {/* UPPERTEEETH ************ */}
-              <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]">
+              <div
+                style={{
+                  overflow: !cavityModal ? "hidden" : "visible",
+                }}
+                className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
+              >
                 <div style={{ width: "100px" }}></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
@@ -737,7 +811,7 @@ export default function ChartingComponent() {
                       }}
                       className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "
                     ></div>
-                    {cavityModal === index && (
+                    {cavityModal?.index === index && (
                       <>
                         <CavityModa
                           handleChangeCavity={handleCavity}

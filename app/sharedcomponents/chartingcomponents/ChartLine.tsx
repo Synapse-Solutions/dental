@@ -100,9 +100,9 @@ const CharLine = (props: Props) => {
     <div
       style={{
         width: "95%",
-        height: "400px",
+        height: "200px",
         marginLeft: "100px",
-        zIndex: 888,
+        zIndex: 30,
       }}
     >
       <canvas

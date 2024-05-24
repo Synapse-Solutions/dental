@@ -11,8 +11,9 @@ export default function CavityModa({
   index,
   setSelectedTooth,
 }: Props) {
+  console.log("CavityModa");
   return (
-    <div className="bg-white shadow-md absolute top-full right-[-100px] w-[250px] text-[13px] p-3 z-[99] ">
+    <div className="bg-white shadow-md absolute top-full right-[-100px] w-[250px] text-[13px] p-3 z-[9999999] ">
       <div
         onClick={() => handleChangeCavity(1, index)}
         className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
