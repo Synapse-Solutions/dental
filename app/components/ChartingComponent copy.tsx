@@ -44,7 +44,6 @@ import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue"
 import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
 import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
-import { Regions } from "@/app/utils/Regions";
 
 const array = [
   {
@@ -187,35 +186,281 @@ export default function ChartingComponent() {
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
+    console.log("🚀 ~ handleClick ~ y:", { y, x });
 
-    const isAlreadyExist = clicks.some(
-      (item: any) =>
-        item.index === index &&
-        Regions.some(
-          (region) =>
-            item.x >= region.x &&
-            item.x <= region.x + region.w &&
-            item.y >= region.y &&
-            item.y <= region.y + region.h
-        )
-    );
-    const isInRegion = Regions.some(
-      (region) =>
-        x >= region.x &&
-        x <= region.x + region.w &&
-        y >= region.y &&
-        y <= region.y + region.h
-    );
-
-    if (isInRegion && !isAlreadyExist) {
-      setClicks((prevClicks: any) => [
-        ...prevClicks,
-        { x, y, index, color: "#cfb53b" },
-      ]);
-      console.log("Click registered:", { x, y, index });
-    } else {
-      console.log("Click outside defined regions:", { x, y });
+    // if y is less than 35 and the dot is already clcked then remove all dots less than 35
+    if (
+      y < 10 &&
+      clicks.some((item: any) => item.y < 10) &&
+      clicks.some((item: any) => item.index === index)
+    ) {
+      console.log("🚀 ~ handleClick ~ y:", y);
+      setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+        const updatedClicks = [...prevClicks];
+        const updatedClicksFiltered = updatedClicks.filter(
+          (item) => !(item.y < 10 && item.index === index)
+        );
+        return updatedClicksFiltered;
+      });
+      return;
     }
+    // for first item of the array
+    if (
+      y > 12 &&
+      y < 25 &&
+      index === 0 &&
+      clicks.some((item: any) => item.y < 25 && item.index === index)
+    ) {
+      console.log("index:: item 1", index);
+      setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+        const updatedClicks = [...prevClicks];
+        const updatedClicksFiltered = updatedClicks.filter(
+          (item) => !(item.y < 25 && item.index === index)
+        );
+        return updatedClicksFiltered;
+      });
+      return;
+    }
+    // for second item of the array
+    if (index === 1 && y < 20 && clicks.some((item: any) => item.y < 20)) {
+      if (
+        x < 26 &&
+        clicks.some((item: any) => item.x < 26 && item.index === 1)
+      ) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x < 26 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x < 40 &&
+        x > 26 &&
+        clicks.some(
+          (item: any) => item.x < 40 && item.x > 26 && item.index === 1
+        )
+      ) {
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          console.log("second");
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) =>
+              !(
+                item.y < 30 &&
+                item.x < 40 &&
+                item.x > 26 &&
+                item.index === index
+              )
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x > 40 &&
+        clicks.some((item: any) => item.x > 40 && item.index === 1)
+      ) {
+        console.log("third");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x > 40 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+    }
+    // for third item of the array
+
+    if (index === 2 && y < 25 && clicks.some((item: any) => item.y < 25)) {
+      if (
+        x < 25 &&
+        clicks.some((item: any) => item.x < 28 && item.index === 2)
+      ) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 25 && item.x < 28 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x < 40 &&
+        x > 28 &&
+        clicks.some(
+          (item: any) => item.x < 40 && item.x > 28 && item.index === 2
+        )
+      ) {
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          console.log("second");
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) =>
+              !(
+                item.y < 30 &&
+                item.x < 40 &&
+                item.x > 28 &&
+                item.index === index
+              )
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x > 40 &&
+        clicks.some((item: any) => item.x > 40 && item.index === index)
+      ) {
+        console.log("third");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x > 40 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+    }
+    // for index 13
+    if (index === 13 && y < 25 && clicks.some((item: any) => item.y < 25)) {
+      if (
+        x < 25 &&
+        clicks.some((item: any) => item.x < 28 && item.index === 13)
+      ) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 25 && item.x < 28 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x < 40 &&
+        x > 28 &&
+        clicks.some(
+          (item: any) => item.x < 40 && item.x > 28 && item.index === 13
+        )
+      ) {
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          console.log("second");
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) =>
+              !(
+                item.y < 30 &&
+                item.x < 40 &&
+                item.x > 28 &&
+                item.index === index
+              )
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x > 40 &&
+        clicks.some((item: any) => item.x > 40 && item.index === index)
+      ) {
+        console.log("third");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x > 40 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+    }
+    // for index 14
+    if (index === 14 && y < 20 && clicks.some((item: any) => item.y < 20)) {
+      if (
+        x < 26 &&
+        clicks.some((item: any) => item.x < 26 && item.index === 14)
+      ) {
+        console.log("first");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x < 26 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x < 40 &&
+        x > 26 &&
+        clicks.some(
+          (item: any) => item.x < 40 && item.x > 26 && item.index === 14
+        )
+      ) {
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          console.log("second");
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) =>
+              !(
+                item.y < 30 &&
+                item.x < 40 &&
+                item.x > 26 &&
+                item.index === index
+              )
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      } else if (
+        x > 40 &&
+        clicks.some((item: any) => item.x > 40 && item.index === 14)
+      ) {
+        console.log("third");
+        setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+          const updatedClicks = [...prevClicks];
+          const updatedClicksFiltered = updatedClicks.filter(
+            (item) => !(item.y < 30 && item.x > 40 && item.index === index)
+          );
+          return updatedClicksFiltered;
+        });
+        return;
+      }
+    }
+    if (
+      y > 12 &&
+      y < 25 &&
+      index === 15 &&
+      clicks.some((item: any) => item.y < 25 && item.index === index)
+    ) {
+      console.log("index:: item 1", index);
+      setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
+        const updatedClicks = [...prevClicks];
+        const updatedClicksFiltered = updatedClicks.filter(
+          (item) => !(item.y < 25 && item.index === index)
+        );
+        return updatedClicksFiltered;
+      });
+      return;
+    }
+
+    if (y > 50 && y < 85 && x > 25 && x < 40) {
+      updateImages(index);
+    }
+    if (y > 85) {
+      // setCavityModal({ x, y, index });
+      console.log("🚀 ~ handleClick ~ cavityModal", cavityModal);
+      handleCavitySelection({ x, y, index });
+      return;
+    }
+
+    setClicks((prevClicks: { x: number; y: number; index: number }[]) => [
+      ...prevClicks,
+      { x, y, index },
+    ]);
   };
 
   // ****** UPDATE IMAGES in lower and upper teeth  ********
@@ -317,19 +562,10 @@ export default function ChartingComponent() {
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    console.log("🚀 ~ handleHover ~ y:", { x, y });
-
-    const isInRegion = Regions.some(
-      (region) =>
-        x >= region.x &&
-        x <= region.x + region.w &&
-        y >= region.y &&
-        y <= region.y + region.h
-    );
-    if (isInRegion) {
+    if (y > 25 && y < 85 && x > 18 && x < 30) {
       setIsCursorpointer(true);
     } else {
-      setIsCursorpointer(false);
+      setIsCursorpointer(true);
     }
   };
 
