@@ -67,7 +67,7 @@ export default function CavityModa({
         <p>Defective Composite</p>
       </div>
       <div
-        onClick={() => setSelectedTooth(null)}
+        onClick={() => handleChangeCavity(0, index)}
         className="border border-[#46befc] hover:bg-[#46befc] rounded-md mt-2 flex justify-center py-2 cursor-pointer"
       >
         Cancel

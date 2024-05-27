@@ -18,6 +18,7 @@ const CharLine = (props: Props) => {
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 2,
         pointRadius: 0, // Hide points
+        tension: 0.4,
       },
     ],
   };

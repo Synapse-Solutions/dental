@@ -37,7 +37,10 @@ const P_BleedingInput = (props: Props) => {
           key={_index}
           onClick={() => handleChange(item, _index)}
           fontSize="small"
-          className={`rotate-180 w-[18px] text-[${item}]`}
+          style={{
+            color: item,
+          }}
+          className={`rotate-180 w-[18px]`}
         />
       ))}
     </div>

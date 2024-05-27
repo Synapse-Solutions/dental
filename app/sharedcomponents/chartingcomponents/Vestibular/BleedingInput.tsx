@@ -10,6 +10,7 @@ interface Props {
 }
 const BleedingInput = (props: Props) => {
   const handleChange = (item: string, _index: number) => {
+    console.log("🚀 ~ handleChange ~ item:", item);
     if (item === "grey") {
       props.setBleedingData((prev: any) => {
         const newBleedingData = [...prev];
@@ -37,7 +38,10 @@ const BleedingInput = (props: Props) => {
           key={_index}
           onClick={() => handleChange(item, _index)}
           fontSize="small"
-          className={`rotate-180 w-[18px] text-[${item}]`}
+          style={{
+            color: item,
+          }}
+          className={`rotate-180 w-[18px] `}
         />
       ))}
     </div>

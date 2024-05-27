@@ -17,7 +17,9 @@ const ChartLineBlue = (props: Props) => {
         data: props.recessionData.flatMap((item: any) => item.value),
         borderColor: "green",
         borderWidth: 2,
-        pointRadius: 0, // Hide points
+        pointRadius: 0,
+        tension: 0.4,
+        // fill: origin,
       },
     ],
   };
@@ -47,7 +49,7 @@ const ChartLineBlue = (props: Props) => {
           labels: data.labels,
           datasets: data.datasets.map((dataset) => ({
             ...dataset,
-            fill: false,
+            fill: origin,
           })),
         },
         options: {
@@ -72,7 +74,8 @@ const ChartLineBlue = (props: Props) => {
                 display: false,
               },
               beginAtZero: true,
-              suggestedMax: 100,
+              suggestedMax: 30,
+              suggestedMin: -30,
             },
           },
           elements: {
@@ -100,7 +103,7 @@ const ChartLineBlue = (props: Props) => {
     <div
       style={{
         width: "95%",
-        height: "400px",
+        height: "180px",
         marginLeft: "100px",
         zIndex: 30,
       }}

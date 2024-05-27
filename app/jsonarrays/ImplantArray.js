@@ -1,66 +1,66 @@
 export const ImplantArray = [
   {
     number: 18,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 17,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 16,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 15,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 14,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 13,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 12,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 11,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 21,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 22,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 23,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 24,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 25,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 26,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 27,
-    isSelected: true,
+    isSelected: false,
   },
   {
     number: 28,
-    isSelected: true,
+    isSelected: false,
   },
 ];

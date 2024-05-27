@@ -45,6 +45,7 @@ import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
 import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
 import { Regions } from "@/app/utils/Regions";
+import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
 
 const array = [
   {
@@ -126,7 +127,7 @@ export default function ChartingComponent() {
   const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
   const [recessionData, setRecessionData] = useState(RecessionArray);
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
-  const [clicks, setClicks] = useState<any>([]);
+  const [clicks, setClicks] = useState<any>(clicksArray);
   const [cavityModal, setCavityModal] = useState<any>(null);
   const [isCursorpointer, setIsCursorpointer] = useState(false);
   const [positionsofSelecteTeeth, setPositionsofSelecteTeeth] =
@@ -183,40 +184,7 @@ export default function ChartingComponent() {
   };
 
   // ****** HANDLE CLICK ON UPPER TEETHS ********
-  const handleClick = (event: any, index: number) => {
-    const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    const isAlreadyExist = clicks.some(
-      (item: any) =>
-        item.index === index &&
-        Regions.some(
-          (region) =>
-            item.x >= region.x &&
-            item.x <= region.x + region.w &&
-            item.y >= region.y &&
-            item.y <= region.y + region.h
-        )
-    );
-    const isInRegion = Regions.some(
-      (region) =>
-        x >= region.x &&
-        x <= region.x + region.w &&
-        y >= region.y &&
-        y <= region.y + region.h
-    );
-
-    if (isInRegion && !isAlreadyExist) {
-      setClicks((prevClicks: any) => [
-        ...prevClicks,
-        { x, y, index, color: "#cfb53b" },
-      ]);
-      console.log("Click registered:", { x, y, index });
-    } else {
-      console.log("Click outside defined regions:", { x, y });
-    }
-  };
+  const handleClick = (event: any, index: number) => {};
 
   // ****** UPDATE IMAGES in lower and upper teeth  ********
   const updateImages = (index: number) => {
@@ -254,98 +222,28 @@ export default function ChartingComponent() {
     }
   };
   const handleCavity = (value: number, index: number) => {
-    console.log("🚀 ~ handleCavity ~ value:", value);
-    let isCavityExist = clicks.some(
-      (item: any) => item.index === index && item.x === cavityModal.x
-    );
-    if (value === 1) {
-      if (isCavityExist) {
-        setClicks(
-          (
-            prevClicks: { x: number; y: number; index: number; color: string }[]
-          ) => {
-            const updatedClicks = [...prevClicks];
-            updatedClicks.map((item) => {
-              if (item.index === index && item.x === cavityModal.x) {
-                item.color = "black";
-              }
-            });
-            return updatedClicks;
-          }
-        );
-      }
-      setClicks(
-        (
-          prevClicks: { x: number; y: number; index: number; color: string }[]
-        ) => {
-          const updatedClicks = [...prevClicks];
-          updatedClicks.push({
-            x: cavityModal.x,
-            y: cavityModal.y,
-            index: cavityModal.index,
-            color: "black",
-          });
-          return updatedClicks;
-        }
-      );
+    let clicksCopy = JSON.parse(JSON.stringify(clicks));
+    if (cavityModal.value === 2) {
+      clicksCopy[cavityModal.index].value2 = value;
     }
-    if (value === 2) {
-      setClicks(
-        (
-          prevClicks: { x: number; y: number; index: number; color: string }[]
-        ) => {
-          const updatedClicks = [...prevClicks];
-          updatedClicks.push({
-            x: cavityModal.x,
-            y: cavityModal.y,
-            index: cavityModal.index,
-            color: "gray",
-          });
-          return updatedClicks;
-        }
-      );
+    if (cavityModal.value === 3) {
+      clicksCopy[cavityModal.index].value3 = value;
     }
+    if (cavityModal.value === 4) {
+      clicksCopy[cavityModal.index].value4 = value;
+    }
+    if (cavityModal.value === 5) {
+      clicksCopy[cavityModal.index].value5 = value;
+    }
+    if (cavityModal.value === 6) {
+      clicksCopy[cavityModal.index].value6 = value;
+    }
+    setClicks(clicksCopy);
     setCavityModal(null);
-    // setClicks((prevClicks: { x: number; y: number; index: number }[]) => {
-    //   const updatedClicks = [...prevClicks];
-    //   updatedClicks.splice(index, 1);
-    //   return updatedClicks;
-    // });
   };
 
-  const handleHover = (event: any, index: number) => {
-    const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    console.log("🚀 ~ handleHover ~ y:", { x, y });
+  const handleHover = (event: any, index: number) => {};
 
-    const isInRegion = Regions.some(
-      (region) =>
-        x >= region.x &&
-        x <= region.x + region.w &&
-        y >= region.y &&
-        y <= region.y + region.h
-    );
-    if (isInRegion) {
-      setIsCursorpointer(true);
-    } else {
-      setIsCursorpointer(false);
-    }
-  };
-
-  const handleCavitySelection = (position: any) => {
-    if (
-      position.index === 0 &&
-      position.y > 90 &&
-      position.x > 30 &&
-      position.x < 40
-    ) {
-      setCavityModal(position);
-    }
-    if (position.index === 0 && position.y > 112 && position.x < 15) {
-      setCavityModal(position);
-    }
-  };
   return (
     <div className="px-[1%] text-black">
       <HeaderComponent />
@@ -537,13 +435,13 @@ export default function ChartingComponent() {
                 <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[150px]  relative ${
+                    className={`flex justify-center h-[150px] relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -557,7 +455,7 @@ export default function ChartingComponent() {
                         src={item.image}
                         width={200}
                         height={200}
-                        className="h-full w-full object-contain z-20 cursor-pointer bg-yellow-200"
+                        className="h-full w-full object-contain z-20 cursor-pointer "
                         alt={"tachados"}
                       />
                       <div className="absolute top-[60px] left-[40%]">
@@ -565,16 +463,14 @@ export default function ChartingComponent() {
                       </div>
 
                       {/* if at top someone clicked draw yelow point  */}
-                      <DotsupperTeeth clicks={clicks} index={index} />
+                      <DotsupperTeeth
+                        setClicks={setClicks}
+                        clicks={clicks}
+                        setCavityModal={setCavityModal}
+                        index={index}
+                      />
                     </div>
-                    <div
-                      onMouseMove={(event) => handleHover(event, index)}
-                      onClick={(event) => handleClick(event, index)}
-                      style={{
-                        cursor: isCursorpointer ? "pointer" : "default",
-                      }}
-                      className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "
-                    ></div>
+                    <div className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "></div>
                     {cavityModal?.index === index && (
                       <>
                         <CavityModa
@@ -697,7 +593,12 @@ export default function ChartingComponent() {
                       </div>
 
                       {/* if at top someone clicked draw yelow point  */}
-                      <DotsupperTeeth clicks={clicks} index={index} />
+                      <DotsupperTeeth
+                        setCavityModal={setCavityModal}
+                        setClicks={setClicks}
+                        clicks={clicks}
+                        index={index}
+                      />
                     </div>
                   ))}
                 </div>
