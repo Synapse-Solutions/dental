@@ -44,7 +44,6 @@ import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue"
 import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
 import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
-import { Regions } from "@/app/utils/Regions";
 import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
 
 const array = [

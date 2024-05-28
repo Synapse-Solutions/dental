@@ -1282,6 +1282,6 @@ const GloblalDiv = ({ top, left, color, onClick }: any) => (
       transform: "translate(-50%, -50%)",
       cursor: "pointer",
     }}
-    className="hover:opacity-100 opacity-50"
+    className="hover:opacity-100 opacity-0"
   />
 );
