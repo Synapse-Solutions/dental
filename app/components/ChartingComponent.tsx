@@ -594,9 +594,9 @@ export default function ChartingComponent() {
 
                       {/* if at top someone clicked draw yelow point  */}
                       <DotsupperTeeth
-                        setCavityModal={setCavityModal}
                         setClicks={setClicks}
                         clicks={clicks}
+                        setCavityModal={setCavityModal}
                         index={index}
                       />
                     </div>
