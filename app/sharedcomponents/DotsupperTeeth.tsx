@@ -5,6 +5,8 @@ interface Props {
   index: number;
   setClicks: any;
   setCavityModal: any;
+  isOCCTeeths?: boolean;
+  updateImages?: any;
 }
 export default function DotsupperTeeth(props: Props) {
   // onclicks for first time
@@ -40,1205 +42,3612 @@ export default function DotsupperTeeth(props: Props) {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-[9999]">
-      <div className="relative w-full h-full">
-        {props.index === 0 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"15px"}
-                left="28px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"15px"}
-                left="28px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"15px"}
-                left="42px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"15px"}
-                left="42px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {/* <GloblalDiv top={"120px"} left="10px" />
+    <div className="absolute top-0 left-0 w-full h-full z-[9999] ">
+      <div
+        onClick={props.updateImages}
+        className="h-[65%] w-full absolute top-0 left-0 z-[99991]"
+      ></div>
+      {!props.isOCCTeeths ? (
+        <div className="relative w-full h-full ">
+          {props.index === 0 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"15px"}
+                  left="28px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"15px"}
+                  left="28px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"15px"}
+                  left="42px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"15px"}
+                  left="42px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {/* <GloblalDiv top={"120px"} left="10px" />
             <GloblalDiv top={"120px"} left="52px" /> */}
-          </>
-        )}
-        {props.index === 1 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"15px"}
-                left="22px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"15px"}
-                left="22px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"15px"}
-                left="38px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"15px"}
-                left="38px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                top={"15px"}
-                left="55px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("3")}
-                top={"15px"}
-                left="55px"
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value6 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 6 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 6,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value6 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value6 === 1
-                    ? "black"
-                    : props.clicks[props.index].value6 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 2 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"20px"}
-                left="22px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"20px"}
-                left="22px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"20px"}
-                left="38px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"20px"}
-                left="38px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                top={"20px"}
-                left="55px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("3")}
-                top={"20px"}
-                left="55px"
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value6 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 6 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 6,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value6 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value6 === 1
-                    ? "black"
-                    : props.clicks[props.index].value6 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 3 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
+            </>
+          )}
+          {props.index === 1 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"15px"}
+                  left="22px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"15px"}
+                  left="22px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"15px"}
+                  left="38px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"15px"}
+                  left="38px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("3")}
+                  top={"15px"}
+                  left="55px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("3")}
+                  top={"15px"}
+                  left="55px"
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 2 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"20px"}
+                  left="22px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"20px"}
+                  left="22px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"20px"}
+                  left="38px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"20px"}
+                  left="38px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("3")}
+                  top={"20px"}
+                  left="55px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("3")}
+                  top={"20px"}
+                  left="55px"
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 3 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
 
-            {props.clicks[props.index].value2 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 2 })
-                }
-                top={"103px"}
-                left="25px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 2,
-                  })
-                }
-                top={"103px"}
-                left="25px"
-                isborder={props.clicks[props.index].value2 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value2 === 1
-                    ? "black"
-                    : props.clicks[props.index].value2 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="38px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="38px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 4 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 4 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
 
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"103px"}
-                left="25px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"103px"}
-                left="25px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="38px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="38px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 11 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 5 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="23px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
 
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"103px"}
-                left="25px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"103px"}
-                left="25px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="38px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="38px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 12 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"10px"}
-                left="30px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"10px"}
-                left="30px"
-              />
-            )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 6 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="23px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
 
-            {props.clicks[props.index].value2 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 2 })
-                }
-                top={"103px"}
-                left="25px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 2,
-                  })
-                }
-                top={"103px"}
-                left="25px"
-                isborder={props.clicks[props.index].value2 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value2 === 1
-                    ? "black"
-                    : props.clicks[props.index].value2 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="38px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="38px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 13 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"20px"}
-                left="22px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"20px"}
-                left="22px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"20px"}
-                left="38px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"20px"}
-                left="38px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                top={"20px"}
-                left="55px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("3")}
-                top={"20px"}
-                left="55px"
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value6 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 6 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 6,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value6 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value6 === 1
-                    ? "black"
-                    : props.clicks[props.index].value6 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 14 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"15px"}
-                left="22px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"15px"}
-                left="22px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"15px"}
-                left="38px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"15px"}
-                left="38px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                top={"15px"}
-                left="55px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("3")}
-                top={"15px"}
-                left="55px"
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value6 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 6 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 6,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value6 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value6 === 1
-                    ? "black"
-                    : props.clicks[props.index].value6 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-          </>
-        )}
-        {props.index === 15 && (
-          <>
-            {props.clicks[props.index].value1 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                top={"15px"}
-                left="28px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("1")}
-                top={"15px"}
-                left="28px"
-              />
-            )}
-            {props.clicks[props.index].value2 === 1 ? (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                top={"15px"}
-                left="42px"
-                color="#cfb53b"
-              />
-            ) : (
-              <GloblalDiv
-                onClick={() => onClick("2")}
-                top={"15px"}
-                left="42px"
-              />
-            )}
-            {props.clicks[props.index].value3 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 3 })
-                }
-                top={"103px"}
-                left="32px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 3,
-                  })
-                }
-                top={"103px"}
-                left="32px"
-                isborder={props.clicks[props.index].value3 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value3 === 1
-                    ? "black"
-                    : props.clicks[props.index].value3 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value4 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 4 })
-                }
-                top={"120px"}
-                left="10px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 4,
-                  })
-                }
-                top={"120px"}
-                left="10px"
-                isborder={props.clicks[props.index].value4 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value4 === 1
-                    ? "black"
-                    : props.clicks[props.index].value4 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {props.clicks[props.index].value5 === 0 ? (
-              <GloblalDiv
-                onClick={() =>
-                  props?.setCavityModal({ index: props.index, value: 5 })
-                }
-                top={"120px"}
-                left="52px"
-              />
-            ) : (
-              <GloblalVisibleDiv
-                onClickVisibleDiv={() =>
-                  props?.setCavityModal({
-                    index: props.index,
-                    value: 5,
-                  })
-                }
-                top={"120px"}
-                left="52px"
-                isborder={props.clicks[props.index].value5 === 4 ? true : false}
-                color={
-                  props.clicks[props.index].value5 === 1
-                    ? "black"
-                    : props.clicks[props.index].value5 === 2
-                    ? "gray"
-                    : "white"
-                }
-              />
-            )}
-            {/* <GloblalDiv top={"120px"} left="10px" />
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 7 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="20px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"95px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"95px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="48px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="48px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="48px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="48px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 8 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="20px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"95px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"95px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="48px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="48px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="48px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="48px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 9 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="23px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 10 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="23px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="23px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"140px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"140px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"140px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"140px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 11 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
+
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 12 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"10px"}
+                  left="30px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"10px"}
+                  left="30px"
+                />
+              )}
+
+              {props.clicks[props.index].value2 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 2 })
+                  }
+                  top={"103px"}
+                  left="25px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 2,
+                    })
+                  }
+                  top={"103px"}
+                  left="25px"
+                  isborder={
+                    props.clicks[props.index].value2 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value2 === 1
+                      ? "black"
+                      : props.clicks[props.index].value2 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="38px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="38px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 13 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"20px"}
+                  left="22px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"20px"}
+                  left="22px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"20px"}
+                  left="38px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"20px"}
+                  left="38px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("3")}
+                  top={"20px"}
+                  left="55px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("3")}
+                  top={"20px"}
+                  left="55px"
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 14 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"15px"}
+                  left="22px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"15px"}
+                  left="22px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"15px"}
+                  left="38px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"15px"}
+                  left="38px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("3")}
+                  top={"15px"}
+                  left="55px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("3")}
+                  top={"15px"}
+                  left="55px"
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 15 && (
+            <>
+              {props.clicks[props.index].value1 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("1")}
+                  top={"15px"}
+                  left="28px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("1")}
+                  top={"15px"}
+                  left="28px"
+                />
+              )}
+              {props.clicks[props.index].value2 === 1 ? (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() => onClickVisibleDiv("2")}
+                  top={"15px"}
+                  left="42px"
+                  color="#cfb53b"
+                />
+              ) : (
+                <GloblalDiv
+                  onClick={() => onClick("2")}
+                  top={"15px"}
+                  left="42px"
+                />
+              )}
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"103px"}
+                  left="32px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"103px"}
+                  left="32px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"120px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"120px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"120px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"120px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {/* <GloblalDiv top={"120px"} left="10px" />
             <GloblalDiv top={"120px"} left="52px" /> */}
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      ) : (
+        <div className="relative w-full h-full">
+          {props.index === 0 && (
+            <>
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 1 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value7 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 7 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 7,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value7 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value7 === 1
+                      ? "black"
+                      : props.clicks[props.index].value7 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 2 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value7 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 7 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 7,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value7 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value7 === 1
+                      ? "black"
+                      : props.clicks[props.index].value7 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 3 && (
+            <>
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 4 && (
+            <>
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 5 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 6 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"45px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"45px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"45px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"45px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}{" "}
+          {props.index === 7 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"45px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"45px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"45px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"45px"}
+                  left="45px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 8 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"45px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"45px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"45px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"45px"}
+                  left="45px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 9 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"45px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"45px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"45px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"45px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 10 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 11 && (
+            <>
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 12 && (
+            <>
+              {props.clicks[props.index].value3 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 3 })
+                  }
+                  top={"50px"}
+                  left="15px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 3,
+                    })
+                  }
+                  top={"50px"}
+                  left="15px"
+                  isborder={
+                    props.clicks[props.index].value3 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value3 === 1
+                      ? "black"
+                      : props.clicks[props.index].value3 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="35px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="35px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 13 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value7 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 7 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 7,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value7 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value7 === 1
+                      ? "black"
+                      : props.clicks[props.index].value7 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 14 && (
+            <>
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value7 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 7 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 7,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value7 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value7 === 1
+                      ? "black"
+                      : props.clicks[props.index].value7 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+          {props.index === 15 && (
+            <>
+              {props.clicks[props.index].value4 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 4 })
+                  }
+                  top={"50px"}
+                  left="10px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 4,
+                    })
+                  }
+                  top={"50px"}
+                  left="10px"
+                  isborder={
+                    props.clicks[props.index].value4 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value4 === 1
+                      ? "black"
+                      : props.clicks[props.index].value4 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value5 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 5 })
+                  }
+                  top={"50px"}
+                  left="52px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 5,
+                    })
+                  }
+                  top={"50px"}
+                  left="52px"
+                  isborder={
+                    props.clicks[props.index].value5 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value5 === 1
+                      ? "black"
+                      : props.clicks[props.index].value5 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+              {props.clicks[props.index].value6 === 0 ? (
+                <GloblalDiv
+                  onClick={() =>
+                    props?.setCavityModal({ index: props.index, value: 6 })
+                  }
+                  top={"50px"}
+                  left="30px"
+                />
+              ) : (
+                <GloblalVisibleDiv
+                  onClickVisibleDiv={() =>
+                    props?.setCavityModal({
+                      index: props.index,
+                      value: 6,
+                    })
+                  }
+                  top={"50px"}
+                  left="30px"
+                  isborder={
+                    props.clicks[props.index].value6 === 4 ? true : false
+                  }
+                  color={
+                    props.clicks[props.index].value6 === 1
+                      ? "black"
+                      : props.clicks[props.index].value6 === 2
+                      ? "gray"
+                      : "white"
+                  }
+                />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -1266,6 +3675,7 @@ const GloblalVisibleDiv = ({
       cursor: "pointer",
       border: isborder ? "1px solid red" : "",
     }}
+    className="z-[99992]"
   />
 );
 const GloblalDiv = ({ top, left, color, onClick }: any) => (
@@ -1282,6 +3692,6 @@ const GloblalDiv = ({ top, left, color, onClick }: any) => (
       transform: "translate(-50%, -50%)",
       cursor: "pointer",
     }}
-    className="hover:opacity-100 opacity-0"
+    className="hover:opacity-100 opacity-0 z-[99992]"
   />
 );

@@ -237,11 +237,12 @@ export default function ChartingComponent() {
     if (cavityModal.value === 6) {
       clicksCopy[cavityModal.index].value6 = value;
     }
+    if (cavityModal.value === 7) {
+      clicksCopy[cavityModal.index].value7 = value;
+    }
     setClicks(clicksCopy);
     setCavityModal(null);
   };
-
-  const handleHover = (event: any, index: number) => {};
 
   return (
     <div className="px-[1%] text-black">
@@ -466,6 +467,7 @@ export default function ChartingComponent() {
                         setClicks={setClicks}
                         clicks={clicks}
                         setCavityModal={setCavityModal}
+                        updateImages={() => updateImages(index)}
                         index={index}
                       />
                     </div>
@@ -488,7 +490,7 @@ export default function ChartingComponent() {
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[50px] z-10 relative ${
+                    className={`flex justify-center h-[100px] z-10 relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -507,10 +509,18 @@ export default function ChartingComponent() {
                       className="h-full w-auto object-contain cursor-pointer"
                       alt={"tachados"}
                     />
+                    <DotsupperTeeth
+                      setClicks={setClicks}
+                      isOCCTeeths={true}
+                      clicks={clicks}
+                      setCavityModal={setCavityModal}
+                      updateImages={() => setSelectedTooth(index)}
+                      index={index}
+                    />
                     {/* if at top someone clicked draw yelow point  */}
                     <DotsMiddleTeeth clicks={clicks} index={index} />
                     {selectedTooth === index && (
-                      <div className="bg-white shadow-md absolute top-full right-[-170px] w-[400px] text-[13px] p-3 ">
+                      <div className="bg-white shadow-md absolute top-full right-[-170px] w-[400px] text-[13px] p-3 z-[999999]">
                         <div
                           onClick={() => handleChangeCavity(1, index)}
                           className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
@@ -562,28 +572,35 @@ export default function ChartingComponent() {
                 ))}
               </div>
               {/* LOWERTEETH ************ */}
-              <div className=" mt-5 text-[14px]  z-0">
-                <div className="flex justify-between relative w-full gap-3 overflow-hidden">
-                  <div style={{ width: "100px" }}></div>
-                  <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                  <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                  {lowerTeeths.map((item, index) => (
-                    <div
-                      key={index}
-                      className={`flex justify-center h-[150px] w-[80px] z-10 relative ${
-                        P_BleedingData[index]?.value.some(
-                          (item) => item === "red" || item === "#dbc027"
-                        )
-                          ? `bg-[#ffc1c1]`
-                          : ""
-                      }`}
-                      style={{ flex: 1 }}
-                    >
+              <div
+                style={{
+                  overflow: !cavityModal ? "hidden" : "visible",
+                  zIndex: selectedTooth !== null ? 2 : 9999,
+                }}
+                className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
+              >
+                <div style={{ width: "100px" }}></div>
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
+                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+
+                {lowerTeeths.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`flex justify-center h-[150px] relative ${
+                      P_BleedingData[index]?.value.some(
+                        (item) => item === "red" || item === "#dbc027"
+                      )
+                        ? `bg-[#ffc1c1]`
+                        : ""
+                    }`}
+                    style={{ flex: 1 }}
+                  >
+                    <div className="relative ">
                       <Image
                         src={item.image}
-                        width={300}
-                        height={300}
-                        className="h-full w-auto object-contain"
+                        width={200}
+                        height={200}
+                        className="h-full w-full object-contain z-20 cursor-pointer "
                         alt={"tachados"}
                       />
                       <div className="absolute top-[50px] left-[20%] flex gap-2">
@@ -596,11 +613,13 @@ export default function ChartingComponent() {
                         setClicks={setClicks}
                         clicks={clicks}
                         setCavityModal={setCavityModal}
+                        updateImages={() => updateImages(index)}
                         index={index}
                       />
                     </div>
-                  ))}
-                </div>
+                    {/* <div className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "></div> */}
+                  </div>
+                ))}
               </div>
 
               {/* ######################## PALATINO  */}
