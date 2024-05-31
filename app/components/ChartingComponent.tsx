@@ -38,7 +38,9 @@ import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
 import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
 import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
 import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
+import { P_PocketDepthArray } from "@/app/jsonarrays/P_PocketDepthArray";
 import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
+import { P_RecessionArray } from "@/app/jsonarrays/P_RecessionArray";
 import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
 import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue";
 import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
@@ -124,13 +126,14 @@ export default function ChartingComponent() {
   const [P_BleedingData, setP_BleedingData] = useState(P_BleedingArray);
   const [P_PlaqueData, setP_PlaqueData] = useState(P_PlaqueArray);
   const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
+  const [P_PocketDepthData, setP_PocketDepthData] =
+    useState(P_PocketDepthArray);
+
   const [recessionData, setRecessionData] = useState(RecessionArray);
+  const [P_recessionData, setP_RecessionData] = useState(P_RecessionArray);
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
   const [clicks, setClicks] = useState<any>(clicksArray);
   const [cavityModal, setCavityModal] = useState<any>(null);
-  const [isCursorpointer, setIsCursorpointer] = useState(false);
-  const [positionsofSelecteTeeth, setPositionsofSelecteTeeth] =
-    useState<any>(null);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -167,23 +170,26 @@ export default function ChartingComponent() {
   // **** HANDLE CHANGE CAVITY **** ############################
   const handleChangeCavity = (value: number, index: number) => {
     setSelectedTooth(null);
+    const updatedUpperTeethArray = JSON.parse(JSON.stringify(upperTeeths));
+    const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
+    const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
     if (value === 1) {
-      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
       updatedOccTeethArray[index].image = "/occImages/row_4/2.png";
-      setOccTeeths(updatedOccTeethArray);
+      updatedUpperTeethArray[index].cavity = 1;
+      updatedLowerTeethArray[index].cavity = 1;
     } else if (value === 2) {
-      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
       updatedOccTeethArray[index].image = "/occImages/row_6/2.png";
-      setOccTeeths(updatedOccTeethArray);
+      updatedUpperTeethArray[index].cavity = 2;
+      updatedLowerTeethArray[index].cavity = 2;
     } else if (value === 3) {
-      const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
       updatedOccTeethArray[index].image = "/occImages/row_7/2.png";
-      setOccTeeths(updatedOccTeethArray);
+      updatedUpperTeethArray[index].cavity = 3;
+      updatedLowerTeethArray[index].cavity = 3;
     }
+    setOccTeeths(updatedOccTeethArray);
+    setUpperTeeths(updatedUpperTeethArray);
+    setLowerTeeths(updatedLowerTeethArray);
   };
-
-  // ****** HANDLE CLICK ON UPPER TEETHS ********
-  const handleClick = (event: any, index: number) => {};
 
   // ****** UPDATE IMAGES in lower and upper teeth  ********
   const updateImages = (index: number) => {
@@ -458,6 +464,34 @@ export default function ChartingComponent() {
                         className="h-full w-full object-contain z-20 cursor-pointer "
                         alt={"tachados"}
                       />
+                      {item.cavity === 1 && (
+                        <Image
+                          src={`/upperTeeth/bottompart/white/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
+                      {item.cavity === 2 && (
+                        <Image
+                          src={`/upperTeeth/bottompart/golden/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
+                      {item.cavity === 3 && (
+                        <Image
+                          src={`/upperTeeth/bottompart/blue/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
+
                       <div className="absolute top-[60px] left-[40%]">
                         {furcationData[index]?.value}
                       </div>
@@ -582,7 +616,12 @@ export default function ChartingComponent() {
                 <div style={{ width: "100px" }}></div>
                 <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
                 <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-
+                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                  <CharLine pocketDepthData={P_PocketDepthData} />
+                </div>
+                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
+                  <ChartLineBlue recessionData={P_recessionData} />
+                </div>
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}
@@ -607,6 +646,33 @@ export default function ChartingComponent() {
                         <p>{P_furcationData[index]?.value_one}</p>
                         <p>{P_furcationData[index]?.value_two}</p>
                       </div>
+                      {item.cavity === 1 && (
+                        <Image
+                          src={`/lowerTeeth/bottompart/white/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
+                      {item.cavity === 2 && (
+                        <Image
+                          src={`/lowerTeeth/bottompart/golden/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
+                      {item.cavity === 3 && (
+                        <Image
+                          src={`/lowerTeeth/bottompart/blue/${index + 1}.png`}
+                          width={100}
+                          height={100}
+                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          alt={"tachados"}
+                        />
+                      )}
 
                       {/* if at top someone clicked draw yelow point  */}
                       <DotsupperTeeth
@@ -651,22 +717,25 @@ export default function ChartingComponent() {
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Pocket Depth</p>
-                {array.map((item, index) => (
+                {P_PocketDepthData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
-                    style={{
-                      flex: 1,
-                    }}
+                    className="flex justify-center "
+                    style={{ flex: 1 }}
                   >
-                    <P_PocketDepthInput />
+                    <PocketDepthInput
+                      value={item.value}
+                      pocketDepthData={P_PocketDepthData}
+                      setPocketDepthData={setP_PocketDepthData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Recession</p>
-                {array.map((item, index) => (
+                {P_recessionData.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-center"
@@ -674,7 +743,12 @@ export default function ChartingComponent() {
                       flex: 1,
                     }}
                   >
-                    <P_RecessionInput />
+                    <RecessionInput
+                      value={item.value}
+                      recessionData={P_recessionData}
+                      setRecessionData={setP_RecessionData}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
