@@ -41,12 +41,14 @@ import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
 import { P_PocketDepthArray } from "@/app/jsonarrays/P_PocketDepthArray";
 import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
 import { P_RecessionArray } from "@/app/jsonarrays/P_RecessionArray";
+import { MobilityArray } from "@/app/jsonarrays/MobilityArray";
 import CharLine from "../sharedcomponents/chartingcomponents/ChartLine";
 import ChartLineBlue from "../sharedcomponents/chartingcomponents/ChartLineBlue";
 import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
 import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
 import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
+import MobilityInput from "../sharedcomponents/chartingcomponents/Vestibular/MobilityInput";
 
 const array = [
   {
@@ -134,6 +136,7 @@ export default function ChartingComponent() {
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
   const [clicks, setClicks] = useState<any>(clicksArray);
   const [cavityModal, setCavityModal] = useState<any>(null);
+  const [mobilityData, setMobilityData] = useState(MobilityArray);
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -300,16 +303,18 @@ export default function ChartingComponent() {
               {/* Mobility */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[80px]">Mobility</p>
-                {array.map((item, index) => (
-                  <input
+                {mobilityData.map((item, index) => (
+                  <div
                     key={index}
-                    value={0}
-                    style={{
-                      flex: 1,
-                    }}
-                    type="number"
-                    className="border-none outline-none bg-transparent w-[50px] text-center"
-                  />
+                    style={{ flex: 1 }}
+                    className="flex justify-center"
+                  >
+                    <MobilityInput
+                      value={item.value}
+                      index={index}
+                      setMobilityData={setMobilityData}
+                    />
+                  </div>
                 ))}
               </div>
               {/* Implant */}
