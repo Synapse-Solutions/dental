@@ -557,7 +557,7 @@ export default function UpperTeethCharting() {
                       index={index}
                     />
                     {/* if at top someone clicked draw yelow point  */}
-                    <DotsMiddleTeeth clicks={clicks} index={index} />
+                    {/* <DotsMiddleTeeth clicks={clicks} index={index} /> */}
                     {selectedTooth === index && (
                       <div className="bg-white shadow-md absolute top-full right-[-170px] w-[400px] text-[13px] p-3 z-[999999]">
                         <div

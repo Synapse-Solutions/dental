@@ -52,6 +52,7 @@ import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
 import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
 import MobilityInput from "../sharedcomponents/lower_teeths_chart_components/Vestibular/MobilityInput";
+import DotsLowerTeeth from "../sharedcomponents/lower_teeths_chart_components/DotsLowerTeeth";
 
 const array = [
   {
@@ -446,12 +447,12 @@ export default function LowerTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
+                {/* <div className="absolute bottom-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
+                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
@@ -507,7 +508,7 @@ export default function LowerTeethCharting() {
                       </div>
 
                       {/* if at top someone clicked draw yelow point  */}
-                      <DotsupperTeeth
+                      <DotsLowerTeeth
                         setClicks={setClicks}
                         clicks={clicks}
                         setCavityModal={setCavityModal}
@@ -553,7 +554,7 @@ export default function LowerTeethCharting() {
                       className="h-full w-auto object-contain cursor-pointer"
                       alt={"tachados"}
                     />
-                    <DotsupperTeeth
+                    <DotsLowerTeeth
                       setClicks={setClicks}
                       isOCCTeeths={true}
                       clicks={clicks}
@@ -623,12 +624,12 @@ export default function LowerTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
+                {/* <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
+                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={P_PocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
                 {lowerTeeths.map((item, index) => (
@@ -683,8 +684,7 @@ export default function LowerTeethCharting() {
                         />
                       )}
 
-                      {/* if at top someone clicked draw yelow point  */}
-                      <DotsupperTeeth
+                      <DotsLowerTeeth
                         setClicks={setClicks}
                         clicks={clicks}
                         setCavityModal={setCavityModal}
@@ -692,7 +692,6 @@ export default function LowerTeethCharting() {
                         index={index}
                       />
                     </div>
-                    {/* <div className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "></div> */}
                   </div>
                 ))}
               </div>

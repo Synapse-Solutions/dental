@@ -9,12 +9,15 @@ const ChartLineBlue = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<any>(null);
 
+  const invertedData = props.recessionData.flatMap((item: any) =>
+    item.value.map((val: number) => -val)
+  );
   const data = {
     labels: props.recessionData.flatMap((item: any) => item.value),
     datasets: [
       {
         label: "Dataset 1",
-        data: props.recessionData.flatMap((item: any) => item.value),
+        data: invertedData,
         borderColor: "green",
         borderWidth: 2,
         pointRadius: 0,

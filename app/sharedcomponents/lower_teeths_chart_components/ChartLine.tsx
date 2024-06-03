@@ -9,12 +9,15 @@ const CharLine = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<any>(null);
 
+  const negativeData = props.pocketDepthData.flatMap((item: any) =>
+    item.value.map((val: number) => -Math.abs(val))
+  );
   const data = {
     labels: props.pocketDepthData.flatMap((item: any) => item.value),
     datasets: [
       {
         label: "Dataset 1",
-        data: props.pocketDepthData.flatMap((item: any) => item.value),
+        data: negativeData,
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 2,
         pointRadius: 0, // Hide points
@@ -73,7 +76,8 @@ const CharLine = (props: Props) => {
                 display: false,
               },
               beginAtZero: true,
-              suggestedMax: 100,
+              suggestedMax: 30,
+              suggestedMin: -30,
             },
           },
           elements: {
@@ -101,7 +105,7 @@ const CharLine = (props: Props) => {
     <div
       style={{
         width: "95%",
-        height: "200px",
+        height: "180px",
         marginLeft: "100px",
         zIndex: 30,
       }}
