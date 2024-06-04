@@ -182,17 +182,17 @@ export default function LowerTeethCharting() {
     const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
     if (value === 1) {
       updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_4/2.png";
+        "/lower_teeth_images/occImages/row_4/2.webp";
       updatedUpperTeethArray[index].cavity = 1;
       updatedLowerTeethArray[index].cavity = 1;
     } else if (value === 2) {
       updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_6/2.png";
+        "/lower_teeth_images/occImages/row_6/2.webp";
       updatedUpperTeethArray[index].cavity = 2;
       updatedLowerTeethArray[index].cavity = 2;
     } else if (value === 3) {
       updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_8/2.png";
+        "/lower_teeth_images/occImages/row_8/2.webp";
       updatedUpperTeethArray[index].cavity = 3;
       updatedLowerTeethArray[index].cavity = 3;
     }
@@ -477,28 +477,34 @@ export default function LowerTeethCharting() {
                       />
                       {item.cavity === 1 && (
                         <Image
-                          src={`/upperTeeth/bottompart/white/${index + 1}.png`}
+                          src={`/lower_teeth_images/upperTeeth/bottompart/white/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
                       {item.cavity === 2 && (
                         <Image
-                          src={`/upperTeeth/bottompart/golden/${index + 1}.png`}
+                          src={`/lower_teeth_images/upperTeeth/bottompart/golden/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
                       {item.cavity === 3 && (
                         <Image
-                          src={`/upperTeeth/bottompart/blue/${index + 1}.png`}
+                          src={`/lower_teeth_images/upperTeeth/bottompart/blue/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
@@ -570,7 +576,7 @@ export default function LowerTeethCharting() {
                           className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_4/1.png"}
+                            src={"/occImages/row_4/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -583,7 +589,7 @@ export default function LowerTeethCharting() {
                           className="flex mt-2 border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_6/1.png"}
+                            src={"/occImages/row_6/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -596,7 +602,7 @@ export default function LowerTeethCharting() {
                           className="flex border-b border-gray-400 pb-1 mt-2 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_7/1.png"}
+                            src={"/occImages/row_7/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -658,28 +664,34 @@ export default function LowerTeethCharting() {
                       </div>
                       {item.cavity === 1 && (
                         <Image
-                          src={`/lowerTeeth/bottompart/white/${index + 1}.png`}
+                          src={`/lower_teeth_images/lowerTeeth/bottompart/white/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
                       {item.cavity === 2 && (
                         <Image
-                          src={`/lowerTeeth/bottompart/golden/${index + 1}.png`}
+                          src={`/lower_teeth_images/lowerTeeth/bottompart/golden/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
                       {item.cavity === 3 && (
                         <Image
-                          src={`/lowerTeeth/bottompart/blue/${index + 1}.png`}
+                          src={`/lower_teeth_images/lowerTeeth/bottompart/blue/${
+                            index + 1
+                          }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
                           alt={"tachados"}
                         />
                       )}
