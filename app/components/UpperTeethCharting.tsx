@@ -279,7 +279,7 @@ export default function UpperTeethCharting() {
             </div>
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
-                <button className="w-[80px]"></button>
+                <button className="w-[100px]"></button>
                 {array.map((item, index) => (
                   <button
                     style={{
@@ -302,7 +302,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Mobility */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Mobility</p>
+                <p className="w-[100px]">Mobility</p>
                 {mobilityData.map((item, index) => (
                   <div
                     key={index}
@@ -319,7 +319,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Implant */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Implant</p>
+                <p className="w-[100px]">Implant</p>
                 {implantData.map((item, index) => (
                   <div
                     key={index}
@@ -340,7 +340,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Furcation */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Furcation</p>
+                <p className="w-[100px]">Furcation</p>
                 {furcationData.map((item, index) => (
                   <div
                     key={index}
@@ -358,7 +358,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Pocket Depth</p>
+                <p className="w-[100px]">Pocket Depth</p>
                 {pocketDepthData.map((item, index) => (
                   <div
                     key={index}
@@ -376,7 +376,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Recession</p>
+                <p className="w-[100px]">Recession</p>
                 {recessionData.map((item, index) => (
                   <div
                     key={index}
@@ -396,7 +396,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Bleeding</p>
+                <p className="w-[100px]">Bleeding</p>
                 {bleedingData.map((item, index) => (
                   <div
                     key={index}
@@ -414,7 +414,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Plaque</p>
+                <p className="w-[100px]">Plaque</p>
                 {plaqueData.map((item, index) => (
                   <div
                     key={index}
@@ -699,7 +699,7 @@ export default function UpperTeethCharting() {
 
               {/* ######################## PALATINO  */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Furcation</p>
+                <p className="w-[100px]">Furcation</p>
                 {P_furcationData.map((item, index) => (
                   <div
                     key={index}
@@ -725,7 +725,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Pocket Depth</p>
+                <p className="w-[100px]">Pocket Depth</p>
                 {P_PocketDepthData.map((item, index) => (
                   <div
                     key={index}
@@ -743,7 +743,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Recession</p>
+                <p className="w-[100px]">Recession</p>
                 {P_recessionData.map((item, index) => (
                   <div
                     key={index}
@@ -763,7 +763,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Bleeding</p>
+                <p className="w-[100px]">Bleeding</p>
                 {P_BleedingData.map((item, index) => (
                   <div
                     key={index}
@@ -781,7 +781,7 @@ export default function UpperTeethCharting() {
               </div>
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Plaque</p>
+                <p className="w-[100px]">Plaque</p>
                 {P_PlaqueData.map((item, index) => (
                   <div
                     key={index}
