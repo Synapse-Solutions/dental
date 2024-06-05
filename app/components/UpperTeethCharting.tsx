@@ -123,6 +123,7 @@ const array = [
 ];
 export default function UpperTeethCharting() {
   const [upperTeeths, setUpperTeeths] = useState(upperTeethArray);
+  const [arr, setarr] = useState(array);
   const [lowerTeeths, setLowerTeeths] = useState(lowerTeethArray);
   const [occTeeths, setOccTeeths] = useState(occImagesArray);
   const [implantData, setImplantData] = useState(ImplantArray);
@@ -258,6 +259,12 @@ export default function UpperTeethCharting() {
     setCavityModal(null);
   };
 
+  const onClickImplement = (index: number) => {
+    let copyArray = [...arr];
+    copyArray[index].isSelected = !copyArray[index].isSelected;
+    setarr(copyArray);
+  };
+
   return (
     <div className="px-[1%] text-black">
       <HeaderComponent />
@@ -287,6 +294,7 @@ export default function UpperTeethCharting() {
                 <button className="w-[100px]"></button>
                 {array.map((item, index) => (
                   <button
+                    onClick={() => onClickImplement(index)}
                     style={{
                       flex: 1,
                     }}
@@ -312,7 +320,11 @@ export default function UpperTeethCharting() {
                   <div
                     key={index}
                     style={{ flex: 1 }}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                   >
                     <MobilityInput
                       value={item.value}
@@ -328,7 +340,11 @@ export default function UpperTeethCharting() {
                 {implantData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -349,7 +365,15 @@ export default function UpperTeethCharting() {
                 {furcationData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      implantData[index].isSelected
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <FurcationInput
@@ -367,7 +391,11 @@ export default function UpperTeethCharting() {
                 {pocketDepthData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center "
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PocketDepthInput
@@ -385,7 +413,11 @@ export default function UpperTeethCharting() {
                 {recessionData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -405,7 +437,11 @@ export default function UpperTeethCharting() {
                 {bleedingData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <BleedingInput
@@ -423,7 +459,11 @@ export default function UpperTeethCharting() {
                 {plaqueData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PlaqueInput
@@ -446,7 +486,9 @@ export default function UpperTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[84px] z-0"></div>
+                <div
+                  className={`absolute top-0 left-0 w-full bg-[#f7dee1] h-[84px] z-0`}
+                ></div>
                 <div className="absolute top-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
                 <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
@@ -458,14 +500,25 @@ export default function UpperTeethCharting() {
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${
-                      bleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
-                        ? `bg-[#ffc1c1]`
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
                         : ""
                     }`}
                     style={{ flex: 1 }}
                   >
+                    <div
+                      className={`absolute top-0 left-0 h-[84px] w-full ${
+                        bleedingData[index].value.every(
+                          (item) => item !== "grey"
+                        )
+                          ? "bg-[#f75555]"
+                          : bleedingData[index]?.value.some(
+                              (item) => item === "red" || item === "#dbc027"
+                            )
+                          ? `bg-[#ffc1c1]`
+                          : ""
+                      }`}
+                    ></div>
                     <div className="relative ">
                       <div className="h-full flex items-center justify-center">
                         <Image
@@ -516,7 +569,7 @@ export default function UpperTeethCharting() {
                         />
                       )}
 
-                      <div className="absolute top-[60px] left-[40%]">
+                      <div className="absolute top-[60px] left-[40%] z-50">
                         {furcationData[index]?.value}
                       </div>
 
@@ -549,9 +602,15 @@ export default function UpperTeethCharting() {
                   <div
                     key={index}
                     className={`flex justify-center h-[70px] z-10 relative ${
-                      bleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      bleedingData[index].value.every((item) => item !== "grey")
+                        ? "bg-[#f75555]"
+                        : bleedingData[index]?.value.some(
+                            (item) => item === "red" || item === "#dbc027"
+                          )
                         ? `bg-[#ffc1c1]`
                         : ""
                     }`}
@@ -654,14 +713,25 @@ export default function UpperTeethCharting() {
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${
-                      P_BleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
-                        ? `bg-[#ffc1c1]`
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
                         : ""
                     }`}
                     style={{ flex: 1 }}
                   >
+                    <div
+                      className={`absolute top-0 left-0 h-[84px] w-full ${
+                        P_BleedingData[index].value.every(
+                          (item) => item !== "grey"
+                        )
+                          ? "bg-[#f75555]"
+                          : P_BleedingData[index]?.value.some(
+                              (item) => item === "red" || item === "#dbc027"
+                            )
+                          ? `bg-[#ffc1c1]`
+                          : ""
+                      }`}
+                    ></div>
                     <div className="relative ">
                       <div className="h-full flex items-center justify-center">
                         <Image
@@ -736,7 +806,15 @@ export default function UpperTeethCharting() {
                 {P_furcationData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center gap-1"
+                    className={`flex justify-center gap-1 ${
+                      implantData[index].isSelected
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <P_FurcationInput
@@ -762,7 +840,11 @@ export default function UpperTeethCharting() {
                 {P_PocketDepthData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center "
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PocketDepthInput
@@ -780,7 +862,11 @@ export default function UpperTeethCharting() {
                 {P_recessionData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -800,7 +886,11 @@ export default function UpperTeethCharting() {
                 {P_BleedingData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <P_BleedingInput
@@ -818,7 +908,11 @@ export default function UpperTeethCharting() {
                 {P_PlaqueData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
