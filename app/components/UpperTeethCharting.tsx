@@ -49,6 +49,11 @@ import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
 import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
 import MobilityInput from "../sharedcomponents/chartingcomponents/Vestibular/MobilityInput";
+import {
+  heightMiddlePortion,
+  heightWidthUpperPortion,
+} from "@/app/sharedcomponents/chartingcomponents/HeightWidthUpperTeeths";
+import { upperCavityPosition } from "@/app/sharedcomponents/chartingcomponents/CavityPositions";
 
 const array = [
   {
@@ -441,12 +446,12 @@ export default function UpperTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[84px] z-0"></div>
+                <div className="absolute top-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[175px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
@@ -462,19 +467,27 @@ export default function UpperTeethCharting() {
                     style={{ flex: 1 }}
                   >
                     <div className="relative ">
-                      <Image
-                        src={item.image}
-                        width={200}
-                        height={200}
-                        className="h-full w-full object-contain z-20 cursor-pointer "
-                        alt={"tachados"}
-                      />
+                      <div className="h-full flex items-center justify-center">
+                        <Image
+                          src={item.image}
+                          width={200}
+                          height={200}
+                          className={`${heightWidthUpperPortion(
+                            index
+                          )} w-full object-contain z-20 cursor-pointer ${
+                            index > 7 && "img_flip"
+                          } `}
+                          alt={"tachados"}
+                        />
+                      </div>
                       {item.cavity === 1 && (
                         <Image
                           src={`/upperTeeth/bottompart/white/${index + 1}.webp`}
-                          width={100}
-                          height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          width={200}
+                          height={200}
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -485,7 +498,9 @@ export default function UpperTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -494,7 +509,9 @@ export default function UpperTeethCharting() {
                           src={`/upperTeeth/bottompart/blue/${index + 1}.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -531,7 +548,7 @@ export default function UpperTeethCharting() {
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[100px] z-10 relative ${
+                    className={`flex justify-center h-[70px] z-10 relative ${
                       bleedingData[index]?.value.some(
                         (item) => item === "red" || item === "#dbc027"
                       )
@@ -542,14 +559,18 @@ export default function UpperTeethCharting() {
                       flex: 1,
                     }}
                   >
-                    <Image
-                      src={item.image}
-                      width={200}
-                      height={200}
-                      onClick={() => setSelectedTooth(index)}
-                      className="h-full w-auto object-contain cursor-pointer"
-                      alt={"tachados"}
-                    />
+                    <div className="h-full w-full flex items-center">
+                      <Image
+                        src={item.image}
+                        width={200}
+                        height={200}
+                        onClick={() => setSelectedTooth(index)}
+                        className={`${heightMiddlePortion(
+                          index
+                        )} w-auto object-contain cursor-pointer`}
+                        alt={"tachados"}
+                      />
+                    </div>
                     <DotsupperTeeth
                       setClicks={setClicks}
                       isOCCTeeths={true}
@@ -621,12 +642,12 @@ export default function UpperTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                <div className="absolute top-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[84px] z-0"></div>
+                <div className="absolute top-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={P_PocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[170px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[175px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
                 {lowerTeeths.map((item, index) => (
@@ -642,13 +663,19 @@ export default function UpperTeethCharting() {
                     style={{ flex: 1 }}
                   >
                     <div className="relative ">
-                      <Image
-                        src={item.image}
-                        width={200}
-                        height={200}
-                        className="h-full w-full object-contain z-20 cursor-pointer "
-                        alt={"tachados"}
-                      />
+                      <div className="h-full flex items-center justify-center">
+                        <Image
+                          src={item.image}
+                          width={200}
+                          height={200}
+                          className={`${heightWidthUpperPortion(
+                            index
+                          )} w-full object-contain z-20 cursor-pointer ${
+                            index > 7 && "img_flip"
+                          }`}
+                          alt={"tachados"}
+                        />
+                      </div>
                       <div className="absolute top-[50px] left-[20%] flex gap-2">
                         <p>{P_furcationData[index]?.value_one}</p>
                         <p>{P_furcationData[index]?.value_two}</p>
@@ -658,7 +685,9 @@ export default function UpperTeethCharting() {
                           src={`/lowerTeeth/bottompart/white/${index + 1}.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -669,7 +698,9 @@ export default function UpperTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -678,7 +709,9 @@ export default function UpperTeethCharting() {
                           src={`/lowerTeeth/bottompart/blue/${index + 1}.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute bottom-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}

@@ -7,9 +7,16 @@ interface Props {
   index: number;
 }
 const RecessionInput = (props: Props) => {
-  const handleInputChange = (value: any, index: number) => {
+  const [inputValues, setInputValues] = useState(
+    Array(props.value.length).fill("0")
+  );
+
+  const handleInputChange = (value: string, index: number) => {
     const sanitizedValue = Math.min(Math.max(parseInt(value, 10), -15), 15);
-    console.log("🚀 ~ handleInputChange ~ sanitizedValue:", sanitizedValue);
+
+    const newInputValues = [...inputValues];
+    newInputValues[index] = String(sanitizedValue);
+    setInputValues(newInputValues);
 
     props.setRecessionData((prevState: any) => {
       const newState = [...prevState];
@@ -20,11 +27,11 @@ const RecessionInput = (props: Props) => {
 
   return (
     <div className="flex items-center">
-      {props.value.map((_item: string, index: number) => (
+      {inputValues.map((item: string, index: number) => (
         <input
           key={index}
           type="number"
-          value={_item}
+          value={item}
           max={19}
           onChange={(e) => handleInputChange(e.target.value, index)}
           className="w-[17px] bg-gray-400 rounded text-center mr-[1px]"

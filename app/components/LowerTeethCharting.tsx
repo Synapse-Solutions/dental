@@ -28,11 +28,8 @@ import RecessionInput from "../sharedcomponents/lower_teeths_chart_components/Ve
 import BleedingInput from "../sharedcomponents/lower_teeths_chart_components/Vestibular/BleedingInput";
 import PlaqueInput from "../sharedcomponents/lower_teeths_chart_components/Vestibular/PlaqueInput";
 import P_FurcationInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_FurcationInput";
-import P_PocketDepthInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_PocketDepthInput";
-import P_RecessionInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_RecessionInput";
 import P_BleedingInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_BleedingInput";
 import P_PlaqueInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_PlaqueInput";
-import HeaderComponent from "../sharedcomponents/HeaderComponent";
 import { ImplantArray } from "@/app/jsonarrays/ImplantArray";
 import { FurcationArray } from "@/app/jsonarrays/FurcationArray";
 import { BleedingArray } from "@/app/jsonarrays/BleedingArray";

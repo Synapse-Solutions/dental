@@ -52,3 +52,8 @@ body {
     margin: 0;
   }
 }
+
+.img_flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

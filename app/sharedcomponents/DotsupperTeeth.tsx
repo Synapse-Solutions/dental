@@ -54,28 +54,28 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"15px"}
+                  top={"20px"}
                   left="28px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"15px"}
+                  top={"20px"}
                   left="28px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"15px"}
+                  top={"20px"}
                   left="42px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"15px"}
+                  top={"20px"}
                   left="42px"
                 />
               )}
@@ -178,43 +178,43 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"15px"}
+                  top={"20px"}
                   left="22px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"15px"}
+                  top={"20px"}
                   left="22px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"15px"}
-                  left="38px"
+                  top={"20px"}
+                  left="32px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"15px"}
-                  left="38px"
+                  top={"20px"}
+                  left="32px"
                 />
               )}
               {props.clicks[props.index].value3 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                  top={"15px"}
-                  left="55px"
+                  top={"20px"}
+                  left="45px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("3")}
-                  top={"15px"}
-                  left="55px"
+                  top={"20px"}
+                  left="45px"
                 />
               )}
               {props.clicks[props.index].value4 === 0 ? (
@@ -450,15 +450,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"15px"}
+                  left="26px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"15px"}
+                  left="26px"
                 />
               )}
 
@@ -559,29 +559,29 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="25px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="25px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="16px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="16px"
                 />
               )}
 
@@ -590,8 +590,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="22px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -601,8 +601,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="22px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -651,7 +651,7 @@ export default function DotsupperTeeth(props: Props) {
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
                   top={"120px"}
-                  left="38px"
+                  left="33px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -662,7 +662,7 @@ export default function DotsupperTeeth(props: Props) {
                     })
                   }
                   top={"120px"}
-                  left="38px"
+                  left="33px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -851,15 +851,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="20px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="20px"
                 />
               )}
               {props.clicks[props.index].value2 === 0 ? (
@@ -867,8 +867,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 2 })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="20px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -878,8 +878,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 2,
                     })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="20px"
                   isborder={
                     props.clicks[props.index].value2 === 4 ? true : false
                   }
@@ -898,8 +898,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"120px"}
-                  left="10px"
+                  top={"110px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -909,8 +909,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"120px"}
-                  left="10px"
+                  top={"110px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -928,8 +928,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"120px"}
-                  left="38px"
+                  top={"110px"}
+                  left="28px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -939,8 +939,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"120px"}
-                  left="38px"
+                  top={"110px"}
+                  left="28px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -958,8 +958,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"140px"}
-                  left="10px"
+                  top={"125px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -969,8 +969,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"140px"}
-                  left="10px"
+                  top={"125px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -988,8 +988,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"140px"}
-                  left="35px"
+                  top={"125px"}
+                  left="28px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -999,8 +999,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"140px"}
-                  left="35px"
+                  top={"125px"}
+                  left="28px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -1020,15 +1020,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="20px"
+                  top={"20px"}
+                  left="15px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="15px"
                 />
               )}
               {props.clicks[props.index].value2 === 0 ? (
@@ -1036,8 +1036,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 2 })
                   }
-                  top={"95px"}
-                  left="25px"
+                  top={"90px"}
+                  left="23px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1047,8 +1047,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 2,
                     })
                   }
-                  top={"95px"}
-                  left="25px"
+                  top={"90px"}
+                  left="23px"
                   isborder={
                     props.clicks[props.index].value2 === 4 ? true : false
                   }
@@ -1067,7 +1067,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"120px"}
+                  top={"106px"}
                   left="10px"
                 />
               ) : (
@@ -1078,7 +1078,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"120px"}
+                  top={"106px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
@@ -1097,8 +1097,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"120px"}
-                  left="48px"
+                  top={"106px"}
+                  left="40px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1108,8 +1108,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"120px"}
-                  left="48px"
+                  top={"106px"}
+                  left="40px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -1127,7 +1127,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"140px"}
+                  top={"125px"}
                   left="10px"
                 />
               ) : (
@@ -1138,7 +1138,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"140px"}
+                  top={"125px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -1157,8 +1157,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"140px"}
-                  left="48px"
+                  top={"125px"}
+                  left="40px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1168,8 +1168,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"140px"}
-                  left="48px"
+                  top={"125px"}
+                  left="40px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -1189,15 +1189,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="20px"
+                  top={"20px"}
+                  left="30px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="30px"
                 />
               )}
               {props.clicks[props.index].value2 === 0 ? (
@@ -1205,8 +1205,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 2 })
                   }
-                  top={"95px"}
-                  left="25px"
+                  top={"90px"}
+                  left="23px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1216,8 +1216,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 2,
                     })
                   }
-                  top={"95px"}
-                  left="25px"
+                  top={"90px"}
+                  left="23px"
                   isborder={
                     props.clicks[props.index].value2 === 4 ? true : false
                   }
@@ -1236,7 +1236,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"120px"}
+                  top={"106px"}
                   left="10px"
                 />
               ) : (
@@ -1247,7 +1247,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"120px"}
+                  top={"106px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
@@ -1266,8 +1266,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"120px"}
-                  left="48px"
+                  top={"106px"}
+                  left="40px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1277,8 +1277,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"120px"}
-                  left="48px"
+                  top={"106px"}
+                  left="40px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -1296,7 +1296,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"140px"}
+                  top={"125px"}
                   left="10px"
                 />
               ) : (
@@ -1307,7 +1307,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"140px"}
+                  top={"125px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -1326,8 +1326,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"140px"}
-                  left="48px"
+                  top={"125px"}
+                  left="40px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1337,8 +1337,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"140px"}
-                  left="48px"
+                  top={"125px"}
+                  left="40px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -1358,15 +1358,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="20px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="23px"
+                  top={"20px"}
+                  left="20px"
                 />
               )}
               {props.clicks[props.index].value2 === 0 ? (
@@ -1374,8 +1374,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 2 })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="20px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1385,8 +1385,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 2,
                     })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="20px"
                   isborder={
                     props.clicks[props.index].value2 === 4 ? true : false
                   }
@@ -1405,8 +1405,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"120px"}
-                  left="10px"
+                  top={"110px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1416,8 +1416,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"120px"}
-                  left="10px"
+                  top={"110px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -1435,8 +1435,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"120px"}
-                  left="38px"
+                  top={"110px"}
+                  left="28px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1446,8 +1446,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"120px"}
-                  left="38px"
+                  top={"110px"}
+                  left="28px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -1465,8 +1465,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"140px"}
-                  left="10px"
+                  top={"125px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1476,8 +1476,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"140px"}
-                  left="10px"
+                  top={"125px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -1495,8 +1495,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"140px"}
-                  left="35px"
+                  top={"125px"}
+                  left="28px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1506,8 +1506,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"140px"}
-                  left="35px"
+                  top={"125px"}
+                  left="28px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -1696,29 +1696,29 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="25px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="25px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="16px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"10px"}
-                  left="30px"
+                  top={"20px"}
+                  left="16px"
                 />
               )}
 
@@ -1727,8 +1727,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="22px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1738,8 +1738,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"103px"}
-                  left="25px"
+                  top={"95px"}
+                  left="22px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -1788,7 +1788,7 @@ export default function DotsupperTeeth(props: Props) {
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
                   top={"120px"}
-                  left="38px"
+                  left="33px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -1799,7 +1799,7 @@ export default function DotsupperTeeth(props: Props) {
                     })
                   }
                   top={"120px"}
-                  left="38px"
+                  left="33px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -1819,15 +1819,15 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"15px"}
+                  left="14px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"10px"}
-                  left="30px"
+                  top={"15px"}
+                  left="14px"
                 />
               )}
 
@@ -1929,42 +1929,42 @@ export default function DotsupperTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"20px"}
-                  left="22px"
+                  left="16px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"20px"}
-                  left="22px"
+                  left="16px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
                   top={"20px"}
-                  left="38px"
+                  left="30px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
                   top={"20px"}
-                  left="38px"
+                  left="30px"
                 />
               )}
               {props.clicks[props.index].value3 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("3")}
                   top={"20px"}
-                  left="55px"
+                  left="45px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("3")}
                   top={"20px"}
-                  left="55px"
+                  left="45px"
                 />
               )}
               {props.clicks[props.index].value4 === 0 ? (
@@ -2064,43 +2064,43 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"15px"}
-                  left="22px"
+                  top={"20px"}
+                  left="13px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"15px"}
-                  left="22px"
+                  top={"20px"}
+                  left="13px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"15px"}
-                  left="38px"
+                  top={"20px"}
+                  left="23px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"15px"}
-                  left="38px"
+                  top={"20px"}
+                  left="23px"
                 />
               )}
               {props.clicks[props.index].value3 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("3")}
-                  top={"15px"}
-                  left="55px"
+                  top={"20px"}
+                  left="35px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("3")}
-                  top={"15px"}
-                  left="55px"
+                  top={"20px"}
+                  left="35px"
                 />
               )}
               {props.clicks[props.index].value4 === 0 ? (
@@ -2200,29 +2200,29 @@ export default function DotsupperTeeth(props: Props) {
               {props.clicks[props.index].value1 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
-                  top={"15px"}
-                  left="28px"
+                  top={"20px"}
+                  left="24px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
-                  top={"15px"}
-                  left="28px"
+                  top={"20px"}
+                  left="24px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"15px"}
-                  left="42px"
+                  top={"20px"}
+                  left="37px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"15px"}
-                  left="42px"
+                  top={"20px"}
+                  left="37px"
                 />
               )}
               {props.clicks[props.index].value3 === 0 ? (
@@ -2329,7 +2329,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -2340,7 +2340,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
@@ -2359,7 +2359,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -2370,7 +2370,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -2389,7 +2389,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -2400,7 +2400,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2423,7 +2423,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -2434,7 +2434,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -2453,7 +2453,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -2464,7 +2464,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2483,7 +2483,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 7 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -2494,7 +2494,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 7,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value7 === 4 ? true : false
@@ -2517,7 +2517,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -2528,7 +2528,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -2547,7 +2547,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -2558,7 +2558,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2577,7 +2577,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 7 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -2588,7 +2588,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 7,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value7 === 4 ? true : false
@@ -2611,8 +2611,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2622,8 +2622,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -2641,8 +2641,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2652,8 +2652,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -2671,8 +2671,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2682,8 +2682,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -2705,8 +2705,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2716,8 +2716,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -2735,8 +2735,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2746,8 +2746,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -2765,8 +2765,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2776,8 +2776,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -2799,8 +2799,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"32px"}
+                  left="12px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2810,8 +2810,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"32px"}
+                  left="12px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -2829,7 +2829,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"32px"}
                   left="52px"
                 />
               ) : (
@@ -2840,7 +2840,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"32px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2863,8 +2863,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2874,8 +2874,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -2893,8 +2893,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
-                  left="52px"
+                  top={"30px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2904,8 +2904,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
-                  left="52px"
+                  top={"30px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -2919,7 +2919,7 @@ export default function DotsupperTeeth(props: Props) {
                 />
               )}
             </>
-          )}{" "}
+          )}
           {props.index === 7 && (
             <>
               {props.clicks[props.index].value5 === 0 ? (
@@ -2927,8 +2927,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -2938,8 +2938,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -2957,7 +2957,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
+                  top={"30px"}
                   left="52px"
                 />
               ) : (
@@ -2968,7 +2968,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
+                  top={"30px"}
                   left="45px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2991,8 +2991,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3002,8 +3002,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -3021,7 +3021,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
+                  top={"30px"}
                   left="52px"
                 />
               ) : (
@@ -3032,7 +3032,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
+                  top={"30px"}
                   left="45px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -3055,8 +3055,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3066,8 +3066,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
-                  left="15px"
+                  top={"30px"}
+                  left="11px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -3085,8 +3085,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
-                  left="52px"
+                  top={"30px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3096,8 +3096,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
-                  left="52px"
+                  top={"30px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -3119,8 +3119,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"32px"}
+                  left="12px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3130,8 +3130,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"32px"}
+                  left="12px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -3149,7 +3149,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"32px"}
                   left="52px"
                 />
               ) : (
@@ -3160,7 +3160,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"32px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -3183,8 +3183,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3194,8 +3194,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -3213,8 +3213,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3224,8 +3224,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -3243,8 +3243,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3254,8 +3254,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
                   }
@@ -3277,8 +3277,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 3 })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3288,8 +3288,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 3,
                     })
                   }
-                  top={"50px"}
-                  left="15px"
+                  top={"38px"}
+                  left="8px"
                   isborder={
                     props.clicks[props.index].value3 === 4 ? true : false
                   }
@@ -3307,8 +3307,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3318,8 +3318,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
-                  left="52px"
+                  top={"38px"}
+                  left="42px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
                   }
@@ -3337,8 +3337,8 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                 />
               ) : (
                 <GloblalVisibleDiv
@@ -3348,8 +3348,8 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
-                  left="35px"
+                  top={"38px"}
+                  left="25px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
                   }
@@ -3371,7 +3371,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -3382,7 +3382,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -3401,7 +3401,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -3412,7 +3412,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -3431,7 +3431,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 7 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -3442,7 +3442,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 7,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value7 === 4 ? true : false
@@ -3465,7 +3465,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -3476,7 +3476,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -3495,7 +3495,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -3506,7 +3506,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -3525,7 +3525,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 7 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -3536,7 +3536,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 7,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value7 === 4 ? true : false
@@ -3559,7 +3559,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 4 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                 />
               ) : (
@@ -3570,7 +3570,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 4,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="10px"
                   isborder={
                     props.clicks[props.index].value4 === 4 ? true : false
@@ -3589,7 +3589,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                 />
               ) : (
@@ -3600,7 +3600,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -3619,7 +3619,7 @@ export default function DotsupperTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                 />
               ) : (
@@ -3630,7 +3630,7 @@ export default function DotsupperTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"50px"}
+                  top={"38px"}
                   left="30px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
