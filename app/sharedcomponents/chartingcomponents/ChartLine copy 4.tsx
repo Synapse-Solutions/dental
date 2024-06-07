@@ -9,33 +9,33 @@ const CharLine = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<any>(null);
 
-  // const add one extra value after third index
   const processData = () => {
-    // Validate and process data, inserting null values for gaps
-    return props.pocketDepthData.flatMap((item: any, index: number) => {
-      if (item && Array.isArray(item.value)) {
-        const processedValues = item.value.map(
-          (val: string) => Number(val) * 1.5
-        ); // Convert values to numbers and adjust if needed
-        const nullArray = Array(5 - (processedValues.length % 5)).fill(NaN); // Calculate how many nulls to insert
-        return [...processedValues, ...nullArray];
-      }
-      return [NaN]; // Handle invalid data gracefully
-    });
+    return props.pocketDepthData.flatMap((item: any) => item.value);
   };
 
+  const processedData = processData();
+
   const data = {
-    labels: props.pocketDepthData.flatMap((item: any) => item.value),
+    labels: processedData.map((_, index) => index),
     datasets: [
       {
         label: "Dataset 1",
-        data: props.pocketDepthData.flatMap((item: any) => item.value),
-        borderColor: "rgba(255, 99, 132, 1)",
+        data: processedData,
+        borderColor: "rgba(255, 99, 132, 1)", // Color for the lines
+        backgroundColor: "rgba(255, 99, 132, 0.5)", // Color for the bars
+        borderWidth: 1,
+        type: "line", // Use 'line' type for this dataset
+        tension: 0.4, // Increase tension for smoother lines
+        spanGaps: true, // Connect the line across NaN values
+        showLine: true,
+      },
+      {
+        label: "Dataset 2",
+        data: processedData,
+        borderColor: "rgba(54, 162, 235, 1)", // Color for the lines
+        backgroundColor: "rgba(54, 162, 235, 0.5)", // Color for the bars
         borderWidth: 2,
-        pointRadius: 0, // Hide points
-        tension: 0,
-        snapsGap: true,
-        pointStyle: "rectRot",
+        type: "bar", // Use 'bar' type for this dataset
       },
     ],
   };
@@ -60,14 +60,8 @@ const CharLine = (props: Props) => {
       }
 
       chartInstance.current = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: data.labels,
-          datasets: data.datasets.map((dataset) => ({
-            ...dataset,
-            fill: false,
-          })),
-        },
+        type: "bar",
+        data: data,
         options: {
           plugins: {
             legend: {
@@ -93,11 +87,6 @@ const CharLine = (props: Props) => {
               suggestedMax: 100,
             },
           },
-          elements: {
-            line: {
-              borderWidth: 2,
-            },
-          },
           responsive: true,
           maintainAspectRatio: false,
         },
@@ -119,7 +108,7 @@ const CharLine = (props: Props) => {
       style={{
         width: "95%",
         height: "200px",
-        marginLeft: "100px",
+        marginLeft: "120px",
         zIndex: 30,
       }}
     >

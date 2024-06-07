@@ -618,7 +618,7 @@ export default function UpperTeethCharting() {
                       flex: 1,
                     }}
                   >
-                    <div className="h-full w-full flex items-center">
+                    <div className="h-full w-full flex items-center justify-center ">
                       <Image
                         src={item.image}
                         width={200}
@@ -746,7 +746,7 @@ export default function UpperTeethCharting() {
                           alt={"tachados"}
                         />
                       </div>
-                      <div className="absolute top-[50px] left-[20%] flex gap-2">
+                      <div className="absolute top-[50px] left-[20%] flex gap-2 z-[999]">
                         <p>{P_furcationData[index]?.value_one}</p>
                         <p>{P_furcationData[index]?.value_two}</p>
                       </div>

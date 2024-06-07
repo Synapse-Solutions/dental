@@ -17,8 +17,10 @@ const ChartLineBlue = (props: Props) => {
         data: props.recessionData.flatMap((item: any) => item.value),
         borderColor: "green",
         borderWidth: 2,
-        pointRadius: 0,
-        tension: 0.4,
+        pointRadius: 1,
+        tension: 0.1,
+        pointStyle: "rectRot",
+
         // fill: origin,
       },
     ],
@@ -104,7 +106,7 @@ const ChartLineBlue = (props: Props) => {
       style={{
         width: "95%",
         height: "180px",
-        marginLeft: "100px",
+        marginLeft: "120px",
         zIndex: 30,
       }}
     >

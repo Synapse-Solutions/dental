@@ -9,19 +9,12 @@ const CharLine = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<any>(null);
 
-  // const add one extra value after third index
-  const processData = () => {
-    // Validate and process data, inserting null values for gaps
-    return props.pocketDepthData.flatMap((item: any, index: number) => {
-      if (item && Array.isArray(item.value)) {
-        const processedValues = item.value.map(
-          (val: string) => Number(val) * 1.5
-        ); // Convert values to numbers and adjust if needed
-        const nullArray = Array(5 - (processedValues.length % 5)).fill(NaN); // Calculate how many nulls to insert
-        return [...processedValues, ...nullArray];
-      }
-      return [NaN]; // Handle invalid data gracefully
-    });
+  let addExtraPoints = () => {
+    let data = props.pocketDepthData.flatMap((item: any) => item.value);
+    // add one null value after third index
+    data.splice(2, 5, NaN);
+
+    return data;
   };
 
   const data = {
@@ -29,13 +22,12 @@ const CharLine = (props: Props) => {
     datasets: [
       {
         label: "Dataset 1",
-        data: props.pocketDepthData.flatMap((item: any) => item.value),
+        data: addExtraPoints(),
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 2,
         pointRadius: 0, // Hide points
         tension: 0,
-        snapsGap: true,
-        pointStyle: "rectRot",
+        spanGaps: true,
       },
     ],
   };
