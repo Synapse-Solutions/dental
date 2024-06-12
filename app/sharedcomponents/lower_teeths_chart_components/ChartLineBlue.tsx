@@ -106,7 +106,7 @@ const ChartLineBlue = (props: Props) => {
     <div
       style={{
         width: "95%",
-        height: "180px",
+        height: "170px",
         marginLeft: "100px",
         zIndex: 30,
       }}

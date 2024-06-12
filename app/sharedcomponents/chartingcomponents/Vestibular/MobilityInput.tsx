@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface Props {
   value: any;
   setMobilityData: any;
   index: number;
 }
-const MobilityInput = (props: Props) => {
-  const handleInputChange = (value: any) => {
-    const sanitizedValue = Math.min(Number(value), 4);
 
-    props.setMobilityData((prevState: any) => {
-      const newState = [...prevState];
-      newState[props.index].value = sanitizedValue;
-      return newState;
-    });
+const MobilityInput = (props: Props) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    // Allow only digits and ensure value is between 1 and 4
+    if (value === "" || /^[1-4]$/.test(value)) {
+      props.setMobilityData((prevState: any) => {
+        const newState = [...prevState];
+        newState[props.index].value = value === "" ? "" : Number(value);
+        return newState;
+      });
+    }
   };
 
   return (
     <div className="flex items-center justify-center">
       <input
-        type="number"
+        type="text"
         value={props.value}
-        max={19}
-        onChange={(e) => handleInputChange(e.target.value)}
+        onChange={handleInputChange}
         className="w-[20px] bg-gray-400 rounded text-center mr-[1px]"
+        maxLength={1}
       />
     </div>
   );

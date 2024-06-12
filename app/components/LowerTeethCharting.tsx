@@ -30,6 +30,7 @@ import PlaqueInput from "../sharedcomponents/lower_teeths_chart_components/Vesti
 import P_FurcationInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_FurcationInput";
 import P_BleedingInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_BleedingInput";
 import P_PlaqueInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_PlaqueInput";
+import HeaderComponent from "../sharedcomponents/HeaderComponent";
 import { ImplantArray } from "@/app/jsonarrays/ImplantArray";
 import { FurcationArray } from "@/app/jsonarrays/FurcationArray";
 import { BleedingArray } from "@/app/jsonarrays/BleedingArray";
@@ -44,12 +45,15 @@ import { P_RecessionArray } from "@/app/jsonarrays/P_RecessionArray";
 import { MobilityArray } from "@/app/jsonarrays/MobilityArray";
 import CharLine from "../sharedcomponents/lower_teeths_chart_components/ChartLine";
 import ChartLineBlue from "../sharedcomponents/lower_teeths_chart_components/ChartLineBlue";
-import DotsupperTeeth from "../sharedcomponents/DotsupperTeeth";
-import DotsMiddleTeeth from "../sharedcomponents/DotsMiddleTeeth";
+import DotsLowerTeeth from "@/app/sharedcomponents/lower_teeths_chart_components/DotsLowerTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
 import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
 import MobilityInput from "../sharedcomponents/lower_teeths_chart_components/Vestibular/MobilityInput";
-import DotsLowerTeeth from "../sharedcomponents/lower_teeths_chart_components/DotsLowerTeeth";
+import {
+  heightMiddlePortion,
+  heightWidthUpperPortion,
+} from "@/app/sharedcomponents/lower_teeths_chart_components/HeightWidthUpperTeeths";
+import { upperCavityPosition } from "@/app/sharedcomponents/lower_teeths_chart_components/CavityPositions";
 
 const array = [
   {
@@ -119,6 +123,7 @@ const array = [
 ];
 export default function LowerTeethCharting() {
   const [upperTeeths, setUpperTeeths] = useState(upperTeethArray);
+  const [arr, setarr] = useState(array);
   const [lowerTeeths, setLowerTeeths] = useState(lowerTeethArray);
   const [occTeeths, setOccTeeths] = useState(occImagesArray);
   const [implantData, setImplantData] = useState(ImplantArray);
@@ -189,7 +194,7 @@ export default function LowerTeethCharting() {
       updatedLowerTeethArray[index].cavity = 2;
     } else if (value === 3) {
       updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_8/2.webp";
+        "/lower_teeth_images/occImages/row_7/2.webp";
       updatedUpperTeethArray[index].cavity = 3;
       updatedLowerTeethArray[index].cavity = 3;
     }
@@ -257,8 +262,15 @@ export default function LowerTeethCharting() {
     setCavityModal(null);
   };
 
+  const onClickImplement = (index: number) => {
+    let copyArray = [...arr];
+    copyArray[index].isSelected = !copyArray[index].isSelected;
+    setarr(copyArray);
+  };
+
   return (
     <div className="px-[1%] text-black">
+      <HeaderComponent />
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
         <div className="w-[1400px]">
@@ -282,9 +294,10 @@ export default function LowerTeethCharting() {
             </div>
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
-                <button className="w-[80px]"></button>
+                <button className="w-[100px]"></button>
                 {array.map((item, index) => (
                   <button
+                    onClick={() => onClickImplement(index)}
                     style={{
                       flex: 1,
                     }}
@@ -305,12 +318,16 @@ export default function LowerTeethCharting() {
               </div>
               {/* Mobility */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Mobility</p>
+                <p className="w-[100px]">Mobility</p>
                 {mobilityData.map((item, index) => (
                   <div
                     key={index}
                     style={{ flex: 1 }}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                   >
                     <MobilityInput
                       value={item.value}
@@ -322,11 +339,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Implant */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Implant</p>
+                <p className="w-[100px]">Implant</p>
                 {implantData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -343,11 +364,19 @@ export default function LowerTeethCharting() {
               </div>
               {/* Furcation */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Furcation</p>
+                <p className="w-[100px]">Furcation</p>
                 {furcationData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      implantData[index].isSelected
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <FurcationInput
@@ -361,11 +390,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Pocket Depth</p>
+                <p className="w-[100px]">Pocket Depth</p>
                 {pocketDepthData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center "
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PocketDepthInput
@@ -379,11 +412,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Recession</p>
+                <p className="w-[100px]">Recession</p>
                 {recessionData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -399,11 +436,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Bleeding</p>
+                <p className="w-[100px]">Bleeding</p>
                 {bleedingData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <BleedingInput
@@ -417,11 +458,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Plaque</p>
+                <p className="w-[100px]">Plaque</p>
                 {plaqueData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PlaqueInput
@@ -444,42 +489,63 @@ export default function LowerTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                {/* <div className="absolute bottom-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
-                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
+                <div
+                  className={`absolute bottom-0 left-0 w-full bg-[#f7dee1] h-[84px] z-0`}
+                ></div>
+                {/* <div className="absolute bottom-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
+                <div className="absolute bottom-0 h-[80px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
+                <div className="absolute bottom-0 h-[105px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${
-                      bleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
-                        ? `bg-[#ffc1c1]`
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
                         : ""
                     }`}
                     style={{ flex: 1 }}
                   >
+                    <div
+                      className={`absolute bottom-0 left-0 h-[84px] w-full ${
+                        bleedingData[index].value.every(
+                          (item) => item !== "grey"
+                        )
+                          ? "bg-[#f75555]"
+                          : bleedingData[index]?.value.some(
+                              (item) => item === "red" || item === "#dbc027"
+                            )
+                          ? `bg-[#ffc1c1]`
+                          : ""
+                      }`}
+                    ></div>
                     <div className="relative ">
-                      <Image
-                        src={item.image}
-                        width={200}
-                        height={200}
-                        className="h-full w-full object-contain z-20 cursor-pointer "
-                        alt={"tachados"}
-                      />
+                      <div className="h-full flex items-center justify-center">
+                        <Image
+                          src={item.image}
+                          width={200}
+                          height={200}
+                          className={`${heightWidthUpperPortion(
+                            index
+                          )} w-full object-contain z-20 cursor-pointer ${
+                            index > 7 && "img_flip"
+                          } `}
+                          alt={"tachados"}
+                        />
+                      </div>
                       {item.cavity === 1 && (
                         <Image
                           src={`/lower_teeth_images/upperTeeth/bottompart/white/${
                             index + 1
                           }.webp`}
-                          width={100}
-                          height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          width={200}
+                          height={200}
+                          className={`object-contain z-20 cursor-pointer absolute left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -490,7 +556,9 @@ export default function LowerTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -501,12 +569,14 @@ export default function LowerTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
 
-                      <div className="absolute top-[60px] left-[40%]">
+                      <div className="absolute top-[60px] left-[40%] z-50">
                         {furcationData[index]?.value}
                       </div>
 
@@ -538,10 +608,16 @@ export default function LowerTeethCharting() {
                 {occTeeths.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex justify-center h-[100px] z-10 relative ${
-                      bleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
+                    className={`flex justify-center h-[70px] z-10 relative ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      bleedingData[index].value.every((item) => item !== "grey")
+                        ? "bg-[#f75555]"
+                        : bleedingData[index]?.value.some(
+                            (item) => item === "red" || item === "#dbc027"
+                          )
                         ? `bg-[#ffc1c1]`
                         : ""
                     }`}
@@ -549,14 +625,18 @@ export default function LowerTeethCharting() {
                       flex: 1,
                     }}
                   >
-                    <Image
-                      src={item.image}
-                      width={200}
-                      height={200}
-                      onClick={() => setSelectedTooth(index)}
-                      className="h-full w-auto object-contain cursor-pointer"
-                      alt={"tachados"}
-                    />
+                    <div className="h-full w-full flex items-center justify-center ">
+                      <Image
+                        src={item.image}
+                        width={200}
+                        height={200}
+                        onClick={() => setSelectedTooth(index)}
+                        className={`${heightMiddlePortion(
+                          index
+                        )} w-auto object-contain cursor-pointer`}
+                        alt={"tachados"}
+                      />
+                    </div>
                     <DotsLowerTeeth
                       setClicks={setClicks}
                       isOCCTeeths={true}
@@ -566,6 +646,7 @@ export default function LowerTeethCharting() {
                       index={index}
                     />
                     {/* if at top someone clicked draw yelow point  */}
+                    {/* <DotsMiddleTeeth clicks={clicks} index={index} /> */}
                     {selectedTooth === index && (
                       <div className="bg-white shadow-md absolute top-full right-[-170px] w-[400px] text-[13px] p-3 z-[999999]">
                         <div
@@ -573,7 +654,7 @@ export default function LowerTeethCharting() {
                           className="flex border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_4/1.webp"}
+                            src={"/lower_teeth_images/occImages/row_4/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -586,7 +667,7 @@ export default function LowerTeethCharting() {
                           className="flex mt-2 border-b border-gray-400 pb-1 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_6/1.webp"}
+                            src={"/lower_teeth_images/occImages/row_6/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -599,7 +680,7 @@ export default function LowerTeethCharting() {
                           className="flex border-b border-gray-400 pb-1 mt-2 items-center gap-2 cursor-pointer"
                         >
                           <Image
-                            src={"/occImages/row_7/1.webp"}
+                            src={"/lower_teeth_images/occImages/row_7/1.webp"}
                             width={50}
                             height={50}
                             className="h-[30px] w-auto object-contain "
@@ -627,35 +708,52 @@ export default function LowerTeethCharting() {
                 className="flex justify-between relative w-full gap-3 mt-5 text-[14px] "
               >
                 <div style={{ width: "100px" }}></div>
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[80px] z-0"></div>
-                {/* <div className="absolute top-[80px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
-                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[84px] z-0"></div>
+                <div className="absolute bottom-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
+                <div className="absolute bottom-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={P_PocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[160px] w-full left-0 flex items-end ">
+                <div className="absolute bottom-0 h-[175px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${
-                      P_BleedingData[index]?.value.some(
-                        (item) => item === "red" || item === "#dbc027"
-                      )
-                        ? `bg-[#ffc1c1]`
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
                         : ""
                     }`}
                     style={{ flex: 1 }}
                   >
+                    <div
+                      className={`absolute bottom-0 left-0 h-[84px] w-full ${
+                        P_BleedingData[index].value.every(
+                          (item) => item !== "grey"
+                        )
+                          ? "bg-[#f75555]"
+                          : P_BleedingData[index]?.value.some(
+                              (item) => item === "red" || item === "#dbc027"
+                            )
+                          ? `bg-[#ffc1c1]`
+                          : ""
+                      }`}
+                    ></div>
                     <div className="relative ">
-                      <Image
-                        src={item.image}
-                        width={200}
-                        height={200}
-                        className="h-full w-full object-contain z-20 cursor-pointer "
-                        alt={"tachados"}
-                      />
-                      <div className="absolute top-[50px] left-[20%] flex gap-2">
+                      <div className="h-full flex items-center justify-center">
+                        <Image
+                          src={item.image}
+                          width={200}
+                          height={200}
+                          className={`${heightWidthUpperPortion(
+                            index
+                          )} w-full object-contain z-20 cursor-pointer ${
+                            index > 7 && "img_flip"
+                          }`}
+                          alt={"tachados"}
+                        />
+                      </div>
+                      <div className="absolute top-[50px] left-[20%] flex gap-2 z-[999]">
                         <p>{P_furcationData[index]?.value_one}</p>
                         <p>{P_furcationData[index]?.value_two}</p>
                       </div>
@@ -666,7 +764,9 @@ export default function LowerTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -677,7 +777,9 @@ export default function LowerTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
@@ -688,11 +790,14 @@ export default function LowerTeethCharting() {
                           }.webp`}
                           width={100}
                           height={100}
-                          className="object-contain z-20 cursor-pointer absolute top-0 left-0 "
+                          className={`object-contain z-20 cursor-pointer absolute bottom-0 left-0 ${upperCavityPosition(
+                            index
+                          )}`}
                           alt={"tachados"}
                         />
                       )}
 
+                      {/* if at top someone clicked draw yelow point  */}
                       <DotsLowerTeeth
                         setClicks={setClicks}
                         clicks={clicks}
@@ -701,17 +806,26 @@ export default function LowerTeethCharting() {
                         index={index}
                       />
                     </div>
+                    {/* <div className="h-[150px] w-full object-cover z-[999] bg-transparent absolute top-0 left-0 "></div> */}
                   </div>
                 ))}
               </div>
 
               {/* ######################## PALATINO  */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Furcation</p>
+                <p className="w-[100px]">Furcation</p>
                 {P_furcationData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center gap-1"
+                    className={`flex justify-center gap-1 ${
+                      implantData[index].isSelected
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    } ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <P_FurcationInput
@@ -733,11 +847,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Pocket Depth</p>
+                <p className="w-[100px]">Pocket Depth</p>
                 {P_PocketDepthData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center "
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <PocketDepthInput
@@ -751,11 +869,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Recession</p>
+                <p className="w-[100px]">Recession</p>
                 {P_recessionData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
@@ -771,11 +893,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Bleeding</p>
+                <p className="w-[100px]">Bleeding</p>
                 {P_BleedingData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{ flex: 1 }}
                   >
                     <P_BleedingInput
@@ -789,11 +915,15 @@ export default function LowerTeethCharting() {
               </div>
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
-                <p className="w-[80px]">Plaque</p>
+                <p className="w-[100px]">Plaque</p>
                 {P_PlaqueData.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-center"
+                    className={`flex justify-center ${
+                      arr[index].isSelected === false
+                        ? "opacity-0 pointer-events-none"
+                        : ""
+                    }`}
                     style={{
                       flex: 1,
                     }}
