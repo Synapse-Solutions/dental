@@ -1,9 +1,7 @@
 import React from "react";
 
 const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
-  let array = recessionData
-    .flatMap((item: any) => item.value)
-    .filter((value: string) => parseInt(value, 10) !== 0);
+  let array = recessionData.flatMap((item: any) => item.value);
 
   // array for gaps between points
   const gaps = [
@@ -54,20 +52,14 @@ const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
           const prevPos = positions[index - 1];
           let y1 = prevPos.y + 45;
           let y2 = pos.y + 45;
-          console.log("🚀 ~ {positions.map ~ y1:", {
-            y1,
-            y2,
-            y: prevPos.y,
-            x: pos.y,
-          });
 
           return (
             <line
               key={index}
               x1={prevPos.x + points[index - 1].width / 2}
               x2={pos.x + points[index].width / 2}
-              y1={prevPos.y > 0 ? totalHeight - y1 : totalHeight}
-              y2={pos.y > 0 ? totalHeight - y2 : totalHeight}
+              y1={prevPos.y > 0 ? totalHeight - y1 : totalHeight - y1}
+              y2={pos.y > 0 ? totalHeight - y2 : totalHeight - y2}
               stroke="blue"
               strokeWidth={pos.y ? "1" : "1"}
             />

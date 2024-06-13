@@ -1,124 +1,87 @@
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import React from "react";
 
-interface Props {
-  recessionData: any;
-}
+const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
+  let array = recessionData.flatMap((item: any) => item.value);
+  array = array.map((value: number) => value * -1);
+  // array for gaps between points
+  const gaps = [
+    13, 13, 40, 13, 13, 35, 13, 13, 45, 2, 2, 52, 5, 5, 48, 8, 8, 48, 5, 5, 45,
+    8, 8, 50, 8, 8, 45, 5, 5, 50, 8, 8, 45, 6, 6, 50, 5, 5, 40, 15, 15, 35, 13,
+    13, 35, 13, 13,
+  ];
+  const points = array.map((height: any, index: number) => ({
+    width: 5,
+    height: parseInt(height, 10) * 3,
+    gap: gaps[index],
+  }));
 
-const ChartLineBlue = (props: Props) => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<any>(null);
+  // Calculate positions for the points
+  const positions: any = [];
+  let currentX = 0;
+  points.forEach((point: any) => {
+    positions.push({ x: currentX, y: point.height });
+    currentX += point.width + point.gap;
+  });
 
-  const invertedData = props.recessionData.flatMap((item: any) =>
-    item.value.map((val: number) => -val)
-  );
-  const data = {
-    labels: props.recessionData.flatMap((item: any) => item.value),
-    datasets: [
-      {
-        label: "Dataset 1",
-        data: invertedData,
-        borderColor: "green",
-        borderWidth: 2,
-        pointRadius: 0,
-        tension: 0.4,
-        // fill: origin,
-      },
-    ],
-  };
-
-  useEffect(() => {
-    const resizeChart = () => {
-      if (chartRef.current) {
-        chartRef.current.width =
-          chartRef.current.parentElement?.offsetWidth || window.innerWidth;
-        chartRef.current.height =
-          chartRef.current.parentElement?.offsetHeight || 400;
-      }
-    };
-
-    resizeChart();
-
-    if (chartRef.current) {
-      const ctx: any = chartRef.current.getContext("2d");
-
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-
-      chartInstance.current = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: data.labels,
-          datasets: data.datasets.map((dataset) => ({
-            ...dataset,
-            fill: origin,
-          })),
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-          },
-          scales: {
-            x: {
-              display: false,
-              grid: {
-                display: false,
-              },
-            },
-            y: {
-              display: false,
-              grid: {
-                display: false,
-              },
-              beginAtZero: true,
-              suggestedMax: 30,
-              suggestedMin: -30,
-            },
-          },
-          elements: {
-            line: {
-              borderWidth: 2,
-            },
-          },
-          responsive: true,
-          maintainAspectRatio: false,
-        },
-      });
-    }
-
-    window.addEventListener("resize", resizeChart);
-
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-      window.removeEventListener("resize", resizeChart);
-    };
-  }, [data]);
+  // Calculate the total height needed for positioning
+  const totalHeight = 90; // Height of the container
 
   return (
     <div
       style={{
-        width: "95%",
-        height: "170px",
-        marginLeft: "100px",
-        zIndex: 30,
+        position: "relative",
+        width: "100%",
+        height: `${60}px`,
+        marginLeft: "120px",
+        zIndex: 99,
       }}
     >
-      <canvas
-        ref={chartRef}
+      <svg
+        width="100%"
+        height={`${totalHeight}px`}
         style={{
-          display: "block",
-          width: "90%",
-          height: "100%",
+          position: "absolute",
+          bottom: -45,
+          left: 0,
+          zIndex: 99,
+          // backgroundColor: "rgb(0,0,0,0.5)",
         }}
-      />
+      >
+        {positions.map((pos: any, index: number) => {
+          if (index === 0) return null;
+          const prevPos = positions[index - 1];
+          let y1 = prevPos.y + 45;
+          let y2 = pos.y + 45;
+
+          return (
+            <line
+              key={index}
+              x1={prevPos.x + points[index - 1].width / 2}
+              x2={pos.x + points[index].width / 2}
+              y1={prevPos.y > 0 ? totalHeight - y1 : totalHeight - y1}
+              y2={pos.y > 0 ? totalHeight - y2 : totalHeight - y2}
+              stroke="blue"
+              strokeWidth={pos.y ? "1" : "1"}
+            />
+          );
+        })}
+      </svg>
+      {points.map((point: any, index: number) => {
+        console.log("🚀 ~ {points.map ~ point:", point);
+        return (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              left: `${positions[index].x}px`,
+              bottom: point.height > 0 ? 0 : point.height,
+              width: `${point.width}px`,
+              height: `${Math.abs(point.height)}px`,
+              backgroundColor: "blue",
+            }}
+          ></div>
+        );
+      })}
     </div>
   );
 };

@@ -493,10 +493,10 @@ export default function LowerTeethCharting() {
                   className={`absolute bottom-0 left-0 w-full bg-[#f7dee1] h-[84px] z-0`}
                 ></div>
                 {/* <div className="absolute bottom-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div> */}
-                <div className="absolute bottom-0 h-[80px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[70px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute bottom-0 h-[105px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[70px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (
@@ -710,12 +710,13 @@ export default function LowerTeethCharting() {
                 <div style={{ width: "100px" }}></div>
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] h-[84px] z-0"></div>
                 <div className="absolute bottom-[84px] left-0 w-full z-20 bg-red-500 h-[2px]"></div>
-                <div className="absolute bottom-0 h-[84px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[65px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={P_PocketDepthData} />
                 </div>
-                <div className="absolute bottom-0 h-[175px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[65px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
+
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}

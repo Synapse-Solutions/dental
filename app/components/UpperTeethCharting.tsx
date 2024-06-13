@@ -270,7 +270,7 @@ export default function UpperTeethCharting() {
       <HeaderComponent />
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
-        <div className="w-[1400px]">
+        <div className="max-w-[1400px]">
           <div className="w-full bg-white rounded-md py-3">
             <div className="w-full flex justify-between items-center p-5">
               <input type="date" />
@@ -706,9 +706,10 @@ export default function UpperTeethCharting() {
                 <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={P_PocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[175px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
+
                 {lowerTeeths.map((item, index) => (
                   <div
                     key={index}

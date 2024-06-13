@@ -1,9 +1,7 @@
 import React from "react";
 
 const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
-  let array = pocketDepthData
-    .flatMap((item: any) => item.value)
-    .filter((value: string) => parseInt(value, 10) !== 0);
+  let array = pocketDepthData.flatMap((item: any) => item.value);
 
   // array for gaps between points
   const gaps = [
@@ -50,15 +48,16 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
         {positions.map((pos: any, index: number) => {
           if (index === 0) return null;
           const prevPos = positions[index - 1];
+
           return (
             <line
               key={index}
               x1={prevPos.x + points[index - 1].width / 2}
-              y1={totalHeight - prevPos.y} // Adjust y coordinate to position at the bottom
+              y1={prevPos.y ? totalHeight - prevPos.y : totalHeight}
               x2={pos.x + points[index].width / 2}
-              y2={totalHeight - pos.y} // Adjust y coordinate to position at the bottom
+              y2={pos.y ? totalHeight - pos.y : totalHeight}
               stroke="red"
-              strokeWidth={pos.y ? "1" : "0"}
+              strokeWidth={pos.y ? "1" : "1"}
             />
           );
         })}
