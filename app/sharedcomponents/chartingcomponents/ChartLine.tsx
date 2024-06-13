@@ -1,138 +1,83 @@
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import React from "react";
 
-interface Props {
-  pocketDepthData: any;
-}
+const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
+  const totalWidth = 400; // total space in pixels
+  const points = [
+    { width: 10, height: 30, gap: 0 },
+    { width: 10, height: 40, gap: 0 },
+    { width: 10, height: 50, gap: 20 },
+    { width: 10, height: 30, gap: 10 },
+    { width: 10, height: 20, gap: 10 },
+    { width: 10, height: 40, gap: 10 },
+    { width: 10, height: 20, gap: 10 },
+    // Add more points with their respective widths, heights, and gaps
+  ];
 
-const CharLine = (props: Props) => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<any>(null);
+  // Calculate the total occupied space by points and gaps
+  const occupiedWidth = points.reduce(
+    (acc, point) => acc + point.width + point.gap,
+    0
+  );
 
-  // const add one extra value after third index
-  const processData = () => {
-    // Validate and process data, inserting null values for gaps
-    return props.pocketDepthData.flatMap((item: any, index: number) => {
-      if (item && Array.isArray(item.value)) {
-        const processedValues = item.value.map(
-          (val: string) => Number(val) * 1.5
-        ); // Convert values to numbers and adjust if needed
-        const nullArray = Array(5 - (processedValues.length % 5)).fill(NaN); // Calculate how many nulls to insert
-        return [...processedValues, ...nullArray];
-      }
-      return [NaN]; // Handle invalid data gracefully
-    });
-  };
+  // Validate if the occupiedWidth does not exceed totalWidth
+  if (occupiedWidth > totalWidth) {
+    console.error("The total occupied width exceeds the available width.");
+    return null;
+  }
 
-  const data = {
-    labels: props.pocketDepthData.flatMap((item: any) => item.value),
-    datasets: [
-      {
-        label: "Dataset 1",
-        data: props.pocketDepthData.flatMap((item: any) => item.value),
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 2,
-        pointRadius: 0, // Hide points
-        tension: 0,
-        snapsGap: true,
-        pointStyle: "rectRot",
-      },
-    ],
-  };
-
-  useEffect(() => {
-    const resizeChart = () => {
-      if (chartRef.current) {
-        chartRef.current.width =
-          chartRef.current.parentElement?.offsetWidth || window.innerWidth;
-        chartRef.current.height =
-          chartRef.current.parentElement?.offsetHeight || 400;
-      }
-    };
-
-    resizeChart();
-
-    if (chartRef.current) {
-      const ctx: any = chartRef.current.getContext("2d");
-
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-
-      chartInstance.current = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: data.labels,
-          datasets: data.datasets.map((dataset) => ({
-            ...dataset,
-            fill: false,
-          })),
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-          },
-          scales: {
-            x: {
-              display: false,
-              grid: {
-                display: false,
-              },
-            },
-            y: {
-              display: false,
-              grid: {
-                display: false,
-              },
-              beginAtZero: true,
-              suggestedMax: 100,
-            },
-          },
-          elements: {
-            line: {
-              borderWidth: 2,
-            },
-          },
-          responsive: true,
-          maintainAspectRatio: false,
-        },
-      });
-    }
-
-    window.addEventListener("resize", resizeChart);
-
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-      window.removeEventListener("resize", resizeChart);
-    };
-  }, [data]);
+  // Calculate positions for the points
+  const positions: any = [];
+  let currentX = 0;
+  points.forEach((point) => {
+    positions.push({ x: currentX, y: point.height });
+    currentX += point.width + point.gap;
+  });
 
   return (
     <div
       style={{
-        width: "95%",
-        height: "200px",
-        marginLeft: "100px",
-        zIndex: 30,
+        position: "relative",
+        width: `${totalWidth}px`,
+        height: "60px",
+        border: "1px solid black",
       }}
     >
-      <canvas
-        ref={chartRef}
-        style={{
-          display: "block",
-          width: "90%",
-          height: "100%",
-        }}
-      />
+      <svg
+        width="100%"
+        height="100%"
+        style={{ position: "absolute", top: 0, left: 0 }}
+      >
+        {positions.map((pos: any, index: number) => {
+          if (index === 0) return null;
+          const prevPos = positions[index - 1];
+          return (
+            <line
+              key={index}
+              x1={prevPos.x + points[index - 1].width / 2}
+              y1={60 - prevPos.y}
+              x2={pos.x + points[index].width / 2}
+              y2={60 - pos.y}
+              stroke="black"
+              strokeWidth="2"
+            />
+          );
+        })}
+      </svg>
+      {points.map((point, index) => (
+        <div
+          key={index}
+          style={{
+            position: "absolute",
+            left: `${positions[index].x}px`,
+            bottom: "0",
+            width: `${point.width}px`,
+            height: `${point.height}px`,
+            backgroundColor: "black",
+          }}
+        ></div>
+      ))}
     </div>
   );
 };
 
-export default CharLine;
+export default ChartLine;
