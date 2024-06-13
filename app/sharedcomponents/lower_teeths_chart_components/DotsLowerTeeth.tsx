@@ -1147,14 +1147,14 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"130px"}
-                  left="12px"
+                  left="18px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"130px"}
-                  left="12px"
+                  left="18px"
                 />
               )}
 
@@ -1316,14 +1316,14 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"130px"}
-                  left="10px"
+                  left="20px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"130px"}
-                  left="10px"
+                  left="20px"
                 />
               )}
 
@@ -1485,14 +1485,14 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"140px"}
-                  left="15px"
+                  left="28px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"140px"}
-                  left="15px"
+                  left="28px"
                 />
               )}
 
@@ -1654,14 +1654,14 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"130px"}
-                  left="10px"
+                  left="27px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"130px"}
-                  left="10px"
+                  left="27px"
                 />
               )}
 
@@ -1763,14 +1763,14 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"130px"}
-                  left="10px"
+                  left="30px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"130px"}
-                  left="10px"
+                  left="30px"
                 />
               )}
 
@@ -1872,28 +1872,28 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"130px"}
-                  left="10px"
+                  left="30px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"130px"}
-                  left="10px"
+                  left="30px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
                   top={"130px"}
-                  left="35px"
+                  left="58px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
                   top={"130px"}
-                  left="35px"
+                  left="58px"
                 />
               )}
               {props.clicks[props.index].value3 === 0 ? (
@@ -1994,28 +1994,28 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"125px"}
-                  left="5px"
+                  left="25px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"125px"}
-                  left="5px"
+                  left="25px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"128px"}
-                  left="25px"
+                  top={"125px"}
+                  left="50px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"128px"}
-                  left="25px"
+                  top={"125px"}
+                  left="50px"
                 />
               )}
               {props.clicks[props.index].value3 === 0 ? (
@@ -2116,28 +2116,28 @@ export default function DotsLowerTeeth(props: Props) {
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("1")}
                   top={"120px"}
-                  left="8px"
+                  left="40px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("1")}
                   top={"120px"}
-                  left="8px"
+                  left="40px"
                 />
               )}
               {props.clicks[props.index].value2 === 1 ? (
                 <GloblalVisibleDiv
                   onClickVisibleDiv={() => onClickVisibleDiv("2")}
-                  top={"125px"}
-                  left="27px"
+                  top={"120px"}
+                  left="60px"
                   color="#cfb53b"
                 />
               ) : (
                 <GloblalDiv
                   onClick={() => onClick("2")}
-                  top={"125px"}
-                  left="27px"
+                  top={"120px"}
+                  left="60px"
                 />
               )}
               {props.clicks[props.index].value3 === 0 ? (
@@ -2904,7 +2904,7 @@ export default function DotsLowerTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="15px"
                 />
               ) : (
@@ -2915,7 +2915,7 @@ export default function DotsLowerTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="15px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -2934,7 +2934,7 @@ export default function DotsLowerTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="52px"
                 />
               ) : (
@@ -2945,7 +2945,7 @@ export default function DotsLowerTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="45px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
@@ -2968,7 +2968,7 @@ export default function DotsLowerTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 5 })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="15px"
                 />
               ) : (
@@ -2979,7 +2979,7 @@ export default function DotsLowerTeeth(props: Props) {
                       value: 5,
                     })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="15px"
                   isborder={
                     props.clicks[props.index].value5 === 4 ? true : false
@@ -2998,7 +2998,7 @@ export default function DotsLowerTeeth(props: Props) {
                   onClick={() =>
                     props?.setCavityModal({ index: props.index, value: 6 })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="52px"
                 />
               ) : (
@@ -3009,7 +3009,7 @@ export default function DotsLowerTeeth(props: Props) {
                       value: 6,
                     })
                   }
-                  top={"45px"}
+                  top={"25px"}
                   left="52px"
                   isborder={
                     props.clicks[props.index].value6 === 4 ? true : false
