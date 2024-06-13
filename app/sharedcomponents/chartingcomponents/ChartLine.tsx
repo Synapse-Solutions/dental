@@ -1,29 +1,15 @@
 import React from "react";
 
 const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
-  const totalWidth = 400; // total space in pixels
   const points = [
-    { width: 10, height: 30, gap: 0 },
-    { width: 10, height: 40, gap: 0 },
+    { width: 10, height: 30, gap: 4 },
+    { width: 10, height: 40, gap: 4 },
     { width: 10, height: 50, gap: 20 },
     { width: 10, height: 30, gap: 10 },
     { width: 10, height: 20, gap: 10 },
     { width: 10, height: 40, gap: 10 },
     { width: 10, height: 20, gap: 10 },
-    // Add more points with their respective widths, heights, and gaps
   ];
-
-  // Calculate the total occupied space by points and gaps
-  const occupiedWidth = points.reduce(
-    (acc, point) => acc + point.width + point.gap,
-    0
-  );
-
-  // Validate if the occupiedWidth does not exceed totalWidth
-  if (occupiedWidth > totalWidth) {
-    console.error("The total occupied width exceeds the available width.");
-    return null;
-  }
 
   // Calculate positions for the points
   const positions: any = [];
@@ -37,9 +23,10 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
     <div
       style={{
         position: "relative",
-        width: `${totalWidth}px`,
+        width: `100%`,
         height: "60px",
-        border: "1px solid black",
+        marginLeft: "120px",
+        zIndex: 99,
       }}
     >
       <svg
