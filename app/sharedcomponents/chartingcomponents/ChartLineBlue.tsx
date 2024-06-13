@@ -74,7 +74,7 @@ const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
             left: `${positions[index].x}px`,
             bottom: point.height > 0 ? 0 : point.height,
             width: `${point.width}px`,
-            height: `${point.height}px`,
+            height: `${Math.abs(point.height)}px`,
             backgroundColor: "blue",
           }}
         ></div>
