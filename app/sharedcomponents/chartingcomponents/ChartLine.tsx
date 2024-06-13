@@ -70,7 +70,7 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
             left: `${positions[index].x}px`,
             bottom: "0",
             width: `${point.width}px`,
-            height: `${point.height}px`,
+            height: `${Math.abs(point.height)}px`,
             backgroundColor: "red",
           }}
         ></div>

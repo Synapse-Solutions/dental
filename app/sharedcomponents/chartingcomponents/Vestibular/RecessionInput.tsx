@@ -6,21 +6,38 @@ interface Props {
   setRecessionData: any;
   index: number;
 }
+
 const RecessionInput = (props: Props) => {
   const [inputValues, setInputValues] = useState(
     Array(props.value.length).fill("0")
   );
 
   const handleInputChange = (value: string, index: number) => {
-    const sanitizedValue = Math.min(Math.max(parseInt(value, 10), -15), 15);
-
     const newInputValues = [...inputValues];
-    newInputValues[index] = String(sanitizedValue);
+
+    // Check if the input value is "-" or empty
+    if (value === "-" || value === "") {
+      newInputValues[index] = value;
+    } else {
+      // Parse the input value, default to 0 if NaN
+      let sanitizedValue = parseInt(value, 10);
+
+      // Remove leading zeroes unless the value is exactly "0"
+      if (inputValues[index] === "0") {
+        sanitizedValue = parseInt(value.replace(/^0+/, ""), 10);
+      }
+
+      // Constrain the value between -15 and 15
+      sanitizedValue = Math.min(Math.max(sanitizedValue, -15), 15);
+
+      newInputValues[index] = String(sanitizedValue);
+    }
+
     setInputValues(newInputValues);
 
     props.setRecessionData((prevState: any) => {
       const newState = [...prevState];
-      newState[props.index].value[index] = sanitizedValue;
+      newState[props.index].value[index] = newInputValues[index];
       return newState;
     });
   };
