@@ -493,7 +493,7 @@ export default function UpperTeethCharting() {
                 <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <CharLine pocketDepthData={pocketDepthData} />
                 </div>
-                <div className="absolute top-0 h-[175px] w-full left-0 flex items-end ">
+                <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
                 {upperTeeths.map((item, index) => (

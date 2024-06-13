@@ -1,38 +1,51 @@
 import React from "react";
 
 const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
-  const points = [
-    { width: 10, height: 30, gap: 4 },
-    { width: 10, height: 40, gap: 4 },
-    { width: 10, height: 50, gap: 20 },
-    { width: 10, height: 30, gap: 10 },
-    { width: 10, height: 20, gap: 10 },
-    { width: 10, height: 40, gap: 10 },
-    { width: 10, height: 20, gap: 10 },
+  let array = pocketDepthData
+    .flatMap((item: any) => item.value)
+    .filter((value: string) => parseInt(value, 10) !== 0);
+
+  // array for gaps between points
+  const gaps = [
+    13, 13, 40, 13, 13, 35, 13, 13, 45, 2, 2, 52, 5, 5, 48, 8, 8, 48, 5, 5, 45,
+    8, 8, 50, 8, 8, 45, 5, 5, 50, 8, 8, 45, 6, 6, 50, 5, 5, 40, 15, 15, 35, 13,
+    13, 35, 13, 13,
   ];
+  const points = array.map((height: any, index: number) => ({
+    width: 5,
+    height: parseInt(height, 10) * 3,
+    gap: gaps[index],
+  }));
 
   // Calculate positions for the points
   const positions: any = [];
   let currentX = 0;
-  points.forEach((point) => {
+  points.forEach((point: any) => {
     positions.push({ x: currentX, y: point.height });
     currentX += point.width + point.gap;
   });
+
+  // Calculate the total height needed for positioning
+  const totalHeight = 60; // Height of the container
 
   return (
     <div
       style={{
         position: "relative",
-        width: `100%`,
-        height: "60px",
+        width: "100%",
+        height: `${totalHeight}px`,
         marginLeft: "120px",
         zIndex: 99,
       }}
     >
       <svg
         width="100%"
-        height="100%"
-        style={{ position: "absolute", top: 0, left: 0 }}
+        height={`${totalHeight}px`}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+        }}
       >
         {positions.map((pos: any, index: number) => {
           if (index === 0) return null;
@@ -41,16 +54,16 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
             <line
               key={index}
               x1={prevPos.x + points[index - 1].width / 2}
-              y1={60 - prevPos.y}
+              y1={totalHeight - prevPos.y} // Adjust y coordinate to position at the bottom
               x2={pos.x + points[index].width / 2}
-              y2={60 - pos.y}
-              stroke="black"
-              strokeWidth="2"
+              y2={totalHeight - pos.y} // Adjust y coordinate to position at the bottom
+              stroke="red"
+              strokeWidth={pos.y ? "1" : "0"}
             />
           );
         })}
       </svg>
-      {points.map((point, index) => (
+      {points.map((point: any, index: number) => (
         <div
           key={index}
           style={{
@@ -59,7 +72,7 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
             bottom: "0",
             width: `${point.width}px`,
             height: `${point.height}px`,
-            backgroundColor: "black",
+            backgroundColor: "red",
           }}
         ></div>
       ))}
