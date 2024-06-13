@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
@@ -121,28 +121,68 @@ const array = [
     isSelected: true,
   },
 ];
-export default function UpperTeethCharting() {
-  const [upperTeeths, setUpperTeeths] = useState(upperTeethArray);
-  const [arr, setarr] = useState(array);
-  const [lowerTeeths, setLowerTeeths] = useState(lowerTeethArray);
-  const [occTeeths, setOccTeeths] = useState(occImagesArray);
-  const [implantData, setImplantData] = useState(ImplantArray);
-  const [furcationData, setFurcationData] = useState(FurcationArray);
-  const [P_furcationData, setP_FurcationData] = useState(P_FurcationArray);
-  const [bleedingData, setBleedingData] = useState(BleedingArray);
-  const [plaqueData, setPlaqueData] = useState(PlaqueArray);
-  const [P_BleedingData, setP_BleedingData] = useState(P_BleedingArray);
-  const [P_PlaqueData, setP_PlaqueData] = useState(P_PlaqueArray);
-  const [pocketDepthData, setPocketDepthData] = useState(PocketDepthArray);
-  const [P_PocketDepthData, setP_PocketDepthData] =
-    useState(P_PocketDepthArray);
+interface Props {
+  setUpperTeethsData: any;
+  upperTeethsData: any;
+  isUserExist: boolean;
+}
+export default function UpperTeethCharting(props: Props) {
+  const [upperTeeths, setUpperTeeths] = useState(
+    props.isUserExist ? props.upperTeethsData.upperTeethArray : upperTeethArray
+  );
+  const [arr, setarr] = useState(
+    props.isUserExist ? props.upperTeethsData.arr : array
+  );
+  const [lowerTeeths, setLowerTeeths] = useState(
+    props.isUserExist ? props.upperTeethsData.lowerTeeths : lowerTeethArray
+  );
+  const [occTeeths, setOccTeeths] = useState(
+    props.isUserExist ? props.upperTeethsData.occTeeths : occImagesArray
+  );
+  const [implantData, setImplantData] = useState(
+    props.isUserExist ? props.upperTeethsData.implantData : ImplantArray
+  );
+  const [furcationData, setFurcationData] = useState(
+    props.isUserExist ? props.upperTeethsData.furcationData : FurcationArray
+  );
+  const [P_furcationData, setP_FurcationData] = useState(
+    props.isUserExist ? props.upperTeethsData.P_furcationData : P_FurcationArray
+  );
+  const [bleedingData, setBleedingData] = useState(
+    props.isUserExist ? props.upperTeethsData.bleedingData : BleedingArray
+  );
+  const [plaqueData, setPlaqueData] = useState(
+    props.isUserExist ? props.upperTeethsData.plaqueData : PlaqueArray
+  );
+  const [P_BleedingData, setP_BleedingData] = useState(
+    props.isUserExist ? props.upperTeethsData.P_BleedingData : P_BleedingArray
+  );
+  const [P_PlaqueData, setP_PlaqueData] = useState(
+    props.isUserExist ? props.upperTeethsData.P_PlaqueData : P_PlaqueArray
+  );
+  const [pocketDepthData, setPocketDepthData] = useState(
+    props.isUserExist ? props.upperTeethsData.pocketDepthData : PocketDepthArray
+  );
+  const [P_PocketDepthData, setP_PocketDepthData] = useState(
+    props.isUserExist
+      ? props.upperTeethsData.P_PocketDepthData
+      : P_PocketDepthArray
+  );
 
-  const [recessionData, setRecessionData] = useState(RecessionArray);
-  const [P_recessionData, setP_RecessionData] = useState(P_RecessionArray);
+  const [recessionData, setRecessionData] = useState(
+    props.isUserExist ? props.upperTeethsData.recessionData : RecessionArray
+  );
+  const [P_recessionData, setP_RecessionData] = useState(
+    props.isUserExist ? props.upperTeethsData.P_recessionData : P_RecessionArray
+  );
   const [selectedTooth, setSelectedTooth] = useState<any>(null);
-  const [clicks, setClicks] = useState<any>(clicksArray);
+  const [clicks, setClicks] = useState<any>(
+    props.isUserExist ? props.upperTeethsData.clicks : clicksArray
+  );
   const [cavityModal, setCavityModal] = useState<any>(null);
-  const [mobilityData, setMobilityData] = useState(MobilityArray);
+  const [mobilityData, setMobilityData] = useState(
+    props.isUserExist ? props.upperTeethsData.mobilityData : MobilityArray
+  );
 
   // **** HANDLE IMPLANT CHANGE **** ############################
   const handleImplantChange = (item: any, index: number, value: any) => {
@@ -259,36 +299,57 @@ export default function UpperTeethCharting() {
     setCavityModal(null);
   };
 
+  useEffect(() => {
+    props.setUpperTeethsData({
+      arr,
+      mobilityData,
+      implantData,
+      furcationData,
+      pocketDepthData,
+      recessionData,
+      bleedingData,
+      plaqueData,
+      upperTeeths,
+      occTeeths,
+      lowerTeeths,
+      P_furcationData,
+      P_PocketDepthData,
+      P_recessionData,
+      P_BleedingData,
+      P_PlaqueData,
+      clicks,
+    });
+  }, [
+    arr,
+    mobilityData,
+    implantData,
+    furcationData,
+    pocketDepthData,
+    recessionData,
+    bleedingData,
+    plaqueData,
+    upperTeeths,
+    occTeeths,
+    lowerTeeths,
+    P_furcationData,
+    P_PocketDepthData,
+    P_recessionData,
+    P_BleedingData,
+    P_PlaqueData,
+    clicks,
+  ]);
+
   const onClickImplement = (index: number) => {
     let copyArray = [...arr];
     copyArray[index].isSelected = !copyArray[index].isSelected;
     setarr(copyArray);
   };
-
   return (
     <div className="px-[1%] text-black">
-      <HeaderComponent />
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
         <div className="max-w-[1400px]">
           <div className="w-full bg-white rounded-md py-3">
-            <div className="w-full flex justify-between items-center p-5">
-              <input type="date" />
-              <div className="flex gap-3 items-center text-[14px]">
-                <div className="flex gap-2 items-center">
-                  <p>Chart Setting</p>
-                  <SettingsOutlinedIcon fontSize="small" />
-                </div>
-                <div className="flex gap-2 items-center">
-                  <p>Export</p>
-                  <PictureAsPdfOutlinedIcon fontSize="small" />
-                </div>
-                <div className="flex gap-2 items-center">
-                  <p>Save</p>
-                  <FolderCopyOutlinedIcon fontSize="small" />
-                </div>
-              </div>
-            </div>
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
                 <button className="w-[100px]"></button>
@@ -496,7 +557,7 @@ export default function UpperTeethCharting() {
                 <div className="absolute top-0 h-[84px] w-full left-0 flex items-end ">
                   <ChartLineBlue recessionData={recessionData} />
                 </div>
-                {upperTeeths.map((item, index) => (
+                {upperTeeths.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${

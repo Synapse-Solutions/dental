@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
@@ -121,7 +121,10 @@ const array = [
     isSelected: true,
   },
 ];
-export default function LowerTeethCharting() {
+interface Props {
+  setLowerTeethsData: any;
+}
+export default function LowerTeethCharting(props: Props) {
   const [upperTeeths, setUpperTeeths] = useState(upperTeethArray);
   const [arr, setarr] = useState(array);
   const [lowerTeeths, setLowerTeeths] = useState(lowerTeethArray);
@@ -268,30 +271,50 @@ export default function LowerTeethCharting() {
     setarr(copyArray);
   };
 
+  useEffect(() => {
+    props.setLowerTeethsData({
+      arr,
+      mobilityData,
+      implantData,
+      furcationData,
+      pocketDepthData,
+      recessionData,
+      bleedingData,
+      plaqueData,
+      upperTeeths,
+      occTeeths,
+      lowerTeeths,
+      P_furcationData,
+      P_PocketDepthData,
+      P_recessionData,
+      P_BleedingData,
+      P_PlaqueData,
+    });
+  }, [
+    arr,
+    mobilityData,
+    implantData,
+    furcationData,
+    pocketDepthData,
+    recessionData,
+    bleedingData,
+    plaqueData,
+    upperTeeths,
+    occTeeths,
+    lowerTeeths,
+    P_furcationData,
+    P_PocketDepthData,
+    P_recessionData,
+    P_BleedingData,
+    P_PlaqueData,
+  ]);
+
   return (
     <div className="px-[1%] text-black">
-      <HeaderComponent />
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
         <div className="w-[1400px]">
           <div className="w-full bg-white rounded-md py-3">
-            <div className="w-full flex justify-between items-center p-5">
-              <input type="date" />
-              <div className="flex gap-3 items-center text-[14px]">
-                <div className="flex gap-2 items-center">
-                  <p>Chart Setting</p>
-                  <SettingsOutlinedIcon fontSize="small" />
-                </div>
-                <div className="flex gap-2 items-center">
-                  <p>Export</p>
-                  <PictureAsPdfOutlinedIcon fontSize="small" />
-                </div>
-                <div className="flex gap-2 items-center">
-                  <p>Save</p>
-                  <FolderCopyOutlinedIcon fontSize="small" />
-                </div>
-              </div>
-            </div>
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
                 <button className="w-[100px]"></button>
