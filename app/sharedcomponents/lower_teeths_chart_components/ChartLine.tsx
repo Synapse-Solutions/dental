@@ -67,7 +67,6 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
         })}
       </svg>
       {points.map((point: any, index: number) => {
-        console.log("🚀 ~ {points.map ~ point:", point);
         return (
           <div
             key={index}

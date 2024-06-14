@@ -67,7 +67,6 @@ const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
         })}
       </svg>
       {points.map((point: any, index: number) => {
-        console.log("🚀 ~ {points.map ~ point:", point);
         return (
           <div
             key={index}

@@ -13,13 +13,16 @@ import { useRouter } from "next/router";
 export default function page() {
   const pathname = usePathname();
   const router = useSearchParams();
-  console.log("🚀 ~ page ~ pathname:", router.get("id"));
 
   const [upperTeethsData, setUpperTeethsData] = useState(null);
   const [lowerTeethsData, setLowerTeethsData] = useState(null);
-  const [isUserExist, setIsUserExist] = useState(false);
+  const [isUserExist, setIsUserExist] = useState<any>(null);
 
   const onSaveData = async () => {
+    if (isUserExist) {
+      updateData();
+      return;
+    }
     let payload = {
       upperTeethsData,
       lowerTeethsData,
@@ -39,10 +42,32 @@ export default function page() {
       console.log("🚀 ~ onSaveData ~ error:", error);
     }
   };
+
+  const updateData = async () => {
+    let payload = {
+      upperTeethsData,
+      lowerTeethsData,
+    };
+    try {
+      const response = await axios.put(
+        "https://daniyal.emresaracoglu.com/update.php?id=" + router.get("id"),
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("🚀 ~ onSaveData ~ response:", response.data);
+    } catch (error) {
+      console.log("🚀 ~ onSaveData ~ error:", error);
+    }
+  };
   useEffect(() => {
     if (router.get("id")) {
-      setIsUserExist(true);
       getData();
+    } else {
+      setIsUserExist(false);
     }
   }, []);
   const getData = async () => {
@@ -52,10 +77,14 @@ export default function page() {
       );
       setUpperTeethsData(response.data.upperTeethsData);
       setLowerTeethsData(response.data.lowerTeethsData);
+      setIsUserExist(true);
     } catch (error) {
       console.log("🚀 ~ getData ~ error:", error);
     }
   };
+  if (isUserExist === null) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="max-w-[1400px]">
       <HeaderComponent />
@@ -87,7 +116,11 @@ export default function page() {
       />
       ;
       <div className="mt-[50px]">
-        <LowerTeethCharting setLowerTeethsData={setLowerTeethsData} />
+        <LowerTeethCharting
+          setLowerTeethsData={setLowerTeethsData}
+          isUserExist={isUserExist}
+          lowerTeethsData={lowerTeethsData}
+        />
       </div>
     </div>
   );

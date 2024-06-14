@@ -127,8 +127,9 @@ interface Props {
   isUserExist: boolean;
 }
 export default function UpperTeethCharting(props: Props) {
+  console.log("IUSEREXIST+++", props.isUserExist);
   const [upperTeeths, setUpperTeeths] = useState(
-    props.isUserExist ? props.upperTeethsData.upperTeethArray : upperTeethArray
+    props.isUserExist ? props.upperTeethsData.upperTeeths : upperTeethArray
   );
   const [arr, setarr] = useState(
     props.isUserExist ? props.upperTeethsData.arr : array
@@ -353,7 +354,7 @@ export default function UpperTeethCharting(props: Props) {
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
                 <button className="w-[100px]"></button>
-                {array.map((item, index) => (
+                {arr.map((item: any, index: number) => (
                   <button
                     onClick={() => onClickImplement(index)}
                     style={{
@@ -377,7 +378,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Mobility */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Mobility</p>
-                {mobilityData.map((item, index) => (
+                {mobilityData.map((item: any, index: number) => (
                   <div
                     key={index}
                     style={{ flex: 1 }}
@@ -398,7 +399,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Implant */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Implant</p>
-                {implantData.map((item, index) => (
+                {implantData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -423,7 +424,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Furcation */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Furcation</p>
-                {furcationData.map((item, index) => (
+                {furcationData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -449,7 +450,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Pocket Depth</p>
-                {pocketDepthData.map((item, index) => (
+                {pocketDepthData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -471,7 +472,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Recession</p>
-                {recessionData.map((item, index) => (
+                {recessionData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -495,7 +496,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Bleeding</p>
-                {bleedingData.map((item, index) => (
+                {bleedingData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -517,7 +518,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Plaque</p>
-                {plaqueData.map((item, index) => (
+                {plaqueData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -570,11 +571,12 @@ export default function UpperTeethCharting(props: Props) {
                     <div
                       className={`absolute top-0 left-0 h-[84px] w-full ${
                         bleedingData[index].value.every(
-                          (item) => item !== "grey"
+                          (item: any) => item !== "grey"
                         )
                           ? "bg-[#f75555]"
                           : bleedingData[index]?.value.some(
-                              (item) => item === "red" || item === "#dbc027"
+                              (item: any) =>
+                                item === "red" || item === "#dbc027"
                             )
                           ? `bg-[#ffc1c1]`
                           : ""
@@ -659,7 +661,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* OCC ************ */}
               <div className="flex justify-between relative w-full gap-3 mt-5 text-[14px]overflow-hidde bg-gradient-to-b from-[#fdf6f7] to-[#f7dee1] z-30">
                 <div style={{ width: "100px" }}></div>
-                {occTeeths.map((item, index) => (
+                {occTeeths.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center h-[70px] z-10 relative ${
@@ -667,10 +669,12 @@ export default function UpperTeethCharting(props: Props) {
                         ? "opacity-0 pointer-events-none"
                         : ""
                     } ${
-                      bleedingData[index].value.every((item) => item !== "grey")
+                      bleedingData[index].value.every(
+                        (item: any) => item !== "grey"
+                      )
                         ? "bg-[#f75555]"
                         : bleedingData[index]?.value.some(
-                            (item) => item === "red" || item === "#dbc027"
+                            (item: any) => item === "red" || item === "#dbc027"
                           )
                         ? `bg-[#ffc1c1]`
                         : ""
@@ -771,7 +775,7 @@ export default function UpperTeethCharting(props: Props) {
                   <ChartLineBlue recessionData={P_recessionData} />
                 </div>
 
-                {lowerTeeths.map((item, index) => (
+                {lowerTeeths.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center h-[150px] relative ${
@@ -784,11 +788,12 @@ export default function UpperTeethCharting(props: Props) {
                     <div
                       className={`absolute top-0 left-0 h-[84px] w-full ${
                         P_BleedingData[index].value.every(
-                          (item) => item !== "grey"
+                          (item: any) => item !== "grey"
                         )
                           ? "bg-[#f75555]"
                           : P_BleedingData[index]?.value.some(
-                              (item) => item === "red" || item === "#dbc027"
+                              (item: any) =>
+                                item === "red" || item === "#dbc027"
                             )
                           ? `bg-[#ffc1c1]`
                           : ""
@@ -865,7 +870,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* ######################## PALATINO  */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Furcation</p>
-                {P_furcationData.map((item, index) => (
+                {P_furcationData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center gap-1 ${
@@ -899,7 +904,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Pocket Depth */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Pocket Depth</p>
-                {P_PocketDepthData.map((item, index) => (
+                {P_PocketDepthData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -921,7 +926,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Recession */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Recession</p>
-                {P_recessionData.map((item, index) => (
+                {P_recessionData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -945,7 +950,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Bleeding */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Bleeding</p>
-                {P_BleedingData.map((item, index) => (
+                {P_BleedingData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
@@ -967,7 +972,7 @@ export default function UpperTeethCharting(props: Props) {
               {/* Plaque */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Plaque</p>
-                {P_PlaqueData.map((item, index) => (
+                {P_PlaqueData.map((item: any, index: number) => (
                   <div
                     key={index}
                     className={`flex justify-center ${
