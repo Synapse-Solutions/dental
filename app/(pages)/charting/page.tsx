@@ -95,7 +95,7 @@ export default function page() {
       <HeaderComponent />
       <div className="w-full flex justify-between items-center p-5">
         <input type="date" />
-        <div className="flex gap-3 items-center text-[14px]">
+        <div className=" text-black flex gap-3 items-center text-[14px]">
           <div className="flex gap-2 items-center">
             <p>Chart Setting</p>
             <SettingsOutlinedIcon fontSize="small" />
