@@ -7,11 +7,9 @@ import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
 import HeaderComponent from "@/app/sharedcomponents/HeaderComponent";
 import axios from "axios";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 export default function page() {
-  const pathname = usePathname();
   const router = useSearchParams();
 
   const [upperTeethsData, setUpperTeethsData] = useState(null);
