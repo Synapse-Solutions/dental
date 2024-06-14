@@ -9,7 +9,6 @@ interface Props {
 const RecessionInput = (props: Props) => {
   const handleInputChange = (value: any, index: number) => {
     const sanitizedValue = Math.min(Math.max(parseInt(value, 10), -15), 15);
-    console.log("🚀 ~ handleInputChange ~ sanitizedValue:", sanitizedValue);
 
     props.setRecessionData((prevState: any) => {
       const newState = [...prevState];

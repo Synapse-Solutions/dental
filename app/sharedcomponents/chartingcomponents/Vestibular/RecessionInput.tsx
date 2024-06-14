@@ -8,9 +8,7 @@ interface Props {
 }
 
 const RecessionInput = (props: Props) => {
-  const [inputValues, setInputValues] = useState(
-    Array(props.value.length).fill("0")
-  );
+  const [inputValues, setInputValues] = useState(props.value);
 
   const handleInputChange = (value: string, index: number) => {
     const newInputValues = [...inputValues];

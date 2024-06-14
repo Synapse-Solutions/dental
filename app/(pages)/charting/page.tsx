@@ -7,10 +7,12 @@ import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
 import HeaderComponent from "@/app/sharedcomponents/HeaderComponent";
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function page() {
-  const router = useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   const [upperTeethsData, setUpperTeethsData] = useState(null);
   const [lowerTeethsData, setLowerTeethsData] = useState(null);
@@ -35,6 +37,9 @@ export default function page() {
           },
         }
       );
+      let id = response.data?.id || "";
+      router.push("/charting?id=" + id);
+      toast.success("Data Saved Successfully");
       console.log("🚀 ~ onSaveData ~ response:", response.data);
     } catch (error) {
       console.log("🚀 ~ onSaveData ~ error:", error);
@@ -48,7 +53,8 @@ export default function page() {
     };
     try {
       const response = await axios.put(
-        "https://daniyal.emresaracoglu.com/update.php?id=" + router.get("id"),
+        "https://daniyal.emresaracoglu.com/update.php?id=" +
+          searchParams.get("id"),
         payload,
         {
           headers: {
@@ -56,13 +62,14 @@ export default function page() {
           },
         }
       );
+      toast.success("Data Updated Successfully");
       console.log("🚀 ~ onSaveData ~ response:", response.data);
     } catch (error) {
       console.log("🚀 ~ onSaveData ~ error:", error);
     }
   };
   useEffect(() => {
-    if (router.get("id")) {
+    if (searchParams.get("id")) {
       getData();
     } else {
       setIsUserExist(false);
@@ -71,7 +78,7 @@ export default function page() {
   const getData = async () => {
     try {
       const response = await axios.get(
-        "https://daniyal.emresaracoglu.com/get.php?id=" + router.get("id")
+        "https://daniyal.emresaracoglu.com/get.php?id=" + searchParams.get("id")
       );
       setUpperTeethsData(response.data.upperTeethsData);
       setLowerTeethsData(response.data.lowerTeethsData);
@@ -101,7 +108,7 @@ export default function page() {
             onClick={onSaveData}
             className="flex gap-2 items-center cursor-pointer"
           >
-            <p>Save</p>
+            <p>{isUserExist ? "Update" : "Save"}</p>
             <FolderCopyOutlinedIcon fontSize="small" />
           </div>
         </div>

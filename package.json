@@ -21,7 +21,8 @@
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@iconify/tailwind": "^1.1.1",
