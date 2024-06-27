@@ -127,7 +127,6 @@ interface Props {
   isUserExist: boolean;
 }
 export default function UpperTeethCharting(props: Props) {
-  console.log("IUSEREXIST+++", props.isUserExist);
   const [upperTeeths, setUpperTeeths] = useState(
     props.isUserExist ? props.upperTeethsData.upperTeeths : upperTeethArray
   );
@@ -217,22 +216,48 @@ export default function UpperTeethCharting(props: Props) {
     setLowerTeeths(updatedLowerTeethArray);
   };
 
+  function replaceSecondSegment(inputStr: any, newSegment: string) {
+    const segments = inputStr.split("/");
+    if (segments.length > 2) {
+      segments[2] = newSegment;
+    }
+    return segments.join("/");
+  }
+
   // **** HANDLE CHANGE CAVITY **** ############################
   const handleChangeCavity = (value: number, index: number) => {
     setSelectedTooth(null);
     const updatedUpperTeethArray = JSON.parse(JSON.stringify(upperTeeths));
     const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
     const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
+    console.log(
+      "first=======",
+      updatedOccTeethArray[index].image,
+      replaceSecondSegment(updatedOccTeethArray[index].image, "row_3")
+    );
     if (value === 1) {
-      updatedOccTeethArray[index].image = "/occImages/row_4/2.webp";
+      // updatedOccTeethArray[index].image = "/occImages/row_4/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_3"
+      );
+      updatedOccTeethArray[index].image.replace("");
       updatedUpperTeethArray[index].cavity = 1;
       updatedLowerTeethArray[index].cavity = 1;
     } else if (value === 2) {
-      updatedOccTeethArray[index].image = "/occImages/row_6/2.webp";
+      // updatedOccTeethArray[index].image = "/occImages/row_6/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_5"
+      );
       updatedUpperTeethArray[index].cavity = 2;
       updatedLowerTeethArray[index].cavity = 2;
     } else if (value === 3) {
-      updatedOccTeethArray[index].image = "/occImages/row_7/2.webp";
+      // updatedOccTeethArray[index].image = "/occImages/row_7/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_7"
+      );
       updatedUpperTeethArray[index].cavity = 3;
       updatedLowerTeethArray[index].cavity = 3;
     }
@@ -349,7 +374,7 @@ export default function UpperTeethCharting(props: Props) {
     <div className="px-[1%] text-black">
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
-        <div className="max-w-[1400px]">
+        <div className="max-w-[1355px] min-w-[1355px]">
           <div className="w-full bg-white rounded-md py-3">
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
@@ -914,7 +939,7 @@ export default function UpperTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <PocketDepthInput
+                    <P_PocketDepthInput
                       value={item.value}
                       pocketDepthData={P_PocketDepthData}
                       setPocketDepthData={setP_PocketDepthData}
@@ -938,7 +963,7 @@ export default function UpperTeethCharting(props: Props) {
                       flex: 1,
                     }}
                   >
-                    <RecessionInput
+                    <P_RecessionInput
                       value={item.value}
                       recessionData={P_recessionData}
                       setRecessionData={setP_RecessionData}

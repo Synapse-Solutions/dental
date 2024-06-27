@@ -31,29 +31,31 @@ import P_FurcationInput from "../sharedcomponents/lower_teeths_chart_components/
 import P_BleedingInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_BleedingInput";
 import P_PlaqueInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_PlaqueInput";
 import HeaderComponent from "../sharedcomponents/HeaderComponent";
-import { ImplantArray } from "@/app/jsonarrays/ImplantArray";
-import { FurcationArray } from "@/app/jsonarrays/FurcationArray";
-import { BleedingArray } from "@/app/jsonarrays/BleedingArray";
-import { PlaqueArray } from "@/app/jsonarrays/PlaqueArray";
-import { P_FurcationArray } from "@/app/jsonarrays/P_FurcationArray";
-import { P_BleedingArray } from "@/app/jsonarrays/P_BleedingArray";
-import { P_PlaqueArray } from "@/app/jsonarrays/P_PlaqueArray";
-import { PocketDepthArray } from "@/app/jsonarrays/PocketDepthArray";
-import { P_PocketDepthArray } from "@/app/jsonarrays/P_PocketDepthArray";
-import { RecessionArray } from "@/app/jsonarrays/RecessionArray";
-import { P_RecessionArray } from "@/app/jsonarrays/P_RecessionArray";
-import { MobilityArray } from "@/app/jsonarrays/MobilityArray";
+import { ImplantArray } from "@/app/lowerTeethJsonArrays/ImplantArray";
+import { FurcationArray } from "@/app/lowerTeethJsonArrays/FurcationArray";
+import { BleedingArray } from "@/app/lowerTeethJsonArrays/BleedingArray";
+import { PlaqueArray } from "@/app/lowerTeethJsonArrays/PlaqueArray";
+import { P_FurcationArray } from "@/app/lowerTeethJsonArrays/P_FurcationArray";
+import { P_BleedingArray } from "@/app/lowerTeethJsonArrays/P_BleedingArray";
+import { P_PlaqueArray } from "@/app/lowerTeethJsonArrays/P_PlaqueArray";
+import { PocketDepthArray } from "@/app/lowerTeethJsonArrays/PocketDepthArray";
+import { P_PocketDepthArray } from "@/app/lowerTeethJsonArrays/P_PocketDepthArray";
+import { RecessionArray } from "@/app/lowerTeethJsonArrays/RecessionArray";
+import { P_RecessionArray } from "@/app/lowerTeethJsonArrays/P_RecessionArray";
+import { MobilityArray } from "@/app/lowerTeethJsonArrays/MobilityArray";
 import CharLine from "../sharedcomponents/lower_teeths_chart_components/ChartLine";
 import ChartLineBlue from "../sharedcomponents/lower_teeths_chart_components/ChartLineBlue";
 import DotsLowerTeeth from "@/app/sharedcomponents/lower_teeths_chart_components/DotsLowerTeeth";
 import CavityModa from "../sharedcomponents/CavityModa";
-import { clicksArray } from "@/app/jsonarrays/upperTeethClicksArray";
+import { clicksArray } from "@/app/lowerTeethJsonArrays/upperTeethClicksArray";
 import MobilityInput from "../sharedcomponents/lower_teeths_chart_components/Vestibular/MobilityInput";
 import {
   heightMiddlePortion,
   heightWidthUpperPortion,
 } from "@/app/sharedcomponents/lower_teeths_chart_components/HeightWidthUpperTeeths";
 import { upperCavityPosition } from "@/app/sharedcomponents/lower_teeths_chart_components/CavityPositions";
+import P_PocketDepthInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_PocketDepthInput";
+import P_RecessionInput from "../sharedcomponents/lower_teeths_chart_components/Palatino/P_RecessionInput";
 
 const array = [
   {
@@ -352,7 +354,7 @@ export default function LowerTeethCharting(props: Props) {
     <div className="px-[1%] text-black">
       <div className="flex gap-10 mt-5">
         {/* ***************************Left Side********************* */}
-        <div className="w-[1400px]">
+        <div className="max-w-[1355px] min-w-[1355px]">
           <div className="w-full bg-white rounded-md py-3">
             <div className="w-full p-5">
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px]">
@@ -925,7 +927,7 @@ export default function LowerTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <PocketDepthInput
+                    <P_PocketDepthInput
                       value={item.value}
                       pocketDepthData={P_PocketDepthData}
                       setPocketDepthData={setP_PocketDepthData}
@@ -949,7 +951,7 @@ export default function LowerTeethCharting(props: Props) {
                       flex: 1,
                     }}
                   >
-                    <RecessionInput
+                    <P_RecessionInput
                       value={item.value}
                       recessionData={P_recessionData}
                       setRecessionData={setP_RecessionData}
