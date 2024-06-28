@@ -230,11 +230,7 @@ export default function UpperTeethCharting(props: Props) {
     const updatedUpperTeethArray = JSON.parse(JSON.stringify(upperTeeths));
     const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
     const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
-    console.log(
-      "first=======",
-      updatedOccTeethArray[index].image,
-      replaceSecondSegment(updatedOccTeethArray[index].image, "row_3")
-    );
+
     if (value === 1) {
       // updatedOccTeethArray[index].image = "/occImages/row_4/2.webp";
       updatedOccTeethArray[index].image = replaceSecondSegment(
@@ -463,12 +459,14 @@ export default function UpperTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <FurcationInput
-                      value={item.value}
-                      furcationData={furcationData}
-                      setFurcationData={setFurcationData}
-                      index={index}
-                    />
+                    {[0, 1, 2, 13, 14, 15].includes(index) ? (
+                      <FurcationInput
+                        value={item.value}
+                        furcationData={furcationData}
+                        setFurcationData={setFurcationData}
+                        index={index}
+                      />
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -893,6 +891,7 @@ export default function UpperTeethCharting(props: Props) {
               </div>
 
               {/* ######################## PALATINO  */}
+              {/* Furcation input */}
               <div className="flex justify-between w-full gap-3 mt-5 text-[12px] overflow-hidden">
                 <p className="w-[100px]">Furcation</p>
                 {P_furcationData.map((item: any, index: number) => (
@@ -909,20 +908,26 @@ export default function UpperTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <P_FurcationInput
-                      value={item.value_one}
-                      P_furcationData={P_furcationData}
-                      first={true}
-                      setP_FurcationData={setP_FurcationData}
-                      index={index}
-                    />
-                    <P_FurcationInput
-                      value={item.value_two}
-                      P_furcationData={P_furcationData}
-                      first={false}
-                      setP_FurcationData={setP_FurcationData}
-                      index={index}
-                    />
+                    {[0, 1, 2, 4, 11, 13, 14, 15].includes(index) ? (
+                      <>
+                        {[0, 1, 2, 13, 14, 15].includes(index) && (
+                          <P_FurcationInput
+                            value={item.value_one}
+                            P_furcationData={P_furcationData}
+                            first={true}
+                            setP_FurcationData={setP_FurcationData}
+                            index={index}
+                          />
+                        )}
+                        <P_FurcationInput
+                          value={item.value_two}
+                          P_furcationData={P_furcationData}
+                          first={false}
+                          setP_FurcationData={setP_FurcationData}
+                          index={index}
+                        />
+                      </>
+                    ) : null}
                   </div>
                 ))}
               </div>

@@ -443,12 +443,14 @@ export default function LowerTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <FurcationInput
-                      value={item.value}
-                      furcationData={furcationData}
-                      setFurcationData={setFurcationData}
-                      index={index}
-                    />
+                    {[0, 1, 2, 13, 14, 15].includes(index) ? (
+                      <FurcationInput
+                        value={item.value}
+                        furcationData={furcationData}
+                        setFurcationData={setFurcationData}
+                        index={index}
+                      />
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -897,20 +899,26 @@ export default function LowerTeethCharting(props: Props) {
                     }`}
                     style={{ flex: 1 }}
                   >
-                    <P_FurcationInput
-                      value={item.value_one}
-                      P_furcationData={P_furcationData}
-                      first={true}
-                      setP_FurcationData={setP_FurcationData}
-                      index={index}
-                    />
-                    <P_FurcationInput
-                      value={item.value_two}
-                      P_furcationData={P_furcationData}
-                      first={false}
-                      setP_FurcationData={setP_FurcationData}
-                      index={index}
-                    />
+                    {[0, 1, 2, 4, 11, 13, 14, 15].includes(index) ? (
+                      <>
+                        {[0, 1, 2, 13, 14, 15].includes(index) && (
+                          <P_FurcationInput
+                            value={item.value_one}
+                            P_furcationData={P_furcationData}
+                            first={true}
+                            setP_FurcationData={setP_FurcationData}
+                            index={index}
+                          />
+                        )}
+                        <P_FurcationInput
+                          value={item.value_two}
+                          P_furcationData={P_furcationData}
+                          first={false}
+                          setP_FurcationData={setP_FurcationData}
+                          index={index}
+                        />
+                      </>
+                    ) : null}
                   </div>
                 ))}
               </div>
