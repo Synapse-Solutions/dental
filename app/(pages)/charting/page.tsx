@@ -7,12 +7,13 @@ import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
 import HeaderComponent from "@/app/sharedcomponents/HeaderComponent";
 import axios from "axios";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function page() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [upperTeethsData, setUpperTeethsData] = useState(null);
   const [lowerTeethsData, setLowerTeethsData] = useState(null);
@@ -93,24 +94,32 @@ export default function page() {
   return (
     <div className="max-w-[1400px]">
       <HeaderComponent />
-      <div className="w-full flex justify-between items-center p-5">
+      <div className="w-full flex justify-between items-start p-5">
         <input type="date" />
-        <div className=" text-black flex gap-3 items-center text-[14px]">
-          <div className="flex gap-2 items-center">
-            <p>Chart Setting</p>
-            <SettingsOutlinedIcon fontSize="small" />
+        <div className=" text-black flex flex-col items-end ">
+          <div className=" text-black flex gap-3 items-center text-[14px]">
+            <div className="flex gap-2 items-center">
+              <p>Chart Setting</p>
+              <SettingsOutlinedIcon fontSize="small" />
+            </div>
+            <div className="flex gap-2 items-center">
+              <p>Export</p>
+              <PictureAsPdfOutlinedIcon fontSize="small" />
+            </div>
+            <div
+              onClick={onSaveData}
+              className="flex gap-2 items-center cursor-pointer"
+            >
+              <p>{isUserExist ? "Update" : "Save"}</p>
+              <FolderCopyOutlinedIcon fontSize="small" />
+            </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <p>Export</p>
-            <PictureAsPdfOutlinedIcon fontSize="small" />
-          </div>
-          <div
-            onClick={onSaveData}
-            className="flex gap-2 items-center cursor-pointer"
-          >
-            <p>{isUserExist ? "Update" : "Save"}</p>
-            <FolderCopyOutlinedIcon fontSize="small" />
-          </div>
+          {isUserExist && (
+            <p className="mt-5">
+              {"https://dental-zeta-three.vercel.app/charting?id=" +
+                searchParams.get("id")}
+            </p>
+          )}
         </div>
       </div>
       {/* Teeths components */}
