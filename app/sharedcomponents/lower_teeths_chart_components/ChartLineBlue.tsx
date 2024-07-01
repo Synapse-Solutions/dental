@@ -60,7 +60,7 @@ const ChartLineBlue = ({ recessionData }: { recessionData: any }) => {
               x2={pos.x + points[index].width / 2}
               y1={prevPos.y > 0 ? totalHeight - y1 : totalHeight - y1}
               y2={pos.y > 0 ? totalHeight - y2 : totalHeight - y2}
-              stroke="blue"
+              stroke="red"
               strokeWidth={pos.y ? "1" : "1"}
             />
           );

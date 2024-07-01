@@ -56,7 +56,7 @@ const ChartLine = ({ pocketDepthData }: { pocketDepthData: any }) => {
               y1={prevPos.y ? totalHeight - prevPos.y : totalHeight}
               x2={pos.x + points[index].width / 2}
               y2={pos.y ? totalHeight - pos.y : totalHeight}
-              stroke="red"
+              stroke="blue"
               strokeWidth={pos.y ? "1" : "1"}
             />
           );

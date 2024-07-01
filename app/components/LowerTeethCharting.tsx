@@ -217,26 +217,40 @@ export default function LowerTeethCharting(props: Props) {
       : lowerTeethArray[index].image;
     setLowerTeeths(updatedLowerTeethArray);
   };
-
+  function replaceSecondSegment(inputStr: any, newSegment: string) {
+    const segments = inputStr.split("/");
+    if (segments.length > 3) {
+      segments[3] = newSegment;
+    }
+    return segments.join("/");
+  }
   // **** HANDLE CHANGE CAVITY **** ############################
   const handleChangeCavity = (value: number, index: number) => {
     setSelectedTooth(null);
     const updatedUpperTeethArray = JSON.parse(JSON.stringify(upperTeeths));
     const updatedOccTeethArray = JSON.parse(JSON.stringify(occTeeths));
     const updatedLowerTeethArray = JSON.parse(JSON.stringify(lowerTeeths));
+
     if (value === 1) {
-      updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_4/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_4"
+      );
+      updatedOccTeethArray[index].image.replace("");
       updatedUpperTeethArray[index].cavity = 1;
       updatedLowerTeethArray[index].cavity = 1;
     } else if (value === 2) {
-      updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_6/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_6"
+      );
       updatedUpperTeethArray[index].cavity = 2;
       updatedLowerTeethArray[index].cavity = 2;
     } else if (value === 3) {
-      updatedOccTeethArray[index].image =
-        "/lower_teeth_images/occImages/row_7/2.webp";
+      updatedOccTeethArray[index].image = replaceSecondSegment(
+        updatedOccTeethArray[index].image,
+        "row_8"
+      );
       updatedUpperTeethArray[index].cavity = 3;
       updatedLowerTeethArray[index].cavity = 3;
     }
